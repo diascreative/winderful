@@ -1,6 +1,5 @@
-$('button').click(function () {
+$('button').one( "click", function() {
   $.getJSON( "../power/json/grid_watch_a.json", function(obj) {
-
     $.each(obj, function(key, value){
       $("ul").append("<li>" + "Demand for power is " + value.demand + "GW" + "</li>"),
       $("ul").append("<li>" + "Wind Power supplies " + value.wind + "GW" + "</li>"),
