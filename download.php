@@ -3,7 +3,7 @@
     $local_file = '/tmp/grid_watch.csv';
     $remote_file = 'http://www.gridwatch.templar.co.uk/do_download.php';
     $json_file = '/tmp/grid_watch.json';
-    $new_json = '/tmp/grid_watch_a.json';
+    $new_json = './json/grid_watch_a.json';
 
     $fields = array(
                 'none'=>'on',
@@ -23,13 +23,13 @@
                 'irish_ict'=>'off',
                 'ew_ict'=>'off',
                 'all'=>'off',
-                'starthour'=> 11,
-                'startminute'=>15,
+                'starthour'=> 6,
+                'startminute'=>0,
                 'startday'=>date("j"),
                 'startmonth'=> (date("n")-1),
                 'startyear'=> date("Y"),
-                'endhour'=> 11,
-                'endminute'=>20,
+                'endhour'=> 6,
+                'endminute'=>5,
                 'endday'=>date("j"),
                 'endmonth'=> (date("n")-1),
                 'endyear'=>date("Y")
