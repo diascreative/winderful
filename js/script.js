@@ -1,5 +1,5 @@
 $('button').one( "click", function() {
-  $.getJSON( "./json/grid_watch_a.json", function(obj) {
+  $.getJSON( "./download.php", function(obj) {
     var value = obj[0];
       $("ul").append("<li>" + "Demand for power is " + value.demand + "GW" + "</li>");
       $("ul").append("<li>" + "Wind Power supplies " + value.wind + "GW" + "</li>");
@@ -11,7 +11,7 @@ $('button').one( "click", function() {
         $('.rotor').css('-webkit-animation', 'rotate 30s infinite linear');
       }
       else if (wind > 1 && wind <= 2) {
-        $('.rotor').css('-webkit-animation', 'rotate 10s infinite linear');
+        $('.rotor').css('-webkit-animation', 'rotate 15s infinite linear');
       }
       else {
         $('.rotor').css('-webkit-animation', 'rotate 3s infinite linear');

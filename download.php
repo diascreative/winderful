@@ -9,6 +9,7 @@
   $remote_file = 'http://www.gridwatch.templar.co.uk/do_download.php';
   $json_file = '/tmp/grid_watch.json';
   $new_json = './json/grid_watch_a.json';
+  $for_js = file_get_contents($new_json);
 
   $fields = array(
               'none'=>'on',
@@ -28,7 +29,7 @@
               'irish_ict'=>'off',
               'ew_ict'=>'off',
               'all'=>'off',
-              'starthour'=>date('G', $startTime),
+              'starthour'=> date('G', $startTime),
               'startminute'=>date('i', $startTime),
               'startday'=>date('j', $startTime),
               'startmonth'=>intval(date('n', $startTime)-1),
@@ -117,4 +118,11 @@
   $json = preg_replace('/[ \n]/', '', $js);
 
   file_put_contents($new_json, $json);
+
+
+  if(time()-filemtime($new_json) > 300) {
+    header('Refresh: 0; url=download.php');
+  } else {
+    echo $for_js;
+    }
 ?>
