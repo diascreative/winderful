@@ -11,7 +11,7 @@ $('button').one( "click", function() {
         $('.rotor').css('-webkit-animation', 'rotate 30s infinite linear');
       }
       else if (wind > 1 && wind <= 2) {
-        $('.rotor').css('-webkit-animation', 'rotate 15s infinite linear');
+        $('.rotor').css('-webkit-animation', 'rotate 10s infinite linear');
       }
       else {
         $('.rotor').css('-webkit-animation', 'rotate 3s infinite linear');

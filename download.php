@@ -1,5 +1,11 @@
 <?php
 
+date_default_timezone_set('GMT');
+
+$now = intval(date('i'));
+
+$then = intval(date('i',time() - 5 * 60));
+
     $local_file = '/tmp/grid_watch.csv';
     $remote_file = 'http://www.gridwatch.templar.co.uk/do_download.php';
     $json_file = '/tmp/grid_watch.json';
@@ -23,13 +29,13 @@
                 'irish_ict'=>'off',
                 'ew_ict'=>'off',
                 'all'=>'off',
-                'starthour'=> 6,
-                'startminute'=>0,
+                'starthour'=> date('G'),
+                'startminute'=>$then,
                 'startday'=>date("j"),
                 'startmonth'=> (date("n")-1),
                 'startyear'=> date("Y"),
-                'endhour'=> 6,
-                'endminute'=>5,
+                'endhour'=> date('G'),
+                'endminute'=>$now,
                 'endday'=>date("j"),
                 'endmonth'=> (date("n")-1),
                 'endyear'=>date("Y")
