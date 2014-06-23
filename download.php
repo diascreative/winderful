@@ -2,52 +2,8 @@
 
   date_default_timezone_set('GMT');
 
-  $now = date('j-n-Y G:i:s');
-
-  echo $now;
-
-  $then = date('j-n-Y G:i:s',time() - 5 * 60);
-
-  $now_yr = intval(substr($now,5,9));
-
-  echo $now_yr;
-
-  $then_yr = intval(substr($then,5,9));
-
-  echo $then_yr;
-
-  $now_mnth = intval(substr($now,3,4));
-
-  echo $now_mnth;
-
-  $then_mnth = intval(substr($then,3,4));
-
-  echo $then_mnth;
-
-  $now_dy = intval(substr($now,0,2));
-
-  echo $now_dy;
-
-  $then_dy = intval(substr($then,0,2));
-
-  echo $then_dy;
-
-  $now_hrs = intval(substr($now,10,12));
-
-  echo $now_hrs;
-
-  $then_hrs = intval(substr($then,10,12));
-
-  echo $then_hrs;
-
-  $now_mins = intval(substr($now,13,15));
-
-  echo $now_mins;
-
-  $then_mins = intval(substr($then,13,15));
-
-  echo $then_mins;
-
+  $endTime = time();
+  $startTime = $endTime - (60*5); // 5 minutes earlier
 
   $local_file = '/tmp/grid_watch.csv';
   $remote_file = 'http://www.gridwatch.templar.co.uk/do_download.php';
@@ -72,16 +28,16 @@
               'irish_ict'=>'off',
               'ew_ict'=>'off',
               'all'=>'off',
-              'starthour'=>$then_hrs,
-              'startminute'=>$then_mins,
-              'startday'=>$then_dy,
-              'startmonth'=>$then_mnth,
-              'startyear'=>$then_yr,
-              'endhour'=>$now_hrs,
-              'endminute'=>$now_mins,
-              'endday'=>$then_dy,
-              'endmonth'=>$now_mnth,
-              'endyear'=>$now_yr
+              'starthour'=>date('G', $startTime),
+              'startminute'=>date('i', $startTime),
+              'startday'=>date('j', $startTime),
+              'startmonth'=>intval(date('n', $startTime)-1),
+              'startyear'=>date('Y', $startTime),
+              'endhour'=>date('G', $endTime),
+              'endminute'=>date('i', $endTime),
+              'endday'=>date('j', $endTime),
+              'endmonth'=>intval(date('n', $endTime)-1),
+              'endyear'=>date('Y', $endTime)
             );
 
   $data = curl_init($remote_file);
