@@ -2,29 +2,52 @@
 
   date_default_timezone_set('GMT');
 
-  $now = date('H:i:s');
+  $now = date('j-n-Y G:i:s');
 
   echo $now;
 
-  $then = date('H:i:s',time() - 5 * 60);
+  $then = date('j-n-Y G:i:s',time() - 5 * 60);
 
-  echo $then;
+  $now_yr = intval(substr($now,5,9));
 
-  $now_hrs = intval(substr($now,0,2));
+  echo $now_yr;
+
+  $then_yr = intval(substr($then,5,9));
+
+  echo $then_yr;
+
+  $now_mnth = intval(substr($now,3,4));
+
+  echo $now_mnth;
+
+  $then_mnth = intval(substr($then,3,4));
+
+  echo $then_mnth;
+
+  $now_dy = intval(substr($now,0,2));
+
+  echo $now_dy;
+
+  $then_dy = intval(substr($then,0,2));
+
+  echo $then_dy;
+
+  $now_hrs = intval(substr($now,10,12));
 
   echo $now_hrs;
 
-  $then_hrs = intval(substr($now,0,2));
+  $then_hrs = intval(substr($then,10,12));
 
   echo $then_hrs;
 
-  $now_mins = intval(substr($now,3,5));
+  $now_mins = intval(substr($now,13,15));
 
   echo $now_mins;
 
-  $then_mins = intval(substr($then,3,5));
+  $then_mins = intval(substr($then,13,15));
 
   echo $then_mins;
+
 
   $local_file = '/tmp/grid_watch.csv';
   $remote_file = 'http://www.gridwatch.templar.co.uk/do_download.php';
@@ -49,16 +72,16 @@
               'irish_ict'=>'off',
               'ew_ict'=>'off',
               'all'=>'off',
-              'starthour'=> $then_hrs,
+              'starthour'=>$then_hrs,
               'startminute'=>$then_mins,
-              'startday'=>date("j"),
-              'startmonth'=> (date("n")-1),
-              'startyear'=> date("Y"),
-              'endhour'=> $now_hrs,
+              'startday'=>$then_dy,
+              'startmonth'=>$then_mnth,
+              'startyear'=>$then_yr,
+              'endhour'=>$now_hrs,
               'endminute'=>$now_mins,
-              'endday'=>date("j"),
-              'endmonth'=> (date("n")-1),
-              'endyear'=>date("Y")
+              'endday'=>$then_dy,
+              'endmonth'=>$now_mnth,
+              'endyear'=>$now_yr
             );
 
   $data = curl_init($remote_file);
