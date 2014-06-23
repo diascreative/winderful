@@ -1,121 +1,141 @@
 <?php
 
-date_default_timezone_set('GMT');
+  date_default_timezone_set('GMT');
 
-$now = intval(date('i'));
+  $now = date('H:i:s');
 
-$then = intval(date('i',time() - 5 * 60));
+  echo $now;
 
-    $local_file = '/tmp/grid_watch.csv';
-    $remote_file = 'http://www.gridwatch.templar.co.uk/do_download.php';
-    $json_file = '/tmp/grid_watch.json';
-    $new_json = './json/grid_watch_a.json';
+  $then = date('H:i:s',time() - 5 * 60);
 
-    $fields = array(
-                'none'=>'on',
-                'demand'=>'on',
-                'frequency'=>'off',
-                'coal'=>'off',
-                'nuclear'=>'off',
-                'ccgt'=>'off',
-                'wind'=>'on',
-                'pumped'=>'off',
-                'hydro'=>'off',
-                'other'=>'off',
-                'oil'=>'off',
-                'ocgt'=>'off',
-                'french_ict'=>'off',
-                'dutch_ict'=>'off',
-                'irish_ict'=>'off',
-                'ew_ict'=>'off',
-                'all'=>'off',
-                'starthour'=> date('G'),
-                'startminute'=>$then,
-                'startday'=>date("j"),
-                'startmonth'=> (date("n")-1),
-                'startyear'=> date("Y"),
-                'endhour'=> date('G'),
-                'endminute'=>$now,
-                'endday'=>date("j"),
-                'endmonth'=> (date("n")-1),
-                'endyear'=>date("Y")
+  echo $then;
+
+  $now_hrs = intval(substr($now,0,2));
+
+  echo $now_hrs;
+
+  $then_hrs = intval(substr($now,0,2));
+
+  echo $then_hrs;
+
+  $now_mins = intval(substr($now,3,5));
+
+  echo $now_mins;
+
+  $then_mins = intval(substr($then,3,5));
+
+  echo $then_mins;
+
+  $local_file = '/tmp/grid_watch.csv';
+  $remote_file = 'http://www.gridwatch.templar.co.uk/do_download.php';
+  $json_file = '/tmp/grid_watch.json';
+  $new_json = './json/grid_watch_a.json';
+
+  $fields = array(
+              'none'=>'on',
+              'demand'=>'on',
+              'frequency'=>'off',
+              'coal'=>'off',
+              'nuclear'=>'off',
+              'ccgt'=>'off',
+              'wind'=>'on',
+              'pumped'=>'off',
+              'hydro'=>'off',
+              'other'=>'off',
+              'oil'=>'off',
+              'ocgt'=>'off',
+              'french_ict'=>'off',
+              'dutch_ict'=>'off',
+              'irish_ict'=>'off',
+              'ew_ict'=>'off',
+              'all'=>'off',
+              'starthour'=> $then_hrs,
+              'startminute'=>$then_mins,
+              'startday'=>date("j"),
+              'startmonth'=> (date("n")-1),
+              'startyear'=> date("Y"),
+              'endhour'=> $now_hrs,
+              'endminute'=>$now_mins,
+              'endday'=>date("j"),
+              'endmonth'=> (date("n")-1),
+              'endyear'=>date("Y")
             );
 
-    $data = curl_init($remote_file);
+  $data = curl_init($remote_file);
 
-    $fp = fopen ($local_file, 'w+');
+  $fp = fopen ($local_file, 'w+');
 
-    curl_setopt($data, CURLOPT_POSTFIELDS, $fields);
-    curl_setopt($data, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($data, CURLOPT_FILE, $fp);
-    curl_setopt($data, CURLOPT_FOLLOWLOCATION, true);
-    curl_setopt($data, CURLOPT_ENCODING, "");
-    curl_exec($data);
-    curl_close($data);
+  curl_setopt($data, CURLOPT_POSTFIELDS, $fields);
+  curl_setopt($data, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($data, CURLOPT_FILE, $fp);
+  curl_setopt($data, CURLOPT_FOLLOWLOCATION, true);
+  curl_setopt($data, CURLOPT_ENCODING, "");
+  curl_exec($data);
+  curl_close($data);
 
-    fclose($fp);
+  fclose($fp);
 
 /*
-    Converts CSV to JSON
+  Converts CSV to JSON
 */
 
-    header('Content-type: application/json');
+  header('Content-type: application/json');
 
-    // Set your CSV feed
-    $feed = $local_file;
+  // Set your CSV feed
+  $feed = $local_file;
 
-    // Arrays we'll use later
-    $keys = array();
-    $newArray = array();
+  // Arrays we'll use later
+  $keys = array();
+  $newArray = array();
 
-    // Function to convert CSV into associative array
-    function csvToArray($file, $delimiter) {
-      if (($handle = fopen($file, 'r')) !== FALSE) {
-        $i = 0;
-        while (($lineArray = fgetcsv($handle, 4000, $delimiter, '"')) !== FALSE) {
-          for ($j = 0; $j < count($lineArray); $j++) {
-            $arr[$i][$j] = $lineArray[$j];
+  // Function to convert CSV into associative array
+  function csvToArray($file, $delimiter) {
+    if (($handle = fopen($file, 'r')) !== FALSE) {
+      $i = 0;
+      while (($lineArray = fgetcsv($handle, 4000, $delimiter, '"')) !== FALSE) {
+        for ($j = 0; $j < count($lineArray); $j++) {
+          $arr[$i][$j] = $lineArray[$j];
         }
-          $i++;
-        }
-        fclose($handle);
+      $i++;
       }
-      return $arr;
+    fclose($handle);
     }
+    return $arr;
+  }
 
-    // Do it
-    $data = csvToArray($feed, ',');
+  // Do it
+  $data = csvToArray($feed, ',');
 
-    // Set number of elements (minus 1 because we shift off the first row)
-    $count = count($data) - 1;
+  // Set number of elements (minus 1 because we shift off the first row)
+  $count = count($data) - 1;
 
-    //Use first row for names
-    $labels = array_shift($data);
+  //Use first row for names
+  $labels = array_shift($data);
 
-    foreach ($labels as $label) {
-      $keys[] = $label;
-    }
+  foreach ($labels as $label) {
+    $keys[] = $label;
+  }
 
-    // Add Ids, just in case we want them later
-    $keys[] = 'id';
+  // Add Ids, just in case we want them later
+  $keys[] = 'id';
 
-    for ($i = 0; $i < $count; $i++) {
-      $data[$i][] = $i;
-    }
+  for ($i = 0; $i < $count; $i++) {
+    $data[$i][] = $i;
+  }
 
-    // Bring it all together
-    for ($j = 0; $j < $count; $j++) {
-      $d = array_combine($keys, $data[$j]);
-      $newArray[$j] = $d;
-    }
+  // Bring it all together
+  for ($j = 0; $j < $count; $j++) {
+    $d = array_combine($keys, $data[$j]);
+    $newArray[$j] = $d;
+  }
 
-    // Print it out as JSON and save tmp
+  // Print it out as JSON and save tmp
 
-    file_put_contents($json_file, json_encode($newArray));
+  file_put_contents($json_file, json_encode($newArray));
 
-    $js =file_get_contents($json_file);
+  $js =file_get_contents($json_file);
 
-    $json = preg_replace('/[ \n]/', '', $js);
+  $json = preg_replace('/[ \n]/', '', $js);
 
-    file_put_contents($new_json, $json);
+  file_put_contents($new_json, $json);
 ?>
