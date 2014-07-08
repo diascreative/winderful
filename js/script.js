@@ -1,22 +1,29 @@
-$('button').one( "click", function() {
-  $.getJSON( "./download.php", function(obj) {
-    var value = obj[0];
-      $("ul").append("<li>" + "Demand for power is " + value.demand + "GW" + "</li>");
-      $("ul").append("<li>" + "Wind Power supplies " + value.wind + "GW" + "</li>");
-      $("ul").append("<li>" + "Wind Power accounts for around " + ((value.wind / value.demand) * 100).toFixed(2) + "%" + " of the total Energy Supply" + "</li>");
+$('#fetch').one( "click", function() {
 
-      var wind = ((value.wind / value.demand) * 100).toFixed(2); // need this to be the output of our JSON func, ((value.wind / value.demand) * 100).toFixed(2)
+  $.ajax({
+    type: 'GET',
+    url: './download.php',
+    success: function(obj) {
+      var value = obj[0];
+        $("ul").append("<li>" + "Demand for power is " + value.demand + "GW" + "</li>");
+        $("ul").append("<li>" + "Wind Power supplies " + value.wind + "GW" + "</li>");
+        $("ul").append("<li>" + "Wind Power accounts for around " + ((value.wind / value.demand) * 100).toFixed(2) + "%" + " of the total Energy Supply" + "</li>");
 
-      if (wind <= 1) {
-        $('.rotor').css('-webkit-animation', 'rotate 30s infinite linear');
-      }
-      else if (wind > 1 && wind <= 2) {
-        $('.rotor').css('-webkit-animation', 'rotate 15s infinite linear');
-      }
-      else {
-        $('.rotor').css('-webkit-animation', 'rotate 3s infinite linear');
-      }
+        var wind = ((value.wind / value.demand) * 100).toFixed(2); // need this to be the output of our JSON func, ((value.wind / value.demand) * 100).toFixed(2)
+
+        if (wind <= 1) {
+          $('.rotor').css('-webkit-animation', 'rotate 30s infinite linear');
+        }
+        else if (wind > 1 && wind <= 2) {
+          $('.rotor').css('-webkit-animation', 'rotate 15s infinite linear');
+        }
+        else {
+          $('.rotor').css('-webkit-animation', 'rotate 3s infinite linear');
+        }
+      },
+    error: function() {
+      alert('Error');
+    }
   });
+
 });
-
-
