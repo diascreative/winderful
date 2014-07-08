@@ -2,8 +2,8 @@
 
   date_default_timezone_set('GMT');
 
-  $endTime = time();
-  $startTime = $endTime - (60*5); // 5 minutes earlier
+  $endTime = $_GET['datetimepicker_end'];
+  $startTime = $_GET['datetimepicker_start'];
 
   $local_file = '/tmp/grid_watch.csv';
   $remote_file = 'http://www.gridwatch.templar.co.uk/do_download.php';

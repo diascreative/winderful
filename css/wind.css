@@ -2,13 +2,6 @@ body {
   background-color: lightgray
 }
 
-label {
-  float: left;
-  text-align: right;
-  margin-right: 15px;
-  width: 100px;
-}
-
 textarea:focus, input:focus {
   border: 2px solid #900;
 }
