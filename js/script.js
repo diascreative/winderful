@@ -1,7 +1,7 @@
 $('form').one("submit", function(event) {
   event.preventDefault();
 
-  var send = $(this).serialize()
+  var send = $(this).serialize();
 
   $.ajax({
     type: 'GET',
