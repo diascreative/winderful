@@ -1,7 +1,10 @@
 $('form').one("submit", function(event) {
   event.preventDefault();
 
-  var send = $(this).serialize();
+  var send = {
+      datetimepicker_end: $('#datetimepicker_end').data('xdsoft_datetimepicker').data('xdsoft_datetime').strToDateTime($('#datetimepicker_end').val()).dateFormat('unixtime'),
+      datetimepicker_start: $('#datetimepicker_start').data('xdsoft_datetimepicker').data('xdsoft_datetime').strToDateTime($('#datetimepicker_start').val()).dateFormat('unixtime')
+    };
 
   $.ajax({
     type: 'GET',
@@ -33,9 +36,5 @@ $('form').one("submit", function(event) {
   });
 });
 
-$('#datetimepicker_start').datetimepicker({
-  format: 'unixtime'
-});
-$('#datetimepicker_end').datetimepicker({
-  format: 'unixtime'
-});
+$('#datetimepicker_start').datetimepicker();
+$('#datetimepicker_end').datetimepicker();
