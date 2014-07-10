@@ -1,4 +1,4 @@
-$('form').one('submit', function(event) {
+$('#dates').on('submit', function(event) {
   event.preventDefault();
 
   var send = {
@@ -37,14 +37,5 @@ $('form').one('submit', function(event) {
 });
 
 
-$('#datetimepicker_start').datetimepicker({
-  minDate:'2009/05/14',
-  formatTime: 'H.i',
-  maxDate:'0'
-});
-
-
-$('#datetimepicker_end').datetimepicker({
-  formatTime: 'H.i',
-  minDate:'2009/05/14'
-});
+$('#datetimepicker_start').datetimepicker();
+$('#datetimepicker_end').datetimepicker();

@@ -6,7 +6,7 @@
   <title>Wind Power Supply</title>
 </head>
  <body>
-  <form action="download.php" method="post">
+  <form id="dates" action="download.php" method="post">
     <label for= "datetimepicker_start">Start Date</label>
     <input id="datetimepicker_start" type="text" name="datetimepicker_start"><br>
     <label for= "datetimepicker_end">End Date</label>
