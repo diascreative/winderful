@@ -46,6 +46,5 @@ $('#datetimepicker_start').datetimepicker({
 
 $('#datetimepicker_end').datetimepicker({
   formatTime: 'H.i',
-  minDate:'2009/05/14',
-  maxDate:'#datetimepicker_start'
+  minDate:'2009/05/14'
 });
