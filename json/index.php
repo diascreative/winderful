@@ -1,6 +1,5 @@
 <?php
   require_once('../inc/init.php');
-
   header('Content-type: application/json');
 
   date_default_timezone_set('GMT');
@@ -15,38 +14,46 @@
   if( isset($_GET['start']) )
     $start = $_GET['start'];
   else
-    $start = $end - 3600*10; // show 10h before end
+    $start = $end - 3600*24*6; // show 10h before end
 
   $delta = $end - $start;
 
-  $query_where = '';
+  $group_by = '';
+  $time = "timestamp AS time";
 
   if( $delta <= 3600*10 ) {
     // date range < 10 hours : show every 5 mins
-    $query_where = '';
+    $group_by = '';
   } else if( $delta <= 3600 * 24 * 7 ) {
     // date range < 1 week : show every hour
-    $query_where = '';
+    $time = "CONCAT(DATE(timestamp), ' : ', HOUR(timestamp)) AS time";
+    $group_by = ' GROUP BY time';
   } else if( $delta <= 3600 * 24 * 30 ) {
     // date range < 1 month : show daily average
-    $query_where = '';
+    $time = "DATE(timestamp) AS time";
+    $group_by = ' GROUP BY time';
   } else {
     // date range < 1 year : show weekly average
-    $query_where = '';
+    $time = "CONCAT(YEAR(timestamp), '-', WEEK(timestamp)) AS time";
+    $group_by = ' GROUP BY time';
   }
 
   $end = es($end);
   $start = es($start);
 
-  $dateSMYSQL = es(date("Y-m-d H:i", strtotime("+1 day", $start)));
-  $dateEMYSQL = es(date("Y-m-d H:i", strtotime("+1 day", $end)));
+  $dateSMYSQL = es(date("Y-m-d H:i", $start));
+  $dateEMYSQL = es(date("Y-m-d H:i", $end));
 
   $query = "SELECT
-              *
+              $time,
+              timestamp,
+              demand,
+              wind
             FROM
               wind_vs_demand
             WHERE
-              timestamp BETWEEN '$dateSMYSQL' AND '$dateEMYSQL'";
+              timestamp BETWEEN '$dateSMYSQL' AND '$dateEMYSQL'
+            $group_by";
 
   $items = [];
 
