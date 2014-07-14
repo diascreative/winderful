@@ -1,18 +1,23 @@
 <?php
+  require_once('../inc/init.php');
 
+  // set timezone to the same as gridwatch's
   date_default_timezone_set('GMT');
 
-  $endTime = $_GET['datetimepicker_end'];
-  $startTime = $_GET['datetimepicker_start'];
+  $lastTimes = fetchArray(query("SELECT timestamp FROM wind_vs_demand ORDER BY timestamp DESC LIMIT 1"));
 
-  $local_file = '/tmp/grid_watch.csv';
-  $remote_file = 'http://www.gridwatch.templar.co.uk/do_download.php';
-  $json_file = '/tmp/grid_watch.json';
-  $new_json = './json/grid_watch_a.json';
-  $for_js = file_get_contents($new_json);
+  $startTime = strtotime($lastTimes[0]);
+  $endTime = time();
+
+  if( $endTime - $startTime < 60*5 ) {
+    echo 'up to date';
+    return;
+  }
+
+  $remoteFile = 'http://www.gridwatch.templar.co.uk/do_download.php';
 
   $fields = array(
-              'none'=>'on',
+              'none'=>'off',
               'demand'=>'on',
               'frequency'=>'off',
               'coal'=>'off',
@@ -29,100 +34,45 @@
               'irish_ict'=>'off',
               'ew_ict'=>'off',
               'all'=>'off',
-              'starthour'=> date('G', $startTime),
-              'startminute'=>date('i', $startTime),
-              'startday'=>date('j', $startTime),
-              'startmonth'=>intval(date('n', $startTime)-1),
-              'startyear'=>date('Y', $startTime),
-              'endhour'=>date('G', $endTime),
-              'endminute'=>date('i', $endTime),
-              'endday'=>date('j', $endTime),
-              'endmonth'=>intval(date('n', $endTime)-1),
-              'endyear'=>date('Y', $endTime)
+              'starthour'  => date('G', $startTime),
+              'startminute'=> date('i', $startTime),
+              'startday'   => date('j', $startTime),
+              'startmonth' => date('n', $startTime)-1,  // month is 0->11
+              'startyear'  => date('Y', $startTime),
+              'endhour'    => date('G', $endTime),
+              'endminute'  => date('i', $endTime),
+              'endday'     => date('j', $endTime),
+              'endmonth'   => date('n', $endTime)-1,    // month is 0->11
+              'endyear'    => date('Y', $endTime)
             );
 
-  $data = curl_init($remote_file);
-
-  $fp = fopen ($local_file, 'w+');
+  $data = curl_init($remoteFile);
 
   curl_setopt($data, CURLOPT_POSTFIELDS, $fields);
   curl_setopt($data, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($data, CURLOPT_FILE, $fp);
   curl_setopt($data, CURLOPT_FOLLOWLOCATION, true);
   curl_setopt($data, CURLOPT_ENCODING, "");
-  curl_exec($data);
+
+  $csv = curl_exec($data);
+
   curl_close($data);
 
-  fclose($fp);
-
-/*
-  Converts CSV to JSON
-*/
-
-  header('Content-type: application/json');
-
-  // Set your CSV feed
-  $feed = $local_file;
-
-  // Arrays we'll use later
-  $keys = array();
-  $newArray = array();
-
-  // Function to convert CSV into associative array
-  function csvToArray($file, $delimiter) {
-    if (($handle = fopen($file, 'r')) !== FALSE) {
-      $i = 0;
-      while (($lineArray = fgetcsv($handle, 4000, $delimiter, '"')) !== FALSE) {
-        for ($j = 0; $j < count($lineArray); $j++) {
-          $arr[$i][$j] = $lineArray[$j];
-        }
-      $i++;
-      }
-    fclose($handle);
-    }
-    return $arr;
-  }
-
   // Do it
-  $data = csvToArray($feed, ',');
+  $lines = explode("\n", $csv);
+  $head = str_getcsv(array_shift($lines));
+  $head = array_map('trim', $head);
 
-  // Set number of elements (minus 1 because we shift off the first row)
-  $count = count($data) - 1;
+  $data = array();
 
-  //Use first row for names
-  $labels = array_shift($data);
-
-  foreach ($labels as $label) {
-    $keys[] = $label;
+  foreach ($lines as $line) {
+      if( $line )
+        $data[] = array_combine($head, array_map('trim', str_getcsv($line)));
   }
 
-  // Add Ids, just in case we want them later
-  $keys[] = 'id';
+  $sql = array();
 
-  for ($i = 0; $i < $count; $i++) {
-    $data[$i][] = $i;
+  foreach( $data as $row ) {
+    $sql[] = '("' . es($row['timestamp']) . '", "' . es($row['demand']) . '", "' . es($row['wind']) . '")';
   }
 
-  // Bring it all together
-  for ($j = 0; $j < $count; $j++) {
-    $d = array_combine($keys, $data[$j]);
-    $newArray[$j] = $d;
-  }
-
-  // Print it out as JSON and save tmp
-
-  file_put_contents($json_file, json_encode($newArray));
-
-  $js =file_get_contents($json_file);
-
-  $json = preg_replace('/[ \n]/', '', $js);
-
-  file_put_contents($new_json, $json);
-
-
-  if(time()-filemtime($new_json) > 300) {
-    header('Refresh: 0; url=download.php');
-  } else {
-    echo $for_js;
-    }
-?>
+  query("INSERT INTO wind_vs_demand (timestamp, demand, wind) VALUES " . implode(',', $sql));
