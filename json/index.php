@@ -56,7 +56,7 @@
               timestamp BETWEEN '$dateSMYSQL' AND '$dateEMYSQL'
             $group_by";
 
-  $items = [];
+  $items = array();
 
   $results = query($query);
 
