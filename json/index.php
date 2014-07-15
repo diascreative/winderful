@@ -54,16 +54,34 @@
               wind_vs_demand
             WHERE
               timestamp BETWEEN '$dateSMYSQL' AND '$dateEMYSQL'
-            $group_by";
+              $group_by
+            ORDER BY
+              timestamp";
 
-  $items = array();
+  $wind = array();
+  $demand = array();
 
   $results = query($query);
 
   while( $item = fetchAssoc($results) ) {
-    array_push($items, $item);
+    $windItem = array();
+    $demandItem = array();
+
+    $windItem['x'] = strtotime($item['timestamp']);
+    $windItem['y'] = intval($item['wind']);
+
+    $demandItem['x'] = strtotime($item['timestamp']);
+    $demandItem['y'] = intval($item['demand']);
+
+    array_push($wind, $windItem);
+    array_push($demand, $demandItem);
   }
 
-  echo json_encode($items);
+  $graph = array(
+      array('name' => "Wind", "data" => $wind),
+      array('name' => "Demand", "data" => $demand)
+    );
+
+  echo json_encode($graph);
 
   //print_r($dbDebug);
