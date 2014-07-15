@@ -6,6 +6,7 @@
     width: 960,
     height: 500,
     stroke: true,
+    renderer: 'bar',
     dataURL: './json/index.php',
     onData: function(d) {
       d[0].data[0].y = 80;
@@ -13,6 +14,8 @@
     },
     onComplete: function(transport) {
       graph = transport.graph;
+
+      graph.offset = 'pct';
 
       var detail = new Rickshaw.Graph.HoverDetail({ graph: graph }),
         shelving = new Rickshaw.Graph.Behavior.Series.Toggle( {
