@@ -6,6 +6,10 @@ textarea:focus, input:focus {
   border: 2px solid #900;
 }
 
+#chart_container {
+  display: inline-block;
+}
+
 
 .mast, .rotor, .rotor-blade, .rotor-tip {
   background-color: white;
@@ -27,9 +31,9 @@ textarea:focus, input:focus {
 
 
 .turbine {
-  position: absolute;
-  top: 210px;
-  left: 700px;
+  display: inline-block;
+  margin: 0 0 -10px 20px;
+  vertical-align: bottom;
 }
 
 .mast {
@@ -47,6 +51,7 @@ textarea:focus, input:focus {
   border-radius: 50%;
   height: 50px;
   width: 50px;
+  -webkit-animation: rotate 2s infinite linear;
 }
 
 .rotor-blade {
