@@ -22,7 +22,7 @@
         var detail = new Rickshaw.Graph.HoverDetail({ graph: graph,
           yFormatter: function(y) {
 
-            var newSpeed = y/1000;
+            var newSpeed = 4-(y/1000);
 
             currentY = y;
 
