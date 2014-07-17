@@ -1,12 +1,12 @@
 (function () {
   'use strict';
 
-  var $rotor = $('#rotor').eq(0),
+  var $rotor = $('#turbine-rotor').eq(0),
     rotationAngle = 0,
     speed = .5,
     graph = new Rickshaw.Graph.Ajax({
       element: document.getElementById("chart"),
-      width: 960,
+      width: 600,
       height: 500,
       stroke: true,
       renderer: 'bar',

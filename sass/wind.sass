@@ -7,13 +7,15 @@ body
   background: #369
   display: inline-block
 
-#turbine
+#wind-turbine-container
   display: inline-block
-  margin: 0 0 -10px 20px
+  margin: 0 0 0 20px
+  position: relative
   vertical-align: bottom
+  width: 40%
 
-#mast,
-#rotor,
+#turbine-mast,
+#turbine-rotor,
 .rotor-blade,
 .rotor-tip
   background-color: white
@@ -21,18 +23,21 @@ body
   background-image: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%)
   border: 1px solid grey
 
-#mast
+#turbine-mast
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5)
   height: 250px
-  left: 8px
+  left: 50%
+  margin: 0 0 0 -10px
   position: relative
-  top: -10px
-  width: 33px
+  width: 20px
 
-#rotor
+#turbine-rotor
   border-radius: 50%
+  bottom: 250px
   height: 50px
-  position: relative
+  left: 50%
+  margin: 0 0 0 -25px
+  position: absolute
   width: 50px
 
 .rotor-blade
@@ -43,17 +48,17 @@ body
   left: 25px
   position: absolute
   top: 10px
-  transform-origin: left
+  +transform-origin(left)
   width: 200px
 
 .blade1
-  -webkit-transform: rotate(90deg)
+  +transform(rotate(90deg))
 
 .blade2
-  -webkit-transform: rotate(325deg)
+  +transform(rotate(325deg))
 
 .blade3
-  -webkit-transform: rotate(205deg)
+  +transform(rotate(205deg))
 
 .rotor-tip
   background-color: white
