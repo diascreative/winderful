@@ -22,55 +22,47 @@ body
   border: 1px solid grey
 
 #mast
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5)
   height: 250px
-  width: 33px
+  left: 8px
   position: relative
   top: -10px
-  left: 8px
-  z-index: -1
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5)
-
+  width: 33px
 
 #rotor
-  position: relative
   border-radius: 50%
   height: 50px
+  position: relative
   width: 50px
 
 .rotor-blade
+  background-color: green
+  border-radius: 100% 15%
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5)
+  height: 30px
+  left: 25px
   position: absolute
   top: 10px
-  left: 25px
-  border-radius: 100% 15%
-  width: 200px
-  height: 30px
-  background-color: green
   transform-origin: left
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5)
-
+  width: 200px
 
 .blade1
   -webkit-transform: rotate(90deg)
 
-
 .blade2
   -webkit-transform: rotate(325deg)
-
 
 .blade3
   -webkit-transform: rotate(205deg)
 
-
 .rotor-tip
-  position: absolute
-  top: 9px
-  left: 9px
-  border-radius: 50%
-  height: 30px
-  width: 30px
-  z-index: 1
   background-color: white
-  *zoom: 1
   background-image: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%, #fcfcfc 47%, #0c0c0c 53%, #fcfcfc 60%, #e5e5e5 100%)
   background-image: radial-gradient(center, ellipse cover, #ffffff 0%, #fcfcfc 47%, #0c0c0c 53%, #fcfcfc 60%, #e5e5e5 100%)
-
+  border-radius: 50%
+  left: 9px
+  height: 30px
+  position: absolute
+  top: 9px
+  width: 30px
+  z-index: 1
