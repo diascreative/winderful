@@ -2,7 +2,8 @@
   'use strict';
 
   var $rotor = $('.rotor').eq(0),
-    currentY = 0,
+    rotationAngle = 0,
+    speed = .5,
     graph = new Rickshaw.Graph.Ajax({
       element: document.getElementById("chart"),
       width: 960,
@@ -22,20 +23,7 @@
         var detail = new Rickshaw.Graph.HoverDetail({ graph: graph,
           yFormatter: function(y) {
 
-            var newSpeed = 4-(y/1000);
-
-            currentY = y;
-
-            setTimeout(function() {
-              if( currentY === y ) {
-                $rotor.css('-webkit-animation', '');
-
-                setTimeout(function() {
-                  $rotor.css('-webkit-animation', 'rotate ' + newSpeed + 's infinite linear');
-                }, 10);
-              }
-            }, 100);
-
+            speed = y/1000;
 
             return y;
           }}),
@@ -54,12 +42,29 @@
         {
           name: 'Wind',
           color: '#491D37'
-        },
-        // {
-        //   name: 'Demand',
-        //   color: '#2F254A'
-        // }
+        }
       ]
-    });
+    }),
+    animateWindMill = function() {
+      rotationAngle += speed;
+
+      if( rotationAngle > 360 ) {
+        rotationAngle -= 360;
+      }
+
+      var value = 'rotateZ(' + rotationAngle + 'deg)';
+
+      $rotor.css({
+          '-webkit-transform': value,
+          '-moz-transform': value,
+          '-ms-transform': value,
+          '-o-transform': value,
+          'transform': value
+        });
+
+      requestAnimationFrame(animateWindMill);
+    };
+
+  animateWindMill();
 
 }());
