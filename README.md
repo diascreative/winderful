@@ -1,4 +1,4 @@
-# ![image](http://upload.wikimedia.org/wikipedia/commons/9/91/Windmill.svg =60x) DIAS_ Wind Power
+# ![alt tag](http://upload.wikimedia.org/wikipedia/commons/9/91/Windmill.svg =60x) DIAS_ Wind Power
 
 Out little project to show the current and past wind power generated in the UK in a graphical manner.
 
