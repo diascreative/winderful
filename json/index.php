@@ -31,7 +31,7 @@
     // date range < 1 week : show every hour
     $time = "CONCAT(DATE(timestamp), ' : ', HOUR(timestamp)) AS time";
     $group_by = ' GROUP BY time';
-  } else if( $delta <= 3600 * 24 * 30 ) {
+  } else if( $delta <= 3600 * 24 * 30 * 12 ) {
     // date range < 1 month : show daily average
     $time = "DATE(timestamp) AS time";
     $group_by = ' GROUP BY time';
