@@ -27,7 +27,7 @@
   if( $delta <= 3600*10 ) {
     // date range < 10 hours : show every 5 mins
     $group_by = '';
-  } else if( $delta <= 3600 * 24 * 7 ) {
+  } else if( $delta <= 3600 * 24 * 30 ) {
     // date range < 1 week : show every hour
     $time = "CONCAT(DATE(timestamp), ' : ', HOUR(timestamp)) AS time";
     $group_by = ' GROUP BY time';
