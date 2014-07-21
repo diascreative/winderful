@@ -1,11 +1,11 @@
-(function () {
+(function ($, doc) {
   'use strict';
 
   var $rotor = $('#turbine-rotor').eq(0),
     rotationAngle = 0,
-    speed = .5,
+    speed = 0.5,
     graph = new Rickshaw.Graph.Ajax({
-      element: document.getElementById("chart"),
+      element: doc.getElementById("chart"),
       width: 600,
       height: 500,
       stroke: true,
@@ -29,7 +29,7 @@
           }}),
           shelving = new Rickshaw.Graph.Behavior.Series.Toggle( {
                         graph: graph,
-                        legend: legend
+                        legend: {}
                       }),
           axes = new Rickshaw.Graph.Axis.Time( {
                         graph: graph
@@ -67,4 +67,4 @@
 
   animateWindMill();
 
-}());
+}(jQuery, document));
