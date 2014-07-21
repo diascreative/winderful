@@ -10,13 +10,13 @@
       height: 500,
       stroke: true,
       renderer: 'bar',
-      dataURL: './json/index.php',
+      dataURL: './json/',
       onData: function(d) {
         d[0].data[0].y = 80;
         return d;
       },
       onComplete: function(transport) {
-        graph = transport.graph;
+        var graph = transport.graph;
 
         graph.offset = 'pct';
 
@@ -45,6 +45,10 @@
         }
       ]
     }),
+    getData = function(url){
+      graph.dataURL = url;
+	    graph.request();
+    },
     animateWindMill = function() {
       rotationAngle += speed;
 
@@ -66,5 +70,33 @@
     };
 
   animateWindMill();
+
+
+  // form
+  $('#form').submit(function(e) {
+    e.preventDefault();
+
+    var getVars = {
+      end: $('#end').data('xdsoft_datetimepicker').data('xdsoft_datetime').strToDateTime($('#end').val()).dateFormat('unixtime'),
+      start: $('#start').data('xdsoft_datetimepicker').data('xdsoft_datetime').strToDateTime($('#start').val()).dateFormat('unixtime')
+    };
+
+    var url = $(this).attr('action') + '?' + $.param(getVars);
+
+    getData(url);
+  });
+
+  $('#start').datetimepicker({
+    minDate:'2009/05/14',
+    formatTime: 'H.i',
+    maxDate:'0'
+  });
+
+
+  $('#end').datetimepicker({
+    formatTime: 'H.i',
+    minDate:'2009/05/14',
+    maxDate:'#datetimepicker_start'
+  });
 
 }(jQuery, document));

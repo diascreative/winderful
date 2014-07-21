@@ -8,12 +8,14 @@ var gulp = require('gulp')
   , cache = require('gulp-cache')
   , notify = require('gulp-notify')
   , rimraf = require('gulp-rimraf')
+  , gulpIgnore = require('gulp-ignore')
 
   , paths = {
     css: 'static/css',
     sass: 'assets/sass',
     devSass: 'assets/sass/*.sass',
-    devJs: 'assets/scripts/**/*.js',
+    devJsLibs: 'assets/scripts/libs/**/*.js',
+    devJs: 'assets/scripts/*.js',
     devImg: 'assets/img/**/*',
     img: 'static/img'
   }
@@ -23,8 +25,17 @@ var gulp = require('gulp')
     sass: paths.sass
   };
 
+
+gulp.task('libs', function() {
+  return gulp.src(paths.devJsLibs)
+    .pipe(concat('libs.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('static/js'));
+});
+
 gulp.task('scripts', function() {
   return gulp.src(paths.devJs)
+    .pipe(gulpIgnore(paths.devJsLibs))
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))
@@ -55,6 +66,7 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('watch', function() {
+  gulp.watch(paths.devJsLibs, ['libs']);
   gulp.watch(paths.devJs, ['scripts']);
   gulp.watch(paths.devImg, ['styles', 'images']);
   gulp.watch(paths.devSass, ['styles']);
@@ -62,4 +74,4 @@ gulp.task('watch', function() {
 
 // Default Task
 //gulp.task('default', ['clean']);
-gulp.task('default', ['clean', 'scripts', 'images', 'styles', 'watch']);
+gulp.task('default', ['clean', 'images', 'styles', 'watch', 'libs', 'scripts']);

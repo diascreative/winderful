@@ -8,6 +8,7 @@
     "gulp-imagemin": "~0.6.1",
     "gulp-notify": "~1.4.0",
     "gulp-rimraf": "~0.1.0",
-    "gulp-cache": "~0.2.0"
+    "gulp-cache": "~0.2.0",
+    "gulp-ignore": "~1.1.0"
   }
 }

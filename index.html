@@ -5,6 +5,15 @@
     <link rel="stylesheet" type="text/css" href="./static/css/wind.css">
   </head>
   <body>
+    <form id="form" action="./json" method="get">
+      <label for= "start">Start Date</label>
+      <input id="start" type="text" name="start">
+      <label for= "end">End Date</label>
+      <input id="end" type="text" name="end">
+
+      <input type="submit">
+    </form>
+
     <div id="chart_container">
       <div id="chart"></div>
     </div>
@@ -22,9 +31,10 @@
       </div>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://code.shutterstock.com/rickshaw/vendor/d3.v3.js"></script>
     <script src="http://code.shutterstock.com/rickshaw/rickshaw.js"></script>
+    <script src="./static/js/libs.js"></script>
     <script src="./static/js/main.js"></script>
   </body>
 </html>
