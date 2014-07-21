@@ -7,19 +7,19 @@ Out little project to show the current and past wind power generated in the UK i
 
     `git clone git@github.com:diascreative/power.git`
 
-* enter the project folder
+2. enter the project folder
 
     `cd power`
 
-* create a new database
+3. create a new database
 
     `mysql > CREATE DATABASE power;`
 
-* set up the database structure
+4. set up the database structure
 
     `mysql power < /assets/power.db.schema.sql`
 
-* define the project settings
+5. define the project settings
 
     * copy config.sample.php into config.php
 
@@ -33,13 +33,13 @@ Out little project to show the current and past wind power generated in the UK i
 
     (you can also run this from the browser)
 
-* For  development purposes you will need to
+2. For  development purposes you will need to
     1. install npm
 
-    * install the project dependencies
+    2. install the project dependencies
 
         `npm install`
-    * run gulp
+    3. run gulp
 
         `gulp`
 
