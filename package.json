@@ -4,6 +4,7 @@
     "gulp-uglify": "~0.3.1",
     "gulp-compass": "~1.1.9",
     "gulp-jshint": "~1.7.1",
-    "gulp-sass": "~0.7.2"
+    "gulp-sass": "~0.7.2",
+    "gulp-imagemin": "~0.6.1"
   }
 }
