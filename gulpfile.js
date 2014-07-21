@@ -5,6 +5,7 @@ var gulp = require('gulp')
   , jshint = require('gulp-jshint')
   , concat = require('gulp-concat')
   , imagemin = require('gulp-imagemin')
+  , cache = require('gulp-cache')
   , notify = require('gulp-notify')
   , rimraf = require('gulp-rimraf')
 
@@ -34,7 +35,7 @@ gulp.task('scripts', function() {
 
 gulp.task('images', function() {
   return gulp.src(paths.devImg)
-    .pipe(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true }))
+    .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
     .pipe(gulp.dest(paths.img))
     .pipe(notify({ message: 'Images task complete' }));
 });
@@ -48,7 +49,7 @@ gulp.task('styles', function() {
 
 // Clean up static folder
 gulp.task('clean', function(cb) {
-  return gulp.src('./static', { read: false }) // much faster
+  return gulp.src('./static/*', { read: false }) // much faster
     .pipe(rimraf())
     .pipe(notify({ message: 'Clean task complete' }));
 });

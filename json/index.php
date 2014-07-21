@@ -11,7 +11,7 @@
   if( isset($_GET['end']) )
     $end = $_GET['end'];
   else
-    $end = time() - (3600*48);
+    $end = time();
 
   // set up the start limited
   if( isset($_GET['start']) )
