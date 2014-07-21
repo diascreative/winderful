@@ -1,13 +1,15 @@
 var gulp = require('gulp')
   , uglify = require('gulp-uglify')
   , compass = require('gulp-compass')
-  , concat = require('gulp-concat-css')
   , minify = require('gulp-minify-css')
+  , jshint = require('gulp-jshint')
+  , concat = require('gulp-concat')
 
   , paths = {
-    css: './static/css',
-    sass: './assets/sass/',
-    devSass: './assets/sass/*.sass'
+    css: 'static/css',
+    sass: 'assets/sass',
+    devSass: 'assets/sass/*.sass',
+    devJs: 'assets/scripts/**/*.js'
   }
   , compassSettings = {
     style: 'compressed',
@@ -15,6 +17,14 @@ var gulp = require('gulp')
     sass: paths.sass
   };
 
+gulp.task('scripts', function() {
+  return gulp.src(paths.devJs)
+    .pipe(jshint('.jshintrc'))
+    .pipe(jshint.reporter('default'))
+    .pipe(concat('main.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('static/js'));
+});
 
 gulp.task('styles', function() {
   return gulp.src(paths.devSass)
@@ -24,9 +34,9 @@ gulp.task('styles', function() {
 
 
 gulp.task('watch', function() {
-  //gulp.watch('./js/*.js', ['scripts']);
+  gulp.watch(paths.devJs, ['scripts']);
   gulp.watch(paths.devSass, ['styles']);
 });
 
 // Default Task
-gulp.task('default', ['styles', 'watch']);
+gulp.task('default', ['scripts', 'styles', 'watch']);
