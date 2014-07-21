@@ -1,109 +1,66 @@
-/* line 3, ../../assets/sass/wind.sass */
-body {
-  background-color: #eeffee;
-}
+/*
+Syntax error: Invalid CSS after "amkcds": expected selector, was "(cds)"
+        on line 5 of /Library/WebServer/Documents/power/assets/sass/wind.sass
 
-/* line 6, ../../assets/sass/wind.sass */
-#chart_container {
-  background: #336699;
-  display: inline-block;
-}
+1: /Library/WebServer/Documents/power/assets/sass/wind.sass
 
-/* line 10, ../../assets/sass/wind.sass */
-#wind-turbine-container {
-  display: inline-block;
-  margin: 0 0 0 21px;
-  position: relative;
-  vertical-align: bottom;
-  width: 40%;
-}
-
-/* line 17, ../../assets/sass/wind.sass */
-#turbine-mast,
-#turbine-rotor,
-.rotor-blade,
-.rotor-tip {
-  background-color: white;
-  background-image: -webkit-linear-gradient(top, white 0%, #e5e5e5 100%);
-  background-image: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
-  border: 1px solid grey;
-}
-
-/* line 26, ../../assets/sass/wind.sass */
-#turbine-mast {
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-  height: 250px;
-  left: 50%;
-  margin: 0 0 0 -10px;
-  position: relative;
-  width: 20px;
-}
-
-/* line 34, ../../assets/sass/wind.sass */
-#turbine-rotor {
-  border-radius: 50%;
-  bottom: 250px;
-  height: 50px;
-  left: 50%;
-  margin: 0 0 0 -25px;
-  position: absolute;
-  width: 50px;
-}
-
-/* line 43, ../../assets/sass/wind.sass */
-.rotor-blade {
-  background-color: green;
-  border-radius: 100% 15%;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
-  height: 30px;
-  left: 25px;
-  position: absolute;
-  top: 10px;
-  -webkit-transform-origin: left 50%;
-  -moz-transform-origin: left 50%;
-  -ms-transform-origin: left 50%;
-  -o-transform-origin: left 50%;
-  transform-origin: left 50%;
-  width: 200px;
-}
-
-/* line 54, ../../assets/sass/wind.sass */
-.blade1 {
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
-
-/* line 57, ../../assets/sass/wind.sass */
-.blade2 {
-  -webkit-transform: rotate(325deg);
-  -moz-transform: rotate(325deg);
-  -ms-transform: rotate(325deg);
-  -o-transform: rotate(325deg);
-  transform: rotate(325deg);
-}
-
-/* line 60, ../../assets/sass/wind.sass */
-.blade3 {
-  -webkit-transform: rotate(205deg);
-  -moz-transform: rotate(205deg);
-  -ms-transform: rotate(205deg);
-  -o-transform: rotate(205deg);
-  transform: rotate(205deg);
-}
-
-/* line 63, ../../assets/sass/wind.sass */
-.rotor-tip {
-  background-color: white;
-  background-image: -webkit-radial-gradient(center, ellipse cover, white 0%, #fcfcfc 47%, #0c0c0c 53%, #fcfcfc 60%, #e5e5e5 100%);
-  background-image: radial-gradient(center, ellipse cover, #ffffff 0%, #fcfcfc 47%, #0c0c0c 53%, #fcfcfc 60%, #e5e5e5 100%);
-  border-radius: 50%;
-  left: 9px;
-  height: 30px;
-  position: absolute;
-  top: 9px;
-  width: 30px;
-  z-index: 1;
-}
+Backtrace:
+/Library/WebServer/Documents/power/assets/sass/wind.sass:5
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/scss/parser.rb:1147:in `expected'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/scss/parser.rb:1085:in `expected'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/scss/static_parser.rb:21:in `parse_selector'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:314:in `visit_rule'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:320:in `visit_rule'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:100:in `visit'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/tree/root_node.rb:20:in `render'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/engine.rb:315:in `_render'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/sass-3.2.19/lib/sass/engine.rb:262:in `render'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/lib/compass/compiler.rb:139:in `block (2 levels) in compile'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/lib/compass/compiler.rb:126:in `timed'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/lib/compass/compiler.rb:138:in `block in compile'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/lib/compass/logger.rb:45:in `red'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/lib/compass/compiler.rb:137:in `compile'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/lib/compass/compiler.rb:118:in `compile_if_required'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/lib/compass/compiler.rb:103:in `block (2 levels) in run'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/lib/compass/compiler.rb:101:in `each'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/lib/compass/compiler.rb:101:in `block in run'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/lib/compass/compiler.rb:126:in `timed'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/lib/compass/compiler.rb:100:in `run'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/lib/compass/commands/update_project.rb:45:in `perform'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/lib/compass/commands/base.rb:18:in `execute'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/lib/compass/commands/project_base.rb:19:in `execute'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/lib/compass/exec/sub_command_ui.rb:15:in `run!'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/bin/compass:30:in `block in <top (required)>'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/bin/compass:44:in `call'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.6/bin/compass:44:in `<top (required)>'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/bin/compass:23:in `load'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/bin/compass:23:in `<main>'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/bin/ruby_executable_hooks:15:in `eval'
+/Users/pire/.rvm/gems/ruby-2.0.0-p247/bin/ruby_executable_hooks:15:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Invalid CSS after \"amkcds\": expected selector, was \"(cds)\"\A         on line 5 of /Library/WebServer/Documents/power/assets/sass/wind.sass\A \A 1: /Library/WebServer/Documents/power/assets/sass/wind.sass"; }
