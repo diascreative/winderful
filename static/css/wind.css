@@ -1,0 +1,109 @@
+/* line 3, ../../assets/sass/wind.sass */
+body {
+  background-color: #eeffee;
+}
+
+/* line 6, ../../assets/sass/wind.sass */
+#chart_container {
+  background: #336699;
+  display: inline-block;
+}
+
+/* line 10, ../../assets/sass/wind.sass */
+#wind-turbine-container {
+  display: inline-block;
+  margin: 0 0 0 21px;
+  position: relative;
+  vertical-align: bottom;
+  width: 40%;
+}
+
+/* line 17, ../../assets/sass/wind.sass */
+#turbine-mast,
+#turbine-rotor,
+.rotor-blade,
+.rotor-tip {
+  background-color: white;
+  background-image: -webkit-linear-gradient(top, white 0%, #e5e5e5 100%);
+  background-image: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%);
+  border: 1px solid grey;
+}
+
+/* line 26, ../../assets/sass/wind.sass */
+#turbine-mast {
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  height: 250px;
+  left: 50%;
+  margin: 0 0 0 -10px;
+  position: relative;
+  width: 20px;
+}
+
+/* line 34, ../../assets/sass/wind.sass */
+#turbine-rotor {
+  border-radius: 50%;
+  bottom: 250px;
+  height: 50px;
+  left: 50%;
+  margin: 0 0 0 -25px;
+  position: absolute;
+  width: 50px;
+}
+
+/* line 43, ../../assets/sass/wind.sass */
+.rotor-blade {
+  background-color: green;
+  border-radius: 100% 15%;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  height: 30px;
+  left: 25px;
+  position: absolute;
+  top: 10px;
+  -webkit-transform-origin: left 50%;
+  -moz-transform-origin: left 50%;
+  -ms-transform-origin: left 50%;
+  -o-transform-origin: left 50%;
+  transform-origin: left 50%;
+  width: 200px;
+}
+
+/* line 54, ../../assets/sass/wind.sass */
+.blade1 {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+/* line 57, ../../assets/sass/wind.sass */
+.blade2 {
+  -webkit-transform: rotate(325deg);
+  -moz-transform: rotate(325deg);
+  -ms-transform: rotate(325deg);
+  -o-transform: rotate(325deg);
+  transform: rotate(325deg);
+}
+
+/* line 60, ../../assets/sass/wind.sass */
+.blade3 {
+  -webkit-transform: rotate(205deg);
+  -moz-transform: rotate(205deg);
+  -ms-transform: rotate(205deg);
+  -o-transform: rotate(205deg);
+  transform: rotate(205deg);
+}
+
+/* line 63, ../../assets/sass/wind.sass */
+.rotor-tip {
+  background-color: white;
+  background-image: -webkit-radial-gradient(center, ellipse cover, white 0%, #fcfcfc 47%, #0c0c0c 53%, #fcfcfc 60%, #e5e5e5 100%);
+  background-image: radial-gradient(center, ellipse cover, #ffffff 0%, #fcfcfc 47%, #0c0c0c 53%, #fcfcfc 60%, #e5e5e5 100%);
+  border-radius: 50%;
+  left: 9px;
+  height: 30px;
+  position: absolute;
+  top: 9px;
+  width: 30px;
+  z-index: 1;
+}
