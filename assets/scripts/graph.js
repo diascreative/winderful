@@ -18,12 +18,9 @@
       onComplete: function(transport) {
         var graph = transport.graph;
 
-        graph.offset = 'pct';
-
         var detail = new Rickshaw.Graph.HoverDetail({ graph: graph,
           yFormatter: function(y) {
 
-            console.log(y);
             if( y < 15000 ) {
               // demand is never under 20,000 and wind is always under 4,000
               // this is a way to make sure the turbine doesn't rotate at
@@ -32,17 +29,17 @@
             }
 
             return y;
-          }}),
-          shelving = new Rickshaw.Graph.Behavior.Series.Toggle( {
-                        graph: graph,
-                        legend: {}
-                      }),
-          axes = new Rickshaw.Graph.Axis.Time( {
-                        graph: graph
-                      });
+          }});
 
-        axes.render();
+        var legend = new Rickshaw.Graph.Legend({
+          graph: graph,
+          element: document.querySelector('#legend')
+        });
 
+        // var slider = new Rickshaw.Graph.RangeSlider.Preview({
+        //   graph: graph,
+        //   element: document.querySelector('#slider')
+        // });
       },
       series: [
         {
@@ -51,7 +48,8 @@
         },
         {
           name: 'Demand',
-          color: '#963'
+          color: '#963',
+          renderer: 'stack'
         }
       ]
     }),
