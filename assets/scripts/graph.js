@@ -32,9 +32,11 @@
             return y;
           }});
 
+        $('#legend').html('');
+
         var legend = new Rickshaw.Graph.Legend({
           graph: graph,
-          element: document.querySelector('#legend')
+          element: $('#legend')[0]
         });
 
         // var slider = new Rickshaw.Graph.RangeSlider.Preview({
@@ -79,54 +81,71 @@
 
   animateWindMill();
 
+  var dateForm = {
+    values: { start: '', end: '' },
+    init: function() {
+      this.cacheItems();
+      this.bindEvents();
+    },
+    cacheItems: function() {
+      this.$form = $('#form');
+      this.$start = $('#start');
+      this.$end = $('#end');
+    },
+    bindEvents: function() {
+      var that = this;
 
-  // form
-  $('#form').submit(function(e) {
-    e.preventDefault();
+      $('#form').submit(this.submitForm.bind(this));
 
-    var getVars = {
-      end: $('#end').data('xdsoft_datetimepicker').data('xdsoft_datetime').strToDateTime($('#end').val()).dateFormat('unixtime'),
-      start: $('#start').data('xdsoft_datetimepicker').data('xdsoft_datetime').strToDateTime($('#start').val()).dateFormat('unixtime')
-    };
+      $('#start').datetimepicker({
+        formatTime: 'H.i',
+        minDate: '2009/05/14',
+        onChangeDateTime: this.updateStartTime.bind(this),
+        onShow: function() {
+          var maxDate = that.dateOption(that.$end, '+1970/01/01');
 
-    var url = $(this).attr('action') + '?' + $.param(getVars);
+          this.setOptions({ maxDate: maxDate });
+        }
+      });
 
-    getData(url);
-  });
+      $('#end').datetimepicker({
+        formatTime: 'H.i',
+        maxDate: '+1970/01/01',
+        onChangeDateTime: this.updateEndTime.bind(this),
+        onShow: function() {
 
-  $('#start').datetimepicker({
-    formatTime: 'H.i',
-    minDate:'2009/05/14',
-    onShow: function() {
-      var maxDate = $('#end').val() ? $('#end').val() : '+1970/01/01',
-        isDateTime = maxDate.split(' ');
+          var minDate = that.dateOption(that.$start, '2009/05/14');
+
+          this.setOptions({ minDate: minDate });
+        }
+      });
+    },
+    dateOption: function($input, defaultValue) {
+      var newDate = $input.val() ? $input.val() : defaultValue,
+        isDateTime = newDate.split(' ');
 
       if ( isDateTime.length > 1 ) {
-        maxDate = isDateTime[0];
-      }
-      this.setOptions({
-        maxDate: maxDate
-      });
-    }
-  });
-
-
-  $('#end').datetimepicker({
-    formatTime: 'H.i',
-    maxDate: '+1970/01/01',
-    onShow: function() {
-
-      var minDate = $('#start').val() ? $('#start').val() : '2009/05/14',
-        isDateTime = minDate.split(' ');
-
-      if ( isDateTime.length > 1 ) {
-        minDate = isDateTime[0];
+        newDate = isDateTime[0];
       }
 
-      this.setOptions({
-        minDate: minDate
-      });
+      return newDate;
+    },
+    updateStartTime: function(newStartTime) {
+      this.values.start = newStartTime && typeof newStartTime !== 'undefined' ? newStartTime.dateFormat('unixtime') : '';
+    },
+    updateEndTime: function(newEndTime) {
+      this.values.end = newEndTime && typeof newEndTime !== 'undefined' ? newEndTime.dateFormat('unixtime') : '';
+    },
+    submitForm: function(e) {
+        e.preventDefault();
+
+        var url = this.$form.attr('action') + '?' + $.param(this.values);
+
+        getData(url);
     }
-  });
+
+  };
+
+  dateForm.init();
 
 }(jQuery, document));
