@@ -23,7 +23,13 @@
         var detail = new Rickshaw.Graph.HoverDetail({ graph: graph,
           yFormatter: function(y) {
 
-            speed = y/1000;
+            console.log(y);
+            if( y < 15000 ) {
+              // demand is never under 20,000 and wind is always under 4,000
+              // this is a way to make sure the turbine doesn't rotate at
+              // the demand rate
+              speed = y/1000;
+            }
 
             return y;
           }}),
@@ -42,6 +48,10 @@
         {
           name: 'Wind',
           color: '#491D37'
+        },
+        {
+          name: 'Demand',
+          color: '#963'
         }
       ]
     }),
