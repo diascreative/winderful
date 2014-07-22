@@ -10,6 +10,7 @@
       height: 500,
       stroke: true,
       renderer: 'bar',
+      //offset: 'expand',
       dataURL: './json/',
       onData: function(d) {
         d[0].data[0].y = 80;
@@ -48,8 +49,7 @@
         },
         {
           name: 'Demand',
-          color: '#963',
-          renderer: 'stack'
+          color: '#963'
         }
       ]
     }),
