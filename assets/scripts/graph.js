@@ -95,16 +95,38 @@
   });
 
   $('#start').datetimepicker({
-    minDate:'2009/05/14',
     formatTime: 'H.i',
-    maxDate:'0'
+    minDate:'2009/05/14',
+    onShow: function() {
+      var maxDate = $('#end').val() ? $('#end').val() : '+1970/01/01',
+        isDateTime = maxDate.split(' ');
+
+      if ( isDateTime.length > 1 ) {
+        maxDate = isDateTime[0];
+      }
+      this.setOptions({
+        maxDate: maxDate
+      });
+    }
   });
 
 
   $('#end').datetimepicker({
     formatTime: 'H.i',
-    minDate:'2009/05/14',
-    maxDate:'#datetimepicker_start'
+    maxDate: '+1970/01/01',
+    onShow: function() {
+
+      var minDate = $('#start').val() ? $('#start').val() : '2009/05/14',
+        isDateTime = minDate.split(' ');
+
+      if ( isDateTime.length > 1 ) {
+        minDate = isDateTime[0];
+      }
+
+      this.setOptions({
+        minDate: minDate
+      });
+    }
   });
 
 }(jQuery, document));
