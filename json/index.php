@@ -1,8 +1,8 @@
 <?php
+  error_reporting(0);
+
   require_once('../inc/init.php');
   header('Content-type: application/json');
-
-  error_reporting(0);
 
   // set timezone to the same as gridwatch's
   date_default_timezone_set('GMT');
