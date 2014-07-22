@@ -7,6 +7,7 @@ var gulp = require('gulp')
   , imagemin = require('gulp-imagemin')
   , cache = require('gulp-cache')
   , notify = require('gulp-notify')
+  , runSequence = require('run-sequence')
   , rimraf = require('gulp-rimraf')
   , gulpIgnore = require('gulp-ignore')
 
@@ -74,4 +75,6 @@ gulp.task('watch', function() {
 
 // Default Task
 //gulp.task('default', ['clean']);
-gulp.task('default', ['clean', 'images', 'styles', 'watch', 'libs', 'scripts']);
+gulp.task('default', function() {
+  runSequence('clean', ['images', 'styles', 'watch', 'libs', 'scripts']);
+});
