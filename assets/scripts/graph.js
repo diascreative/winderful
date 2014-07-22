@@ -1,74 +1,91 @@
 (function ($, doc) {
   'use strict';
 
-  var $rotor = $('#turbine-rotor').eq(0),
-    rotationAngle = 0,
-    speed = 0.5,
-    graph = new Rickshaw.Graph.Ajax({
-      element: doc.getElementById("chart"),
-      width: 600,
-      height: 500,
-      stroke: true,
-      renderer: 'bar',
-      //offset: 'expand',
-      dataURL: './json/',
-      onData: function(d) {
-        d[0].data[0].y = 80;
-        return d;
-      },
-      onComplete: function(transport) {
-        var graph = transport.graph;
+  // graph /////////////////////////////////////////////////////////////////////
+  //
+  var diasGraph = {
+    speed: 0.5,
+    rotationAngle: 0,
+    graph: false,
+    init: function() {
+      this.cacheItems();
 
-        var detail = new Rickshaw.Graph.HoverDetail({ graph: graph,
-          yFormatter: function(y) {
+      this.graph = new Rickshaw.Graph.Ajax({
+        element: doc.getElementById("chart"),
+        width: 600,
+        height: 500,
+        stroke: true,
+        renderer: 'bar',
+        //offset: 'expand',
+        dataURL: './json/',
+        onData: function(d) {
+          d[0].data[0].y = 80;
+          return d;
+        },
+        onComplete: this.graphSetup.bind(this),
+        series: [
+          {
+            name: 'Wind',
+            color: '#491D37'
+          },
+          {
+            name: 'Demand',
+            color: '#963'
+          }
+        ]
+      });
 
-            if( y < 15000 ) {
-              // demand is never under 20,000 and wind is always under 4,000
-              // this is a way to make sure the turbine doesn't rotate at
-              // the demand rate
-              speed = y/1000;
-            }
-
-            return y;
-          }});
-
-        $('#legend').html('');
-
-        var legend = new Rickshaw.Graph.Legend({
-          graph: graph,
-          element: $('#legend')[0]
+      this.animateWindMill();
+    },
+    cacheItems: function() {
+      this.$rotor = $('#turbine-rotor').eq(0);
+      this.$legend = $('#legend');
+    },
+    graphSetup: function(transport) {
+      var graph = transport.graph,
+        detail = new Rickshaw.Graph.HoverDetail({ graph: graph,
+          yFormatter: this.hoverGraph.bind(this)
         });
 
-        // var slider = new Rickshaw.Graph.RangeSlider.Preview({
-        //   graph: graph,
-        //   element: document.querySelector('#slider')
-        // });
-      },
-      series: [
-        {
-          name: 'Wind',
-          color: '#491D37'
-        },
-        {
-          name: 'Demand',
-          color: '#963'
-        }
-      ]
-    }),
-    getData = function(url){
-      graph.dataURL = url;
-	    graph.request();
-    },
-    animateWindMill = function() {
-      rotationAngle += speed;
+      this.setLegend(graph);
 
-      if( rotationAngle > 360 ) {
-        rotationAngle -= 360;
+      // var slider = new Rickshaw.Graph.RangeSlider.Preview({
+      //   graph: graph,
+      //   element: document.querySelector('#slider')
+      // });
+    },
+    setLegend: function(graph) {
+      this.$legend.html('');
+
+      var legend = new Rickshaw.Graph.Legend({
+        graph: graph,
+        element: this.$legend[0]
+      });
+    },
+    hoverGraph: function(y) {
+      if( y < 15000 ) {
+        // demand is never under 20,000 and wind is always under 4,000
+        // this is a way to make sure the turbine doesn't rotate at
+        // the demand rate
+        this.speed = y/1000;
       }
 
-      var value = 'rotateZ(' + rotationAngle + 'deg)';
+      return y;
+    },
+    getData: function(url){
+      this.graph.dataURL = url;
+      this.graph.request();
+    },
+    animateWindMill: function() {
+      this.rotationAngle += this.speed;
 
-      $rotor.css({
+      if( this.rotationAngle > 360 ) {
+        this.rotationAngle -= 360;
+      }
+
+      var value = 'rotateZ(' + this.rotationAngle + 'deg)';
+
+      this.$rotor.css({
           '-webkit-transform': value,
           '-moz-transform': value,
           '-ms-transform': value,
@@ -76,11 +93,17 @@
           'transform': value
         });
 
-      requestAnimationFrame(animateWindMill);
-    };
+      requestAnimationFrame(this.animateWindMill.bind(this));
+    }
+  };
 
-  animateWindMill();
+  //
+  // graph end /////////////////////////////////////////////////////////////////
 
+
+
+  // form //////////////////////////////////////////////////////////////////////
+  //
   var dateForm = {
     values: { start: '', end: '' },
     init: function() {
@@ -141,11 +164,15 @@
 
         var url = this.$form.attr('action') + '?' + $.param(this.values);
 
-        getData(url);
+        diasGraph.getData(url);
     }
 
   };
 
+  //
+  // form end //////////////////////////////////////////////////////////////////
+
+  diasGraph.init();
   dateForm.init();
 
 }(jQuery, document));
