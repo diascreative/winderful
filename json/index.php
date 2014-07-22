@@ -1,7 +1,7 @@
 <?php
   error_reporting(0);
 
-  require_once('../inc/init.php');
+  require_once( dirname(__FILE__) . '/../inc/init.php' );
   header('Content-type: application/json');
 
   // set timezone to the same as gridwatch's
