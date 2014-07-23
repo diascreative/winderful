@@ -45,8 +45,13 @@
       var graph = transport.graph,
         detail = new Rickshaw.Graph.HoverDetail({ graph: graph,
           yFormatter: this.hoverGraph.bind(this)
+
         });
 
+      var wind_test = (graph.series[0].data.pop());
+      var demand_test = (graph.series[1].data.pop());
+      var test_percent = (wind_test["y"])/(demand_test["y"]) * 100;
+      $('#percent').html(test_percent.toFixed(2));
       this.setLegend(graph);
 
       // var slider = new Rickshaw.Graph.RangeSlider.Preview({
