@@ -70,7 +70,7 @@
         this.speed = y/1000;
       }
 
-      return y;
+      return y + " MW";
     },
     getData: function(url){
       this.graph.dataURL = url;
