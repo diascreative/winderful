@@ -24,6 +24,13 @@ var gulp = require('gulp')
     style: 'compressed',
     css: paths.css,
     sass: paths.sass
+  }
+  ,
+  reportError = function(err) {
+    if( typeof err.fileName !== 'undefined' )
+      return  "\n" + err.fileName + ': line ' + err.lineNumber + ', ' + err.message;
+    else
+      return err;
   };
 
 
@@ -35,14 +42,24 @@ gulp.task('libs', function() {
 });
 
 gulp.task('scripts', function() {
-  return gulp.src(paths.devJs)
+  var s = gulp.src(paths.devJs)
     .pipe(gulpIgnore(paths.devJsLibs))
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(concat('main.js'))
-    .pipe(uglify())
+    .pipe(
+      uglify()
+      .on('error',
+        notify.onError(function (err) {
+          s.end();
+          return reportError(err);
+        })
+      )
+    )
     .pipe(gulp.dest('static/js'))
     .pipe(notify({ message: 'Scripts task complete' }));
+
+    return s;
 });
 
 gulp.task('images', function() {
@@ -53,10 +70,20 @@ gulp.task('images', function() {
 });
 
 gulp.task('styles', function() {
-  return gulp.src(paths.devSass)
-    .pipe(compass(compassSettings))
+  var c = gulp.src(paths.devSass)
+    .pipe(
+      compass(compassSettings)
+      .on('error',
+        notify.onError(function (err) {
+          c.end();
+          return reportError(err);
+        })
+      )
+    )
     .pipe(gulp.dest(paths.css))
     .pipe(notify({ message: 'Styles task complete' }));
+
+  return c;
 });
 
 // Clean up static folder
