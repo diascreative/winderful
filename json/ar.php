@@ -10,7 +10,7 @@
             FROM
               wind_vs_demand
             ORDER BY
-              timestamp
+              timestamp DESC
             LIMIT 1"));
 
   echo $query['wind'];
