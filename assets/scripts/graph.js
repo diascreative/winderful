@@ -5,6 +5,7 @@
   //
   var diasGraph = {
     speed: 0.5,
+    prevSpeed: 0.5,
     rotationAngle: 0,
     graph: false,
     init: function() {
@@ -40,6 +41,9 @@
     cacheItems: function() {
       this.$rotor = $('#turbine-rotor').eq(0);
       this.$legend = $('#legend');
+      this.$css = $('<style type="text/css" id="turbine-css"></style>');
+
+      $('head').append(this.$css);
     },
     graphSetup: function(transport) {
       var graph = transport.graph,
@@ -81,22 +85,35 @@
       this.graph.dataURL = url;
       this.graph.request();
     },
+    createNewCSS: function() {
+      var value = (6 - this.speed) + 's',
+        oldTransform = this.$rotor.css('transform'),
+        newCSS = '#turbine-rotor.animated {' +
+          '-webkit-animation-duration:' + value + ';' +
+          '-moz-animation-duration:' + value + ';' +
+          '-ms-animation-duration:' + value + ';' +
+          '-o-animation-duration:' + value + ';' +
+          'animation-duration:' + value + '}';
+
+      this.$css.html(newCSS);
+
+      this.$rotor
+        .css('transform', oldTransform)
+        .removeClass('animated');
+
+      setTimeout(function() {
+        this.$rotor.addClass('animated');
+        console.log(value);
+      }.bind(this), 10);
+
+    },
     animateWindMill: function() {
-      this.rotationAngle += this.speed;
 
-      if( this.rotationAngle > 360 ) {
-        this.rotationAngle -= 360;
+      if( this.speed !==  this.prevSpeed ) {
+        this.prevSpeed = this.speed;
+
+        this.createNewCSS();
       }
-
-      var value = 'rotateZ(' + this.rotationAngle + 'deg)';
-
-      this.$rotor.css({
-          '-webkit-transform': value,
-          '-moz-transform': value,
-          '-ms-transform': value,
-          '-o-transform': value,
-          'transform': value
-        });
 
       requestAnimationFrame(this.animateWindMill.bind(this));
     }

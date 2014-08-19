@@ -1,4 +1,5 @@
 @import "compass"
+@import "libs/animation"
 @import "libs/jquery.datetimepicker"
 
 body
@@ -59,6 +60,14 @@ body
   margin: 0 0 0 -25px
   position: absolute
   width: 50px
+  &.animated
+    +animation(rotate, 0, 2s, infinite, linear)
+
++keyframe(rotate)
+  from
+    +transform(rotate3d(0,0,1, 0deg))
+  to
+    +transform(rotate3d(0,0,1, 360deg))
 
 .rotor-blade
   background-color: green
