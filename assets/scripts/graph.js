@@ -4,7 +4,7 @@
   // graph /////////////////////////////////////////////////////////////////////
   //
   var diasGraph = {
-    speed: 0.5,
+    speed: 10,
     rotationAngle: 0,
     graph: false,
     init: function() {
@@ -50,7 +50,7 @@
 
       var wind_test = (graph.series[0].data.pop());
       var demand_test = (graph.series[1].data.pop());
-      var test_percent = (wind_test["y"])/(demand_test["y"]) * 100;
+      var test_percent = (wind_test.y)/(demand_test.y) * 100;
       $('#percent').html(test_percent.toFixed(2));
       this.setLegend(graph);
 
