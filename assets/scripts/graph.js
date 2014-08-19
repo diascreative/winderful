@@ -94,7 +94,7 @@
     animateWindMill: function() {
       var valueS = (11 - this.speed),
         value = valueS + 's',
-        degPerS = 360/(valueS*10),
+        degPerS = 360/(valueS*40),
         oldTransform = this.matrixToDeg(this.$rotor.css('transform')),
         parentTransform = this.matrixToDeg(this.$rContainer.css('transform')),
         newCSS = '#turbine-rotor.animated {' +
