@@ -76,7 +76,7 @@
         // demand is never under 20,000 and wind is always under 4,000
         // this is a way to make sure the turbine doesn't rotate at
         // the demand rate
-        this.speed = y/1000;
+        this.speed = y/500;
 
         if( this.speed !==  this.prevSpeed ) {
           this.prevSpeed = this.speed;
@@ -93,7 +93,8 @@
     },
     animateWindMill: function() {
       var value = (6 - this.speed) + 's',
-        oldTransform = this.$rotor.css('transform'),
+        oldTransform = this.matrixToDeg(this.$rotor.css('transform')),
+        parentTransform = this.matrixToDeg(this.$rContainer.css('transform')),
         newCSS = '#turbine-rotor.animated {' +
           '-webkit-animation-duration:' + value + ';' +
           '-moz-animation-duration:' + value + ';' +
@@ -103,12 +104,37 @@
 
       this.$css.html(newCSS);
 
-      this.$rContainer.css('transform', oldTransform);
+      this.$rContainer.css('transform', 'rotateZ(' + (oldTransform+parentTransform+10) + 'deg)');
       this.$rotor.removeClass('animated');
 
       setTimeout(function() {
         this.$rotor.addClass('animated');
-      }.bind(this), 10);
+      }.bind(this), 2);
+    },
+    matrixToDeg: function(tr) {
+      var angle = 0;
+
+      if( tr !== 'none' ) {
+        var values = tr.split('(')[1];
+        values = values.split(')')[0];
+        values = values.split(',');
+
+        var a = values[0],
+          b = values[1],
+          c = values[2],
+          d = values[3],
+          scale = Math.sqrt(a*a + b*b);
+
+        var radians = Math.atan2(b, a);
+
+        if ( radians < 0 ) {
+          radians += (2 * Math.PI);
+        }
+
+        angle = Math.round( radians * (180/Math.PI));
+      }
+
+      return angle;
     }
   };
 
