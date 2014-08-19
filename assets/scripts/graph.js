@@ -92,7 +92,9 @@
       this.graph.request();
     },
     animateWindMill: function() {
-      var value = (6 - this.speed) + 's',
+      var valueS = (11 - this.speed),
+        value = valueS + 's',
+        degPerS = 360/(valueS*10),
         oldTransform = this.matrixToDeg(this.$rotor.css('transform')),
         parentTransform = this.matrixToDeg(this.$rContainer.css('transform')),
         newCSS = '#turbine-rotor.animated {' +
@@ -104,7 +106,7 @@
 
       this.$css.html(newCSS);
 
-      this.$rContainer.css('transform', 'rotateZ(' + (oldTransform+parentTransform+10) + 'deg)');
+      this.$rContainer.css('transform', 'rotateZ(' + (oldTransform+parentTransform+degPerS) + 'deg)');
       this.$rotor.removeClass('animated');
 
       setTimeout(function() {
