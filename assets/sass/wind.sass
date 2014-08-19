@@ -52,14 +52,24 @@ body
   position: relative
   width: 20px
 
-#turbine-rotor
-  border-radius: 50%
-  bottom: 250px
-  height: 50px
+#turbine-rotor-container
+  bottom: 220px
   left: 50%
-  margin: 0 0 0 -25px
+  height: 50px
+  margin: -25px 0 0 -25px
   position: absolute
   width: 50px
+  +transform-origin(center, center)
+
+#turbine-rotor
+  border-radius: 50%
+  left: 50%
+  height: 50px
+  margin: -25px 0 0 -25px
+  position: absolute
+  top: 50%
+  width: 50px
+  +transform-origin(center, center)
   &.animated
     +animation(rotate, 0, 2s, infinite, linear)
 

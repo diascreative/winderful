@@ -8,6 +8,7 @@
     prevSpeed: 0.5,
     rotationAngle: 0,
     graph: false,
+    animationTransition: null,
     init: function() {
       this.cacheItems();
 
@@ -39,6 +40,7 @@
       this.animateWindMill();
     },
     cacheItems: function() {
+      this.$rContainer = $('#turbine-rotor-container');
       this.$rotor = $('#turbine-rotor').eq(0);
       this.$legend = $('#legend');
       this.$css = $('<style type="text/css" id="turbine-css"></style>');
@@ -86,25 +88,29 @@
       this.graph.request();
     },
     createNewCSS: function() {
-      var value = (6 - this.speed) + 's',
-        oldTransform = this.$rotor.css('transform'),
-        newCSS = '#turbine-rotor.animated {' +
-          '-webkit-animation-duration:' + value + ';' +
-          '-moz-animation-duration:' + value + ';' +
-          '-ms-animation-duration:' + value + ';' +
-          '-o-animation-duration:' + value + ';' +
-          'animation-duration:' + value + '}';
+      clearTimeout(this.animationTransition);
 
-      this.$css.html(newCSS);
+      this.animationTransition = setTimeout(function() {
 
-      this.$rotor
-        .css('transform', oldTransform)
-        .removeClass('animated');
+        var value = (6 - this.speed) + 's',
+          oldTransform = this.$rotor.css('transform'),
+          newCSS = '#turbine-rotor.animated {' +
+            '-webkit-animation-duration:' + value + ';' +
+            '-moz-animation-duration:' + value + ';' +
+            '-ms-animation-duration:' + value + ';' +
+            '-o-animation-duration:' + value + ';' +
+            'animation-duration:' + value + '}';
 
-      setTimeout(function() {
-        this.$rotor.addClass('animated');
-        console.log(value);
-      }.bind(this), 10);
+        this.$css.html(newCSS);
+
+        this.$rContainer.css('transform', oldTransform);
+        this.$rotor.removeClass('animated');
+
+        setTimeout(function() {
+          this.$rotor.addClass('animated');
+        }.bind(this), 10);
+
+      }.bind(this), 100);
 
     },
     animateWindMill: function() {
