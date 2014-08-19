@@ -4,7 +4,7 @@
   // graph /////////////////////////////////////////////////////////////////////
   //
   var diasGraph = {
-    speed: 10,
+    speed: 0.5,
     rotationAngle: 0,
     graph: false,
     init: function() {
