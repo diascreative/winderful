@@ -36,8 +36,6 @@
           }
         ]
       });
-
-      this.animateWindMill();
     },
     cacheItems: function() {
       this.$rContainer = $('#turbine-rotor-container');
@@ -79,6 +77,12 @@
         // this is a way to make sure the turbine doesn't rotate at
         // the demand rate
         this.speed = y/1000;
+
+        if( this.speed !==  this.prevSpeed ) {
+          this.prevSpeed = this.speed;
+
+          this.animateWindMill();
+        }
       }
 
       return y + " MW";
@@ -87,41 +91,24 @@
       this.graph.dataURL = url;
       this.graph.request();
     },
-    createNewCSS: function() {
-      clearTimeout(this.animationTransition);
-
-      this.animationTransition = setTimeout(function() {
-
-        var value = (6 - this.speed) + 's',
-          oldTransform = this.$rotor.css('transform'),
-          newCSS = '#turbine-rotor.animated {' +
-            '-webkit-animation-duration:' + value + ';' +
-            '-moz-animation-duration:' + value + ';' +
-            '-ms-animation-duration:' + value + ';' +
-            '-o-animation-duration:' + value + ';' +
-            'animation-duration:' + value + '}';
-
-        this.$css.html(newCSS);
-
-        this.$rContainer.css('transform', oldTransform);
-        this.$rotor.removeClass('animated');
-
-        setTimeout(function() {
-          this.$rotor.addClass('animated');
-        }.bind(this), 10);
-
-      }.bind(this), 100);
-
-    },
     animateWindMill: function() {
+      var value = (6 - this.speed) + 's',
+        oldTransform = this.$rotor.css('transform'),
+        newCSS = '#turbine-rotor.animated {' +
+          '-webkit-animation-duration:' + value + ';' +
+          '-moz-animation-duration:' + value + ';' +
+          '-ms-animation-duration:' + value + ';' +
+          '-o-animation-duration:' + value + ';' +
+          'animation-duration:' + value + '}';
 
-      if( this.speed !==  this.prevSpeed ) {
-        this.prevSpeed = this.speed;
+      this.$css.html(newCSS);
 
-        this.createNewCSS();
-      }
+      this.$rContainer.css('transform', oldTransform);
+      this.$rotor.removeClass('animated');
 
-      requestAnimationFrame(this.animateWindMill.bind(this));
+      setTimeout(function() {
+        this.$rotor.addClass('animated');
+      }.bind(this), 10);
     }
   };
 
