@@ -84,6 +84,8 @@
       array('name' => "Demand", "data" => $demand)
     );
 
+  echo $_GET['callback'] . "(";
   echo json_encode($graph);
+  echo ");";
 
   //print_r($dbDebug);

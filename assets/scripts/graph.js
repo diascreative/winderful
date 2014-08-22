@@ -4,6 +4,7 @@
   // graph /////////////////////////////////////////////////////////////////////
   //
   var diasGraph = {
+    jsonUrl : '.',
     speed: 0.5,
     prevSpeed: 0.5,
     rotationAngle: 0,
@@ -12,14 +13,14 @@
     init: function() {
       this.cacheItems();
 
-      this.graph = new Rickshaw.Graph.Ajax({
+      this.graph = new Rickshaw.Graph.JSONP({
         element: doc.getElementById("chart"),
         width: 600,
         height: 500,
         stroke: true,
         renderer: 'bar',
         //offset: 'expand',
-        dataURL: './json/',
+        dataURL: this.jsonUrl + '/json/',
         onData: function(d) {
           d[0].data[0].y = 80;
           return d;
