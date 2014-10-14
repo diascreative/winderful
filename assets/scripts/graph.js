@@ -18,7 +18,7 @@
         width: 600,
         height: 500,
         stroke: true,
-        renderer: 'bar',
+        renderer: 'area',
         //offset: 'expand',
         dataURL: this.jsonUrl + '/json/',
         onData: function(d) {
@@ -29,11 +29,11 @@
         series: [
           {
             name: 'Wind',
-            color: '#491D37'
+            color: '#29abe2'
           },
           {
             name: 'Demand',
-            color: '#963'
+            color: '#f15a24'
           }
         ]
       });
@@ -56,6 +56,10 @@
       var wind_test = (graph.series[0].data.pop());
       var demand_test = (graph.series[1].data.pop());
       var test_percent = (wind_test.y)/(demand_test.y) * 100;
+
+      var axes = new Rickshaw.Graph.Axis.Time( { graph: graph } );
+
+
       $('#percent').html(test_percent.toFixed(2));
       this.setLegend(graph);
 
