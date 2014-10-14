@@ -16,7 +16,7 @@
       this.graph = new Rickshaw.Graph.JSONP({
         element: doc.getElementById("chart"),
         width: 600,
-        height: 500,
+        height: 250,
         stroke: true,
         renderer: 'area',
         //offset: 'expand',
@@ -30,10 +30,10 @@
           {
             name: 'Wind',
             color: '#29abe2'
-          },
-          {
-            name: 'Demand',
-            color: '#f15a24'
+          // },
+          // {
+          //   name: 'Demand',
+          //   color: '#f15a24'
           }
         ]
       });
@@ -54,8 +54,8 @@
         });
 
       var wind_test = (graph.series[0].data.pop());
-      var demand_test = (graph.series[1].data.pop());
-      var test_percent = (wind_test.y)/(demand_test.y) * 100;
+      // var demand_test = (graph.series[1].data.pop());
+      // var test_percent = (wind_test.y)/(demand_test.y) * 100;
 
       var axes = new Rickshaw.Graph.Axis.Time( { graph: graph } );
 
