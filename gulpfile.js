@@ -1,6 +1,7 @@
 var gulp = require('gulp')
   , uglify = require('gulp-uglify')
-  , compass = require('gulp-compass')
+  , sass = require('gulp-ruby-sass')
+  , autoprefixer = require('gulp-autoprefixer')
   , minify = require('gulp-minify-css')
   , jshint = require('gulp-jshint')
   , concat = require('gulp-concat')
@@ -19,11 +20,6 @@ var gulp = require('gulp')
     devJs: 'assets/scripts/*.js',
     devImg: 'assets/img/**/*',
     img: 'static/img'
-  }
-  , compassSettings = {
-    style: 'compressed',
-    css: paths.css,
-    sass: paths.sass
   }
   ,
   reportError = function(err) {
@@ -72,13 +68,19 @@ gulp.task('images', function() {
 gulp.task('styles', function() {
   var c = gulp.src(paths.devSass)
     .pipe(
-      compass(compassSettings)
+      sass({ style: 'compressed'})
       .on('error',
         notify.onError(function (err) {
           c.end();
           return reportError(err);
         })
       )
+    )
+    .pipe(
+      autoprefixer({
+        browsers: ['last 4 versions'],
+        cascade: false
+      })
     )
     .pipe(gulp.dest(paths.css))
     .pipe(notify({ message: 'Styles task complete' }));
