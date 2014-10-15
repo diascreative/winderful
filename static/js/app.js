@@ -1,1 +1,1 @@
-!function(n){"use strict";n.module("windTurbineApp",["ngBootstrap"])}(angular);
+!function(e){"use strict";var r=e.module("windTurbineApp",["ngBootstrap","angular-rickshaw"]);r.controller("GraphController",["$scope",function(e){e.options={renderer:"area"},e.series=[{name:"Series 1",color:"steelblue",data:[{x:0,y:23},{x:1,y:15},{x:2,y:79},{x:3,y:31},{x:4,y:60}]},{name:"Series 2",color:"lightblue",data:[{x:0,y:30},{x:1,y:20},{x:2,y:64},{x:3,y:50},{x:4,y:15}]}]}])}(angular);

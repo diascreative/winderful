@@ -36,8 +36,13 @@
         <p>This is the equivalent to powering 6,205,304 homes.</p>
       </div>
 
-      <div id="chart-container">
-        <div id="chart"></div>
+      <div id="chart-container" ng-controller="GraphController">
+        <div id="chart">
+          <rickshaw
+            rickshaw-options="options"
+            rickshaw-series="series">
+          </rickshaw>
+        </div>
         <div id="slider"></div>
 
         <div id="legend"></div>
