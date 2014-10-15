@@ -2,15 +2,23 @@
 @import "libs/animation"
 @import "libs/jquery.datetimepicker"
 
+$form-width: 200px
+
 body
   background-color: #fff
   color: #333
   font: 18px/22px HelveticaNeue-Light, 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif
 
-#chart_container
+// graph styling
+#chart-container
   background: #fff
-  display: inline-block
+  clear: both
+  display: block
+  float: left
+  height: 250px
+  overflow: hidden
   position: relative
+  width: calc(100% - #{$form-width})
 
 #chart
   max-height: 200px
@@ -33,12 +41,21 @@ body
     vertical-align: middle
     width: 10px
 
+// Form
+#form
+  float: right
+  width: $form-width
+
+// Stats
+#turbine-stats
+  float: right
+  width: 50%
+
+// wind turbine styling
 #wind-turbine-container
-  display: inline-block
-  margin: 0 0 0 21px
+  float: left
   position: relative
-  vertical-align: bottom
-  width: 40%
+  width: 50%
 
 #turbine-mast,
 #turbine-rotor,
@@ -53,7 +70,7 @@ body
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5)
   height: 250px
   left: 50%
-  margin: 0 0 0 -10px
+  margin: 150px 0 0 -10px
   position: relative
   width: 20px
 

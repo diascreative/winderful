@@ -15,8 +15,8 @@
 
       this.graph = new Rickshaw.Graph.JSONP({
         element: doc.getElementById("chart"),
-        width: 600,
-        height: 250,
+        width: this.$chart.width(),
+        height: this.$chart.height(),
         stroke: true,
         renderer: 'area',
         //offset: 'expand',
@@ -43,6 +43,7 @@
       this.$rotor = $('#turbine-rotor').eq(0);
       this.$legend = $('#legend');
       this.$css = $('<style type="text/css" id="turbine-css"></style>');
+      this.$chart = $('#chart-container')
 
       $('head').append(this.$css);
     },
@@ -54,8 +55,8 @@
         });
 
       var wind_test = (graph.series[0].data.pop());
-      // var demand_test = (graph.series[1].data.pop());
-      // var test_percent = (wind_test.y)/(demand_test.y) * 100;
+      var demand_test = (graph.series[1].data.pop());
+      var test_percent = (wind_test.y)/(demand_test.y) * 100;
 
       var axes = new Rickshaw.Graph.Axis.Time( { graph: graph } );
 
