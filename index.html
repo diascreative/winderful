@@ -5,6 +5,18 @@
     <link rel="stylesheet" type="text/css" href="./static/css/wind.css">
   </head>
   <body ng-controller="turbineController as turbine">
+    <style parse-style>
+      #turbine-rotor.animated {
+        -webkit-animation-duration: {{ rotationSpeed }};
+        -moz-animation-duration: {{ rotationSpeed }};
+        -ms-animation-duration: {{ rotationSpeed }};
+        -o-animation-duration: {{ rotationSpeed }};
+        animation-duration: {{ rotationSpeed }};
+      }
+    </style>
+
+    <input id="rotation-speed" ng-model="rotationSpeed">
+
     <div class="wrapper">
       <div id="wind-turbine-container">
         <div id="wind-turbine">
@@ -23,7 +35,7 @@
 
       <form id="form" action="./json" method="get">
         <label for= "start">Start Date</label>
-        <input type="daterange" ng-model="turbine.daterange">
+        <!-- <input type="daterange" ng-model="turbine.daterange"> -->
 
         <button type="submit">Submit</button>
       </form>
@@ -31,21 +43,18 @@
       <div id="turbine-stats">
         <p>Right now....</p>
         <p>Wind power is generating 5312KWH.</p>
-        <p>{{ turbine.daterange }}</p>
-        <p>That's <span id="percent"></span>% of the UK's current energy demand.</p>
+        <p ng-show="turbine.daterange">The graph shows the power generated between {{ turbine.daterange.startDate | date:fullDate }} and {{ turbine.daterange.endDate | date:fullDate }}.</p>
+        <p>That's <span id="percent">{{ turbine.totalPercentage }}</span>% of the UK's current energy demand.</p>
         <p>This is the equivalent to powering 6,205,304 homes.</p>
+        {{turbine.daterange.endDate|json|date}}
       </div>
 
       <div id="chart-container">
-        <div id="chart">
-          <rickshaw
-            rickshaw-options="turbine.graph.options"
-            rickshaw-series="turbine.graph.series">
-          </rickshaw>
-        </div>
-        <div id="slider"></div>
-
-        <div id="legend"></div>
+        <rickshaw
+          rickshaw-options="turbine.graph.options"
+          rickshaw-features="turbine.graph.features"
+          rickshaw-series="turbine.graph.series">
+        </rickshaw>
       </div>
 
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
