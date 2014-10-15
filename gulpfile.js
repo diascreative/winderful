@@ -42,7 +42,7 @@ gulp.task('scripts', function() {
     .pipe(gulpIgnore(paths.devJsLibs))
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
-    .pipe(concat('main.js'))
+    .pipe(concat('app.js'))
     .pipe(
       uglify()
       .on('error',
