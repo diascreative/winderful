@@ -33,7 +33,7 @@ var gulp = require('gulp')
 gulp.task('libs', function() {
   return gulp.src(paths.devJsLibs)
     .pipe(concat('libs.js'))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest('static/js'));
 });
 

@@ -16,7 +16,7 @@
       this.graph = new Rickshaw.Graph.JSONP({
         element: doc.getElementById("chart"),
         width: this.$chart.width(),
-        height: this.$chart.height(),
+        height: this.$chart.height() - 30,
         stroke: true,
         renderer: 'area',
         //offset: 'expand',
@@ -43,7 +43,7 @@
       this.$rotor = $('#turbine-rotor').eq(0);
       this.$legend = $('#legend');
       this.$css = $('<style type="text/css" id="turbine-css"></style>');
-      this.$chart = $('#chart-container')
+      this.$chart = $('#chart-container');
 
       $('head').append(this.$css);
     },
