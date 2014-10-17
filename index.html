@@ -18,44 +18,21 @@
     <input id="rotation-speed" ng-model="rotationSpeed">
 
     <div class="wrapper">
-      <div id="wind-turbine-container">
-        <div id="wind-turbine">
-          <div id="turbine-mast"></div>
-
-          <div id="turbine-rotor-container">
-            <div id="turbine-rotor" class="animated">
-              <div class="rotor-blade blade1"></div>
-              <div class="rotor-blade blade2"></div>
-              <div class="rotor-blade blade3"></div>
-              <div class="rotor-tip"></div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <turbine></turbine>
 
       <form id="form" action="./json" method="get">
         <label for= "start">Start Date</label>
-        <!-- <input type="daterange" ng-model="turbine.daterange"> -->
-
+        <input type="daterange" ng-model="turbine.daterange">
         <button type="submit">Submit</button>
       </form>
 
-      <div id="turbine-stats">
-        <p>Right now....</p>
-        <p>Wind power is generating 5312KWH.</p>
-        <p ng-show="turbine.daterange">The graph shows the power generated between {{ turbine.daterange.startDate | date:fullDate }} and {{ turbine.daterange.endDate | date:fullDate }}.</p>
-        <p>That's <span id="percent">{{ turbine.totalPercentage }}</span>% of the UK's current energy demand.</p>
-        <p>This is the equivalent to powering 6,205,304 homes.</p>
-        {{turbine.daterange.endDate|json|date}}
-      </div>
+      <turbine-stats></turbine-stats>
 
-      <div id="chart-container">
-        <rickshaw
-          rickshaw-options="turbine.graph.options"
-          rickshaw-features="turbine.graph.features"
-          rickshaw-series="turbine.graph.series">
-        </rickshaw>
-      </div>
+      <rickshaw id="chart-container"
+        rickshaw-options="turbine.graph.options"
+        rickshaw-features="turbine.graph.features"
+        rickshaw-series="turbine.graph.series">
+      </rickshaw>
 
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
       <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>

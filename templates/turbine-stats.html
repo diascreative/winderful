@@ -1,0 +1,8 @@
+<div id="turbine-stats">
+  <p>Right now....</p>
+  <p>Wind power is generating 5312KWH.</p>
+  <p ng-show="turbine.daterange">The graph shows the power generated between {{ turbine.daterange.startDate | date:fullDate }} and {{ turbine.daterange.endDate | date:fullDate }}.</p>
+  <p>That's <span id="percent">{{ turbine.totalPercentage }}</span>% of the UK's current energy demand.</p>
+  <p>This is the equivalent to powering 6,205,304 homes.</p>
+  {{turbine.daterange.endDate|json|date}}
+</div>
