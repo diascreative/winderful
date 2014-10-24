@@ -4,5 +4,4 @@
   <p ng-show="turbine.daterange">The graph shows the power generated between {{ turbine.daterange.startDate.toISOString() | date : short }} and {{ turbine.daterange.endDate.toISOString() | date : short }}.</p>
   <p>That's <span id="percent">{{ turbine.totalPercentage }}</span>% of the UK's current energy demand.</p>
   <p>This is the equivalent to powering 6,205,304 homes.</p>
-  {{turbine.daterange.endDate|json|date}}
 </div>

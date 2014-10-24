@@ -878,7 +878,97 @@ for(var e in n)t.push({key:e,value:n[e]});return t},mo.merge=function(n){return 
  * (c) 2013 Luis Farzati http://github.com/luisfarzati/ng-bs-daterangepicker
  * License: MIT
  */
-!function(a){"use strict";a.module("ngBootstrap",[]).directive("input",function(){return{restrict:"E",require:"ngModel",link:function(a,b,c,d){function e(a){return a.format(g.format)}function f(a){return[e(a.startDate),e(a.endDate)].join(g.separator)}if("daterange"===c.type){var g={};g.format=c.format||"YYYY-MM-DD",g.separator=c.separator||" - ",g.minDate=c.minDate&&moment(c.minDate),g.maxDate=c.maxDate&&moment(c.maxDate),g.dateLimit=c.limit&&moment.duration.apply(this,c.limit.split(" ").map(function(a,b){return 0===b&&parseInt(a,10)||a})),d.$formatters.unshift(function(a){return a?a:""}),d.$parsers.unshift(function(a){return a}),d.$render=function(){d.$viewValue&&d.$viewValue.startDate&&b.val(f(d.$viewValue))},a.$watch(c.ngModel,function(a){return a&&a.startDate?(b.data("daterangepicker").startDate=a.startDate,b.data("daterangepicker").endDate=a.endDate,b.data("daterangepicker").updateView(),b.data("daterangepicker").updateCalendars(),b.data("daterangepicker").updateInputText(),void 0):(d.$setViewValue({startDate:moment().startOf("day"),endDate:moment().startOf("day")}),void 0)}),b.daterangepicker(g,function(b,c){a.$apply(function(){d.$setViewValue({startDate:b,endDate:c}),d.$render()})})}}}})}(angular);
+(function (angular) {
+'use strict';
+
+angular.module('ngBootstrap', []).directive('input', function ($compile, $parse) {
+  return {
+    restrict: 'E',
+    require: '?ngModel',
+    link: function ($scope, $element, $attributes, ngModel) {
+      if ($attributes.type !== 'daterange' || ngModel === null ) return;
+
+      var options = {};
+      options.format = $attributes.format || 'YYYY-MM-DD HH:mm';
+      options.separator = $attributes.separator || ' - ';
+      options.minDate = $attributes.minDate && moment($attributes.minDate);
+      options.maxDate = $attributes.maxDate && moment($attributes.maxDate);
+      options.dateLimit = $attributes.limit && moment.duration.apply(this, $attributes.limit.split(' ').map(function (elem, index) { return index === 0 && parseInt(elem, 10) || elem; }) );
+      options.ranges = $attributes.ranges && $parse($attributes.ranges)($scope);
+      options.locale = $attributes.locale && $parse($attributes.locale)($scope);
+      options.opens = $attributes.opens && $parse($attributes.opens)($scope);
+      if ($attributes.timePicker == "true") {
+        options.timePicker = true;
+      }
+      options.timePickerIncrement = $attributes.timePickerIncrement || 30;
+      if ($attributes.timePicker12Hour == "false") {
+        options.timePicker12Hour = false;
+      }
+      if ($attributes.singleDatePicker == "true") {
+        options.singleDatePicker = true;
+      }
+      if ($attributes.dateLimit == "true") {
+        options.dateLimit = true;
+      }
+      if ($attributes.showDropdowns == "true") {
+        options.showDropdowns = true;
+      }
+      if ($attributes.showWeekNumbers == "true") {
+        options.showWeekNumbers = true;
+      }
+      options.buttonClasses = $attributes.buttonClasses || ['btn', 'btn-small'];
+      options.applyClass = $attributes.applyClass || 'btn-success';
+      options.cancelClass = $attributes.cancelClass || 'btn-default';
+
+      function format(date) {
+        return date.format(options.format);
+      }
+
+      function formatted(dates) {
+        return [format(dates.startDate), format(dates.endDate)].join(options.separator);
+      }
+
+      ngModel.$formatters.unshift(function (modelValue) {
+        if (!modelValue) return '';
+        return modelValue;
+      });
+
+      ngModel.$parsers.unshift(function (viewValue) {
+        return viewValue;
+      });
+
+      ngModel.$render = function () {
+        if (!ngModel.$viewValue || !ngModel.$viewValue.startDate) return;
+        $element.val(formatted(ngModel.$viewValue));
+      };
+
+      $scope.$watch($attributes.ngModel, function (modelValue) {
+        if (!modelValue || (!modelValue.startDate)) {
+          ngModel.$setViewValue({ startDate: moment().startOf('day'), endDate: moment().endOf('day') });
+          return;
+        }
+
+        if ($element.data('daterangepicker')){
+          $element.data('daterangepicker').startDate = modelValue.startDate;
+          $element.data('daterangepicker').endDate = modelValue.endDate;
+          $element.data('daterangepicker').updateView();
+          $element.data('daterangepicker').updateCalendars();
+          $element.data('daterangepicker').updateInputText();
+        }
+
+      });
+
+      $element.daterangepicker(options, function(start, end) {
+        $scope.$apply(function () {
+          ngModel.$setViewValue({ startDate: start, endDate: end });
+          ngModel.$render();
+        });
+      });
+    }
+  };
+});
+
+})(angular);
 'use strict';angular.module('angular-rickshaw',[]).directive('rickshaw',function($compile){return{restrict:'EA',scope:{options:'=rickshawOptions',series:'=rickshawSeries',features:'=rickshawFeatures'},link:function(scope,element,attrs){function getSettings(el){var settings=angular.copy(scope.options);settings.element=el;settings.series=scope.series;return settings}var graph;function update(){var mainEl=angular.element(element);mainEl.append(graphEl);mainEl.empty();var graphEl=$compile('<div></div>')(scope);mainEl.append(graphEl);var settings=getSettings(graphEl[0]);graph=new Rickshaw.Graph(settings);if(scope.features&&scope.features.hover){var hoverConfig={graph:graph};hoverConfig.xFormatter=scope.features.hover.xFormatter;hoverConfig.yFormatter=scope.features.hover.yFormatter;hoverConfig.formatter=scope.features.hover.formatter;var hoverDetail=new Rickshaw.Graph.HoverDetail(hoverConfig)}if(scope.features&&scope.features.palette){var palette=new Rickshaw.Color.Palette({scheme:scope.features.palette});for(var i=0;i<settings.series.length;i++){settings.series[i].color=palette.color()}}graph.render();if(scope.features&&scope.features.xAxis){var xAxisConfig={graph:graph};if(scope.features.xAxis.timeUnit){var time=new Rickshaw.Fixtures.Time();xAxisConfig.timeUnit=time.unit(scope.features.xAxis.timeUnit)}var xAxis=new Rickshaw.Graph.Axis.Time(xAxisConfig);xAxis.render()}if(scope.features&&scope.features.yAxis){var yAxisConfig={graph:graph};if(scope.features.yAxis.tickFormat){yAxisConfig.tickFormat=Rickshaw.Fixtures.Number[scope.features.yAxis.tickFormat]}var yAxis=new Rickshaw.Graph.Axis.Y(yAxisConfig);yAxis.render()}if(scope.features&&scope.features.legend){var legendEl=$compile('<div></div>')(scope);mainEl.append(legendEl);var legend=new Rickshaw.Graph.Legend({graph:graph,element:legendEl[0]});if(scope.features.legend.toggle){var shelving=new Rickshaw.Graph.Behavior.Series.Toggle({graph:graph,legend:legend})}if(scope.features.legend.highlight){var highlighter=new Rickshaw.Graph.Behavior.Series.Highlight({graph:graph,legend:legend})}}}scope.$watch('options',function(newValue,oldValue){if(!angular.equals(newValue,oldValue)){update()}});scope.$watch('series',function(newValue,oldValue){if(!angular.equals(newValue,oldValue)){update()}});scope.$watch('features',function(newValue,oldValue){if(!angular.equals(newValue,oldValue)){update()}});update()},controller:function($scope,$element,$attrs){}}});
 (function (root, factory) {
     if (typeof define === 'function' && define.amd) {

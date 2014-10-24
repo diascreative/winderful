@@ -18,13 +18,18 @@
     <button ng-click="loadInData()">load data</button>
 
     <div class="wrapper">
-      <turbine></turbine>
-
       <form id="form" action="./json" method="get">
         <label for= "start">Start Date</label>
-        <input type="daterange" ng-model="turbine.daterange">
+        <input type="daterange"
+          ng-model="turbine.daterange"
+          time-picker="true"
+          time-picker-12-hour="false"
+          time-picker-increment="15"
+          show-dropdowns="true">
         <button type="submit">Submit</button>
       </form>
+
+      <turbine></turbine>
 
       <turbine-stats></turbine-stats>
 
