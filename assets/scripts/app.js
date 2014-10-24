@@ -57,6 +57,10 @@
         oldTransform = matrixToDeg($rotor.css('transform')),
         parentTransform = matrixToDeg($rContainer.css('transform'));
 
+      if( speed === 0 ){
+        value = '3000000s';
+      }
+
       $scope.rotationSpeed = value;
       $scope.$digest();
 
