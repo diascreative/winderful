@@ -42,7 +42,8 @@
         oldTransform = matrixToDeg($rotor.css('transform')),
         parentTransform = matrixToDeg($rContainer.css('transform'));
 
-      $('#rotation-speed').val(value).change();
+      $scope.rotationSpeed = value;
+      $scope.$digest();
 
       $rContainer.css('transform', 'rotateZ(' + (oldTransform+parentTransform+degPerS) + 'deg)');
       $rotor.removeClass('animated');
