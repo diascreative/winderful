@@ -28,8 +28,8 @@
       return y + 'MW';
     },
     graphSetup = function(transport) {
-      var wind_test = (graph.series[0].data.pop());
-      var demand_test = (graph.series[1].data.pop());
+      var wind_test = (this.graph.series[0].data.pop());
+      var demand_test = (this.graph.series[1].data.pop());
       this.currentPercentage = (wind_test.y)/(demand_test.y) * 100;
     },
     animateWindMill = function(speed) {
