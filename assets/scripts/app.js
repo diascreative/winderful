@@ -95,7 +95,7 @@
       complete: graphSetup.bind(this)
     };
 
-    this.graph.series = [{"name":"Wind","color":'#29abe2',"data":[{"x":1412862603,"y":3306},{"x":1412862603,"y":3306}]}];
+    this.graph.series = [{"name":"Wind","color":'#29abe2',"data":[{"x":0,"y":0}]}];
 
   }]);
 
