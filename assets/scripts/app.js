@@ -59,7 +59,7 @@
       var $rContainer = $('#turbine-rotor-container');
       var $rotor = $('#turbine-rotor').eq(0);
 
-      var valueS = (11 - speed),
+      var valueS = (13 - speed),
         value = valueS + 's',
         degPerS = 360/(valueS*40),
         oldTransform = matrixToDeg($rotor.css('transform')),
