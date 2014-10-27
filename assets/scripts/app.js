@@ -110,9 +110,9 @@
       hover: {
         formatter: hoverGraph.bind(this)
       },
-      // xAxis: {
-      //   timeFixture: new Rickshaw.Fixtures.Time.Local()
-      // },
+      xAxis: {
+        timeFixture: new Rickshaw.Fixtures.Time.Local()
+      },
       complete: graphSetup.bind(this)
     };
 
