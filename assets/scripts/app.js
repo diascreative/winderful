@@ -20,7 +20,7 @@
       { "action": "Or making", "consumption": 0.000033, "object": "toasts" }
     ];
 
-    this.updateStats = function(x, y) {
+    this.updateStats = function(x, y, percent) {
       if( y < 15000 ) {
         // demand is never under 20,000 and wind is always under 4,000
         // this is a way to make sure the turbine doesn't rotate at
@@ -36,23 +36,23 @@
 
           this.hola =(new Date() - this.displayDate) / 60000;
           this.isCurrent = (new Date() - this.displayDate) / 60000 < 30; // if details is from less than 30 mins ago
+
+          this.currentPercentage = percent;
         }
       }
 
       return y + 'MW';
     };
 
-    var hoverGraph = function(series, x, y) {
-      var Y = this.updateStats(x, y);
+    var hoverGraph = function(series, x, y, z, a, b, c) {
+      var Y = this.updateStats(x, y, b.value.z);
 
       $scope.$digest();
 
       return Y;
     },
     graphSetup = function(transport) {
-      var wind_test = (this.graph.series[0].data.pop());
-      var demand_test = (this.graph.series[1].data.pop());
-      this.currentPercentage = (wind_test.y)/(demand_test.y) * 100;
+
     },
     animateWindMill = function(speed) {
       var $rContainer = $('#turbine-rotor-container');
@@ -133,7 +133,7 @@
             that.graph.series = data;
             var lastValue = data[0].data.pop();
 
-            that.updateStats(lastValue.x, lastValue.y);
+            that.updateStats(lastValue.x, lastValue.y, lastValue.z);
           });
       }
 

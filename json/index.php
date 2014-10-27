@@ -61,27 +61,21 @@
               timestamp";
 
   $wind = array();
-  $demand = array();
 
   $results = query($query);
 
   while( $item = fetchAssoc($results) ) {
     $windItem = array();
-    $demandItem = array();
 
     $windItem['x'] = strtotime($item['timestamp']);
     $windItem['y'] = intval($item['wind']);
-
-    $demandItem['x'] = strtotime($item['timestamp']);
-    $demandItem['y'] = intval($item['demand']);
+    $windItem['z'] = intval($item['wind']/$item['demand']*100);
 
     array_push($wind, $windItem);
-    array_push($demand, $demandItem);
   }
 
   $graph = array(
-      array('name' => "Wind", "color" => "#29abe2", "data" => $wind),
-      // array('name' => "Demand", "data" => $demand)
+      array('name' => "Wind", "color" => "#29abe2", "data" => $wind)
     );
 
   // echo $_GET['callback'] . "(";

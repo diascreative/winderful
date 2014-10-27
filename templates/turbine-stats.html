@@ -8,7 +8,8 @@
     Wind power is generating {{ turbine.wattage }}MWh of electricity at the moment.
   </p>
 
-  <!-- <p>That's <span id="percent">{{ turbine.totalPercentage }}</span>% of the UK's current energy demand.</p> -->
+  <p>That's <span id="percent">{{ turbine.currentPercentage }}</span>% of the UK's current energy demand.</p>
+
   <p ng-repeat="example in turbine.usageExamples">
     {{ example.action }} {{ turbine.wattage/example.consumption | number:0 }} {{ example.object }}.
   </p>
