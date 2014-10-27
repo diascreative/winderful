@@ -75,7 +75,7 @@
 
       setTimeout(function() {
         $rotor.addClass('animated');
-      }, 2);
+      }, 0);
     },
     matrixToDeg = function(tr) {
       var angle = 0;
