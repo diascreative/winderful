@@ -1,3 +1,4 @@
 .sass-cache
 node_modules/*
 inc/config.php
+*.DS_Store
