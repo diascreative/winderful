@@ -15,9 +15,9 @@
     $scope.prevSpeed = 0;
 
     this.usageExamples = [
-      { "action": "powering", "name": "homes for an entire day", "consumption": 0.000483 },
-      { "action": "making", "name": "toasts", "consumption": 0.00000133 },
-      { "action": "making", "name": "cups of tea", "consumption": 0.00000160 }
+      { "action": "powering", "name": "homes for an entire day", "consumption": 0.00483 },
+      { "action": "making", "name": "toasts", "consumption": 0.000033 },
+      { "action": "making", "name": "cups of tea", "consumption": 0.000016 }
     ];
 
     this.updateStats = function(x, y) {
