@@ -1,7 +1,7 @@
-(function (angular) {
+(function () {
   'use strict';
 
-  var app = angular.module('windTurbineApp', ['ngBootstrap', 'angular-rickshaw']);
+  var app = angular.module('windTurbineApp', ['turbine-directives', 'ngBootstrap', 'angular-rickshaw']);
 
   app.controller('turbineController', ['$scope', function($scope) {
     $scope.rotationSpeed = 10;
@@ -119,29 +119,4 @@
 
   }]);
 
-  app.directive('parseStyle', ['$interpolate', function($interpolate) {
-    return function(scope, elem) {
-      var exp = $interpolate(elem.html()),
-        watchFunc = function () { return exp(scope); };
-
-      scope.$watch(watchFunc, function (html) {
-        elem.html(html);
-      });
-    };
-  }]);
-
-  app.directive('turbine', function() {
-    return {
-      restrict: 'E',
-      templateUrl: './templates/turbine.html'
-    };
-  });
-
-  app.directive('turbineStats', function() {
-    return {
-      restrict: 'E',
-      templateUrl: './templates/turbine-stats.html'
-    };
-  });
-
-})(angular);
+})();

@@ -4,6 +4,7 @@
     "jQuery": false,
     "document": false,
     "Rickshaw": false,
+    "angular": false,
     "requestAnimationFrame": false
   },
   "indent": 2,
