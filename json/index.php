@@ -80,12 +80,12 @@
   }
 
   $graph = array(
-      array('name' => "Wind", "data" => $wind),
-      array('name' => "Demand", "data" => $demand)
+      array('name' => "Wind", "color" => "#29abe2", "data" => $wind),
+      // array('name' => "Demand", "data" => $demand)
     );
 
-  echo $_GET['callback'] . "(";
+  // echo $_GET['callback'] . "(";
   echo json_encode($graph);
-  echo ");";
+  // echo ");";
 
   //print_r($dbDebug);
