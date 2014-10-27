@@ -109,6 +109,7 @@
 
     this.graph.series = [{"name":"Wind","color":'#29abe2',"data":[{"x":0,"y":0}]}];
 
+    this.daterange = { startDate: moment().subtract('days', 7), endDate: moment() }
 
     $scope.loadInData = function() {
       if( typeof(this.daterange) !== 'undefined' ) {
