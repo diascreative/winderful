@@ -110,6 +110,8 @@
       hover: {
         formatter: hoverGraph.bind(this)
       },
+      yAxis: {
+      },
       xAxis: {
         timeFixture: new Rickshaw.Fixtures.Time.Local()
       },
