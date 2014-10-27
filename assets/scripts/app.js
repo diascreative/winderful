@@ -15,8 +15,9 @@
     $scope.prevSpeed = 0;
 
     this.usageExamples = [
-      { "action": "powering", "name": "homes for an entire day", "consumption": 4600000 / 365 },
-      { "action": "making", "name": "toasts", "consumption": 800 }
+      { "action": "powering", "name": "homes for an entire day", "consumption": 0.000483 },
+      { "action": "making", "name": "toasts", "consumption": 0.00000133 },
+      { "action": "making", "name": "cups of tea", "consumption": 0.00000160 }
     ];
 
     var hoverGraph = function(series, x, y) {
