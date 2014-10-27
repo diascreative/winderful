@@ -1,12 +1,15 @@
 <div id="turbine-stats">
-  <p ng-show="turbine.daterange">The graph shows the power generated between {{ turbine.daterange.startDate.toISOString() | date : 'MMM d, y HH:mm' }} and {{ turbine.daterange.endDate.toISOString() | date : 'MMM d, y HH:mm' }}.</p>
-  <p>
+  <p ng-hide="turbine.isCurrent">
     On <strong>{{ turbine.displayDate | date : 'MMMM d, y' }} at {{ turbine.displayDate | date : 'HH:mm' }}</strong>,
-    wind power was generating {{ turbine.wattage }}MW.
+    wind power was generating {{ turbine.wattage }}MWh of electricity.
+  </p>
+
+  <p ng-show="turbine.isCurrent">
+    Wind power is generating {{ turbine.wattage }}MWh of electricity at the moment.
   </p>
 
   <!-- <p>That's <span id="percent">{{ turbine.totalPercentage }}</span>% of the UK's current energy demand.</p> -->
   <p ng-repeat="example in turbine.usageExamples">
-    This is the equivalent to {{ example.action }} {{ turbine.wattage/example.consumption | number:0 }} {{ example.name }}.
+    {{ example.action }} {{ turbine.wattage/example.consumption | number:0 }} {{ example.object }}.
   </p>
 </div>

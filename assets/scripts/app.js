@@ -15,9 +15,9 @@
     $scope.prevSpeed = 0;
 
     this.usageExamples = [
-      { "action": "powering", "name": "homes for an entire day", "consumption": 0.00483 },
-      { "action": "making", "name": "toasts", "consumption": 0.000033 },
-      { "action": "making", "name": "cups of tea", "consumption": 0.000016 }
+      { "action": "That's enough to power", "consumption": 0.00483, "object": "homes" },
+      { "action": "Or enough to boil the water for", "consumption": 0.000016, "object": "cups of tea" },
+      { "action": "Or making", "consumption": 0.000033, "object": "toasts" }
     ];
 
     this.updateStats = function(x, y) {
@@ -33,6 +33,9 @@
 
           this.wattage = y;
           this.displayDate = new Date(x * 1000);
+
+          this.hola =(new Date() - this.displayDate) / 60000;
+          this.isCurrent = (new Date() - this.displayDate) / 60000 < 30; // if details is from less than 30 mins ago
         }
       }
 
@@ -40,11 +43,11 @@
     };
 
     var hoverGraph = function(series, x, y) {
-      var y = this.updateStats(x, y);
+      var Y = this.updateStats(x, y);
 
       $scope.$digest();
 
-      return y;
+      return Y;
     },
     graphSetup = function(transport) {
       var wind_test = (this.graph.series[0].data.pop());
