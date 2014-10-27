@@ -19,20 +19,6 @@
       { "action": "making", "name": "toasts", "consumption": 800 }
     ];
 
-    $scope.loadInData = function() {
-      var that = this.graph;
-
-      that.series = [{"name":"Wind","color":'#29abe2',"data":[{"x":0,"y":0}]}]
-
-      $http.get('./json/', { start: '', end: ''})
-        .success(function(data) {
-          that.series = data;
-        });
-
-    }.bind(this);
-    //this.daterange = { "startDate": "2013-09-19T22:00:00.000Z", "endDate": "2013-09-24T22:00:00.000Z" };
-    //this.daterange = moment().range('2012-11-05', '2013-01-25');
-
     var hoverGraph = function(series, x, y) {
       if( y < 15000 ) {
         // demand is never under 20,000 and wind is always under 4,000
@@ -123,7 +109,22 @@
 
     this.graph.series = [{"name":"Wind","color":'#29abe2',"data":[{"x":0,"y":0}]}];
 
-    $scope.loadInData();
+
+    $scope.loadInData = function() {
+      if( typeof(this.daterange) !== 'undefined' ) {
+        var that = this.graph;
+
+        $http.get('./json/', { params: { start: this.daterange.startDate.unix(), end: this.daterange.endDate.unix()}})
+          .success(function(data) {
+            that.series = data;
+          });
+      }
+
+    }.bind(this);
+
+    $scope.$watch(function() { return this.daterange; }.bind(this), function() {
+      $scope.loadInData();
+    });
 
   }]);
 
