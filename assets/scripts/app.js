@@ -20,7 +20,7 @@
       { "action": "making", "name": "cups of tea", "consumption": 0.00000160 }
     ];
 
-    var hoverGraph = function(series, x, y) {
+    this.updateStats = function(x, y) {
       if( y < 15000 ) {
         // demand is never under 20,000 and wind is always under 4,000
         // this is a way to make sure the turbine doesn't rotate at
@@ -35,7 +35,16 @@
           this.displayDate = new Date(x * 1000);
         }
       }
+
       return y + 'MW';
+    };
+
+    var hoverGraph = function(series, x, y) {
+      var y = this.updateStats(x, y);
+
+      $scope.$digest();
+
+      return y;
     },
     graphSetup = function(transport) {
       var wind_test = (this.graph.series[0].data.pop());
@@ -57,7 +66,6 @@
       }
 
       $scope.rotationSpeed = value;
-      $scope.$digest();
 
       $rContainer.css('transform', 'rotateZ(' + (oldTransform+parentTransform+degPerS) + 'deg)');
       $rotor.removeClass('animated');
@@ -109,16 +117,18 @@
     };
 
     this.graph.series = [{"name":"Wind","color":'#29abe2',"data":[{"x":0,"y":0}]}];
-
-    this.daterange = { startDate: moment().subtract('days', 7), endDate: moment() }
+    this.daterange = { startDate: moment().subtract('days', 7), endDate: moment() };
 
     $scope.loadInData = function() {
       if( typeof(this.daterange) !== 'undefined' ) {
-        var that = this.graph;
+        var that = this;
 
         $http.get('./json/', { params: { start: this.daterange.startDate.unix(), end: this.daterange.endDate.unix()}})
           .success(function(data) {
-            that.series = data;
+            that.graph.series = data;
+            var lastValue = data[0].data.pop();
+
+            that.updateStats(lastValue.x, lastValue.y);
           });
       }
 

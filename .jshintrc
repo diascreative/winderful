@@ -5,6 +5,7 @@
     "document": false,
     "Rickshaw": false,
     "angular": false,
+    "moment": false,
     "requestAnimationFrame": false
   },
   "indent": 2,
