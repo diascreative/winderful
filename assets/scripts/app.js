@@ -29,6 +29,7 @@
 
         if( speed !==  $scope.prevSpeed ) {
           $scope.prevSpeed = speed;
+
           animateWindMill(speed);
 
           this.wattage = y;
@@ -60,7 +61,7 @@
 
       var valueS = 13 / speed,
         value = valueS + 's',
-        degPerS = 360/(valueS*40),
+        degPerS = speed*1.9,
         oldTransform = matrixToDeg($rotor.css('transform')),
         parentTransform = matrixToDeg($rContainer.css('transform'));
 
