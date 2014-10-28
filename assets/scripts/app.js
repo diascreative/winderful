@@ -71,8 +71,14 @@
 
       $scope.rotationSpeed = value;
 
-      $rContainer.css('transform', 'rotateZ(' + (oldTransform+parentTransform+degPerS) + 'deg)');
+      var style = $rotor[0].style;
+
+      style.webkitAnimationPlayState = style.mozAnimationPlayState = style.oAnimationPlayState = style.animationPlayState = "paused";
       $rotor.removeClass('animated');
+      $rContainer.css('transform', 'rotateZ(' + (oldTransform+parentTransform+degPerS) + 'deg)');
+
+      style.webkitAnimationDuration = style.mozAnimationDuration = style.oAnimationDuration = style.animationDuration = value;
+      style.webkitAnimationPlayState = style.mozAnimationPlayState = style.oAnimationPlayState = style.animationPlayState = "running";
 
       setTimeout(function() {
         $rotor.addClass('animated');
@@ -107,7 +113,7 @@
 
     this.graph.options = {
       renderer: 'area',
-      height: 100,
+      height: 200,
     };
 
     this.graph.features = {
@@ -122,7 +128,7 @@
       complete: graphSetup.bind(this)
     };
 
-    this.graph.series = [{"name":"Wind","color":'#29abe2',"data":[{"x":0,"y":0}]}];
+    this.graph.series = [{"name":"Wind","color":'#007232',"data":[{"x":0,"y":0}]}];
     this.daterange = { startDate: moment().subtract('days', 7), endDate: moment() };
 
     $scope.loadInData = function() {

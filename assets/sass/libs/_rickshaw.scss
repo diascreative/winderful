@@ -121,7 +121,7 @@
   top: 0;
   bottom: 0;
   width: 0px;
-  border-left: 1px dotted rgba(0, 0, 0, 0.2);
+  border-left: 1px dotted #fff;
   pointer-events: none;
 }
 .rickshaw_graph .x_tick .title {
@@ -280,9 +280,4 @@
     1px 0px 0 rgba(0, 0, 0, 0.8),
     -1px 0px 0 rgba(0, 0, 0, 0.8),
     -1px -1px 0 rgba(0, 0, 0, 0.8);
-}
-
-
-.rickshaw_graph .detail .x_label {
-  bottom: 0;
 }
