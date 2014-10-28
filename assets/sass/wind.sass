@@ -5,7 +5,7 @@
 // fonts
 $f-family: Roboto, Helvetica, Arial, sans-serif
 $f-size: 14px
-$f-height: 1.7em
+$f-height: 18px
 $f-light: 300
 $f-regular: 400
 $f-medium: 500
@@ -22,11 +22,17 @@ body
 
 h1,
 h2
+  font-size: 26px
   font-family: $f-family
+  line-height: 30px
   margin: 0
 
 h2
   font-size: 16px
+  font-weight: $f-light
+
+h4
+  font-size: 18px
   font-weight: $f-light
 
 // layout
@@ -76,6 +82,32 @@ h2
     margin: 0 5px 0 0
     vertical-align: middle
     width: 10px
+
+// stats
+.stats
+  text-align: right
+
+  p
+    margin: 16px 0
+
+  h4
+    margin: 34px 0 0
+
+.num
+  font-size: 36px
+  line-height: 32px
+  vertical-align: bottom
+
+.deet
+  display: block
+  margin: 0 0 6px
+  span
+    display: inline-block
+    max-width: 150px
+
+.example img
+  margin: 0 10px
+  vertical-align: bottom
 
 // Form
 #form
@@ -157,14 +189,6 @@ label
     transform: rotateZ(0deg)
   to
     transform: rotateZ(360deg)
-
-h4
-  background-color: lightgray
-  display: inline-block
-  margin-left: 30px
-  padding: 10px
-  border: 1px solid darkgray
-
 
 // graph
 .rickshaw_graph .x_tick
