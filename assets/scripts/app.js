@@ -30,7 +30,7 @@
         if( speed !==  $scope.prevSpeed ) {
           $scope.prevSpeed = speed;
 
-          animateWindMill(speed);
+          animateWindMill(speed, percent);
 
           this.wattage = y;
           this.displayDate = new Date(x * 1000);
@@ -55,15 +55,16 @@
     graphSetup = function(transport) {
 
     },
-    animateWindMill = function(speed) {
-      var $rContainer = $('#turbine-rotor-container');
-      var $rotor = $('#turbine-rotor').eq(0);
-
-      var valueS = 13 / speed,
+    animateWindMill = function(speed, percent) {
+      var $rContainer = $('#turbine-rotor-container'),
+        $rotor = $('#turbine-rotor').eq(0),
+        $rotorP = $('#turbine-percentage-complete').eq(0),
+        valueS = 13 / speed,
         value = valueS + 's',
         degPerS = speed*1.9,
         oldTransform = matrixToDeg($rotor.css('transform')),
-        parentTransform = matrixToDeg($rContainer.css('transform'));
+        parentTransform = matrixToDeg($rContainer.css('transform')),
+        percentCSS = (2*percent) + '%';
 
       if( speed === 0 ){
         value = '3000000s';
@@ -83,6 +84,9 @@
       setTimeout(function() {
         $rotor.addClass('animated');
       }, 0);
+
+      $rotorP[0].style.height = percentCSS;
+      $rotorP[0].style.width = percentCSS;
     },
     matrixToDeg = function(tr) {
       var angle = 0;
