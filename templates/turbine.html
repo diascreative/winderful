@@ -6,12 +6,12 @@
       <div id="turbine-percentage" style="opacity: {{ turbine.wattage/10000 }}"></div>
 
       <div id="turbine-rotor" class="animated"
-        style="-webkit-animation-duration: {{ rotationSpeed }};
-        -moz-animation-duration: {{ rotationSpeed }};
-        -ms-animation-duration: {{ rotationSpeed }};
-        -o-animation-duration: {{ rotationSpeed }};
-        animation-duration: {{ rotationSpeed }};">
-        <div id="turbine-percentage-complete" style="width: {{ turbine.currentPercentage*2 }}%; height: {{ turbine.currentPercentage*2 }}%"></div>
+        style="-webkit-animation-duration: {{ rotationSpeed }}s;
+        -moz-animation-duration: {{ rotationSpeed }}s;
+        -ms-animation-duration: {{ rotationSpeed }}s;
+        -o-animation-duration: {{ rotationSpeed }}s;
+        animation-duration: {{ rotationSpeed }}s;">
+        <div id="turbine-percentage-complete" style="width: {{ turbine.percentage*2 }}%; height: {{ turbine.percentage*2 }}%"></div>
       </div>
     </div>
   </div>

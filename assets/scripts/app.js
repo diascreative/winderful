@@ -7,14 +7,12 @@
     $scope.rotationSpeed = 10;
 
     this.graph = {};
-    this.currentPercentage = 0;
+    this.percentage = 0;
     this.speed = 0;
     this.wattage = 0;
     this.displayDate = new Date();
 
     this.hoverDeets = {};
-
-    $scope.prevSpeed = 0;
 
     this.usageExamples = [
       { "action": "That's enough to power", "consumption": 0.00483, "object": "homes", "image": "house" },
@@ -22,65 +20,72 @@
       { "action": "Or making", "consumption": 0.000033, "object": "slices of toasts", "image": "toast" }
     ];
 
-    this.updateStats = function(x, y, percent) {
-      // demand is never under 20,000 and wind is always under 4,000
-      // this is a way to make sure the turbine doesn't rotate at
-      // the demand rate
-      var speed = y/500;
+    this.updateStats = function(date, power, percent) {
+      // change animation speed
+      setTurbineSpeed(power, percent);
 
-      $scope.prevSpeed = speed;
+      // update variables for stats
+      this.wattage = power;
+      this.displayDate = new Date(date * 1000);
+      this.percentage = percent;
 
-      animateWindMill(speed, percent);
+      // if details is from less than 30 mins ago for wording in stats
+      this.isCurrent = (new Date() - this.displayDate) / 60000 < 30;
 
-      this.wattage = y;
-      this.displayDate = new Date(x * 1000);
-      this.isCurrent = (new Date() - this.displayDate) / 60000 < 30; // if details is from less than 30 mins ago
-
-      this.currentPercentage = percent;
-
+      // show random "equivalent of" stat
       this.showExample = Math.round(Math.random() * (this.usageExamples.length-2)) + 1;
-
-      return y + 'MW';
     };
 
     this.setStats = function() {
       this.updateStats(this.hoverDeets.x, this.hoverDeets.y, this.hoverDeets.z);
     };
 
-    var hoverGraph = function(series, x, y, z, a, b, c) {
+    var hoverGraph = function(series, x, y, z, a, b) {
+      // Rickshaw doesn't have a click event
+      // temp store the details of where we hover in case the user clicks here
       this.hoverDeets.x = x;
       this.hoverDeets.y = y;
       this.hoverDeets.z = b.value.z;
 
+      // return format for hover tooltip on graph
       return y + 'MW';
     },
     graphSetup = function(transport) {
 
     },
-    animateWindMill = function(speed, percent) {
+    setTurbineSpeed = function(power, percent) {
       var $rContainer = $('#turbine-rotor-container'),
         $rotor = $('#turbine-rotor').eq(0),
-        $rotorP = $('#turbine-percentage-complete').eq(0),
-        valueS = 13 / speed,
-        value = valueS + 's',
-        degPerS = speed*1.9,
+        value = powerToSpeed(power),
+        degPerS = power * 1.9,
         oldTransform = matrixToDeg($rotor.css('transform')),
         parentTransform = matrixToDeg($rContainer.css('transform'));
 
-      if( speed === 0 ){
-        value = '3000000s';
-      }
-
+      // set the rotation speed of the wind turbine
       $scope.rotationSpeed = value;
 
+      // unfortunately CSS animation speeds do not update automagically
+      // so we need to remove .animated from the $rotor and add it again
+      // in order to trigger the speed change
+      // we could use keyframeanimation in JS but it didn't give as smooth
+      // results as css animation
       $rotor.removeClass('animated').hide();
+
+      // add rotation to the container so that the $rotor is at the same angle
+      // as it was when animation stops momenteraly
       $rContainer.css('transform', 'rotateZ(' + (oldTransform+parentTransform+degPerS) + 'deg)');
 
+      // must add class on a time out to trigger the change in speed
       setTimeout(function() {
         $rotor.addClass('animated').show();
       }, 0);
     },
+    powerToSpeed = function(power) {
+      // if no power, stop the mill
+      return power ? (6500 / power) : 3000000;
+    },
     matrixToDeg = function(tr) {
+      // grab the matrix CSS and transform into degrees
       var angle = 0;
 
       if( tr !== 'none' ) {
@@ -105,7 +110,6 @@
 
       return angle;
     };
-
 
     this.graph.options = {
       renderer: 'area',
