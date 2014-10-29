@@ -22,7 +22,7 @@
           <input type="daterange" class="daterange"
             ng-model="turbine.daterange"
             min-date="2011-05-27"
-            max-date="2014-10-27"
+            max-date="<?= date("Y-m-d") ?>"
             format="L"
             show-dropdowns="true">
         </form>
