@@ -3,7 +3,7 @@
     <div id="turbine-mast"></div>
 
     <div id="turbine-rotor-container">
-      <div id="turbine-percentage" style="opacity: {{ turbine.currentPercentage/50 }}"></div>
+      <div id="turbine-percentage" style="opacity: {{ turbine.wattage/10000 }}"></div>
 
       <div id="turbine-rotor" class="animated"
         style="-webkit-animation-duration: {{ rotationSpeed }};
