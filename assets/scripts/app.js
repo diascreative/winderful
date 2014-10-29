@@ -12,11 +12,13 @@
     this.wattage = 0;
     this.displayDate = new Date();
 
+    this.hoverDeets = {};
+
     $scope.prevSpeed = 0;
 
     this.usageExamples = [
       { "action": "That's enough to power", "consumption": 0.00483, "object": "homes", "image": "house" },
-      { "action": "Or enough to boil the water for", "consumption": 0.000016, "object": "cups of tea", "image": false },
+      { "action": "Or enough to boil the water for", "consumption": 0.000016, "object": "cups of tea", "image": "tea" },
       { "action": "Or making", "consumption": 0.000033, "object": "slices of toasts", "image": "toast" }
     ];
 
@@ -45,10 +47,16 @@
       return y + 'MW';
     };
 
-    var hoverGraph = function(series, x, y, z, a, b, c) {
-      var Y = this.updateStats(x, y, b.value.z);
+    this.setStats = function() {
+      this.updateStats(this.hoverDeets.x, this.hoverDeets.y, this.hoverDeets.z);
+    };
 
-      return Y;
+    var hoverGraph = function(series, x, y, z, a, b, c) {
+      this.hoverDeets.x = x;
+      this.hoverDeets.y = y;
+      this.hoverDeets.z = b.value.z;
+
+      return y + 'MW';
     },
     graphSetup = function(transport) {
 
