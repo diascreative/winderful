@@ -16,6 +16,7 @@ var gulp = require('gulp')
     css: 'static/css',
     sass: 'assets/sass',
     devSass: 'assets/sass/*.sass',
+    devCssLibs: 'assets/sass/libs/*',
     devJsLibs: 'assets/scripts/libs/**/*.js',
     devJs: 'assets/scripts/*.js',
     devImg: 'assets/img/**/*',
@@ -100,6 +101,7 @@ gulp.task('watch', function() {
   gulp.watch(paths.devJs, ['scripts']);
   gulp.watch(paths.devImg, ['styles', 'images']);
   gulp.watch(paths.devSass, ['styles']);
+  gulp.watch(paths.devCssLibs, ['styles']);
 });
 
 // Default Task

@@ -15,8 +15,8 @@
     $scope.prevSpeed = 0;
 
     this.usageExamples = [
-      { "action": "That's enough to power", "consumption": 0.00483, "object": "homes", "image": "home" },
-      { "action": "Or enough to boil the water for", "consumption": 0.000016, "object": "cups of tea" },
+      { "action": "That's enough to power", "consumption": 0.00483, "object": "homes", "image": "house" },
+      { "action": "Or enough to boil the water for", "consumption": 0.000016, "object": "cups of tea", "image": false },
       { "action": "Or making", "consumption": 0.000033, "object": "slices of toasts", "image": "toast" }
     ];
 
