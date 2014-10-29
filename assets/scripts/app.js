@@ -118,7 +118,18 @@
 
     this.graph.features = {
       hover: {
-        formatter: hoverGraph.bind(this)
+        formatter: hoverGraph.bind(this),
+        xFormatter: function(x) {
+            var now = moment().format('X'),
+              time = '';
+
+            if( now - x > 6*24*3600) {
+              time = moment.unix(x).format('LLL');
+            } else {
+              time = moment.unix(x).calendar();
+            }
+            return time;
+        }
       },
       yAxis: {
       },
