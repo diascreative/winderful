@@ -1,7 +1,8 @@
 <!doctype html>
-<html class="no-js" lang="en" ng-app="windTurbineApp">
+<html lang="en" dir="ltr" ng-app="windTurbineApp">
   <head>
-     <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
 
     <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,400italic,400,500,500italic">
     <link rel="stylesheet" type="text/css" href="./static/css/wind.css">

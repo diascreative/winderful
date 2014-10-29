@@ -1,0 +1,17 @@
+Header unset ETag
+FileETag None
+
+Options +FollowSymlinks
+ReWriteEngine on
+ReWriteBase /
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  <FilesMatch ".(svg|ico|pdf|jpg|jpeg|png|gif|js|css|swf|woff)$">
+    ExpiresDefault "access plus 1 month"
+  </FilesMatch>
+</IfModule>
+
+<FilesMatch ".(js|css|html|htm|php|xml|woff)$">
+  SetOutputFilter DEFLATE
+</FilesMatch>
