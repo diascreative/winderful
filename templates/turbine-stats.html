@@ -1,21 +1,23 @@
 <section id="turbine-stats" class="stats">
-  <h1 ng-hide="turbine.isCurrent">On {{ turbine.displayDate | date : 'MMMM d, y' }} at {{ turbine.displayDate | date : 'HH:mm' }}</h1>
-  <h1 ng-show="turbine.isCurrent">Right now</h1>
+  <div class="stat-list">
+    <h1 ng-hide="turbine.isCurrent">On {{ turbine.displayDate | date : 'MMMM d, y' }} at {{ turbine.displayDate | date : 'HH:mm' }}</h1>
+    <h1 ng-show="turbine.isCurrent">Right now</h1>
 
-  <p>
-    <span class="deet"><span>Electricity generated</span></span>
-    <span class="num">{{ turbine.wattage }}</span> MW/h
-  </p>
+    <p>
+      <span class="deet"><span>Electricity generated</span></span>
+      <span class="num">{{ turbine.wattage }}</span> MW/h
+    </p>
 
-  <p>
-    <span id="percent" class="num">{{ turbine.currentPercentage }}</span>%
-    <span class="deet"><span>of the UK's current energy demand</span></span>
-  </p>
+    <p>
+      <span id="percent" class="num">{{ turbine.currentPercentage }}</span>%
+      <span class="deet"><span>of the UK's current energy demand</span></span>
+    </p>
+  </div>
 
   <h4>Equivalent of /</h4>
   <p class="example" ng-repeat="example in turbine.usageExamples">
-    <span class="num">{{ turbine.wattage/example.consumption | number:0 }}</span>
     <img ng-show="example.image" ng-src="./static/img/{{ example.image }}.svg" height="42">
+    <span class="num">{{ turbine.wattage/example.consumption | number:0 }}</span>
     {{ example.object }}
   </p>
 </section>
