@@ -48,8 +48,6 @@
     var hoverGraph = function(series, x, y, z, a, b, c) {
       var Y = this.updateStats(x, y, b.value.z);
 
-      $scope.$digest();
-
       return Y;
     },
     graphSetup = function(transport) {
