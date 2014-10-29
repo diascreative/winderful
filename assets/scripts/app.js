@@ -69,8 +69,7 @@
         value = valueS + 's',
         degPerS = speed*1.9,
         oldTransform = matrixToDeg($rotor.css('transform')),
-        parentTransform = matrixToDeg($rContainer.css('transform')),
-        percentCSS = (2*percent) + '%';
+        parentTransform = matrixToDeg($rContainer.css('transform'));
 
       if( speed === 0 ){
         value = '3000000s';
@@ -90,9 +89,6 @@
       setTimeout(function() {
         $rotor.addClass('animated').show();
       }, 0);
-
-      $rotorP[0].style.height = percentCSS;
-      $rotorP[0].style.width = percentCSS;
     },
     matrixToDeg = function(tr) {
       var angle = 0;
