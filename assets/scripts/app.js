@@ -23,26 +23,22 @@
     ];
 
     this.updateStats = function(x, y, percent) {
-      if( y < 15000 ) {
-        // demand is never under 20,000 and wind is always under 4,000
-        // this is a way to make sure the turbine doesn't rotate at
-        // the demand rate
-        var speed = y/500;
+      // demand is never under 20,000 and wind is always under 4,000
+      // this is a way to make sure the turbine doesn't rotate at
+      // the demand rate
+      var speed = y/500;
 
-        if( speed !==  $scope.prevSpeed ) {
-          $scope.prevSpeed = speed;
+      $scope.prevSpeed = speed;
 
-          animateWindMill(speed, percent);
+      animateWindMill(speed, percent);
 
-          this.wattage = y;
-          this.displayDate = new Date(x * 1000);
+      this.wattage = y;
+      this.displayDate = new Date(x * 1000);
+      this.isCurrent = (new Date() - this.displayDate) / 60000 < 30; // if details is from less than 30 mins ago
 
-          this.hola =(new Date() - this.displayDate) / 60000;
-          this.isCurrent = (new Date() - this.displayDate) / 60000 < 30; // if details is from less than 30 mins ago
+      this.currentPercentage = percent;
 
-          this.currentPercentage = percent;
-        }
-      }
+      this.showExample = Math.round(Math.random() * (this.usageExamples.length-2)) + 1;
 
       return y + 'MW';
     };
