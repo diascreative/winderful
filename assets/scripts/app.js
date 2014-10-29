@@ -81,14 +81,14 @@
       var style = $rotor[0].style;
 
       style.webkitAnimationPlayState = style.mozAnimationPlayState = style.oAnimationPlayState = style.animationPlayState = "paused";
-      $rotor.removeClass('animated');
+      $rotor.removeClass('animated').hide();
       $rContainer.css('transform', 'rotateZ(' + (oldTransform+parentTransform+degPerS) + 'deg)');
 
       style.webkitAnimationDuration = style.mozAnimationDuration = style.oAnimationDuration = style.animationDuration = value;
       style.webkitAnimationPlayState = style.mozAnimationPlayState = style.oAnimationPlayState = style.animationPlayState = "running";
 
       setTimeout(function() {
-        $rotor.addClass('animated');
+        $rotor.addClass('animated').show();
       }, 0);
 
       $rotorP[0].style.height = percentCSS;
