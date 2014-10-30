@@ -49,9 +49,9 @@
 
   $query = "SELECT
               $time,
-              timestamp,
-              demand,
-              wind
+              timestamp as timestamp,
+              AVG(demand) as demand,
+              AVG(wind) as wind
             FROM
               wind_vs_demand
             WHERE

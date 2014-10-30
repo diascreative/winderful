@@ -16,7 +16,7 @@
 
   <h4>Equivalent of /</h4>
   <p class="example" ng-repeat="example in turbine.usageExamples" ng-show="$index == 0 || $index == turbine.showExample">
-    <img ng-show="example.image" ng-src="./static/img/{{ example.image }}.svg" height="42">
+    {{ example.action }}
     <span class="num">{{ turbine.wattage/example.consumption | number:0 }}</span>
     {{ example.object }}
   </p>
