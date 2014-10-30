@@ -15,12 +15,12 @@
     this.hoverDeets = {};
 
     this.usageExamples = [
-      { "action": "powering", "consumption": 0.00483, "object": "homes for a day", "image": "house" },
-      { "action": "Or make", "consumption": 0.00006, "object": "cups of tea", "image": "tea" },
-      { "action": "Or make", "consumption": 0.000033, "object": "slices of toasts", "image": "toast" },
-      { "action": "Or to drive", "consumption": 0.00038, "object": "miles in a Tesla Model S" },
-      { "action": "Or watch", "consumption": 0.000055, "object": "hours of telly" },
-      { "action": "Or power a fridge-freezer for", "consumption": 0.000021, "object": "hours" }
+      { "action": "Powering", "consumption": 0.00483, "object": "homes for a day", "image": "house" },
+      { "action": "Or making", "consumption": 0.00006, "object": "cups of tea", "image": "tea" },
+      { "action": "Or making", "consumption": 0.000033, "object": "slices of toasts", "image": "toast" },
+      { "action": "Or to driving", "consumption": 0.00038, "object": "miles in a Tesla Model S" },
+      { "action": "Or watching", "consumption": 0.000055, "object": "hours of telly" },
+      { "action": "Or powering a fridge-freezer for", "consumption": 0.000021, "object": "hours" }
     ];
 
     this.updateStats = function(date, power, percent) {
