@@ -128,7 +128,6 @@
 
             if( $scope.delta <= 3600*8*24 ) {
               // date range < 10 hours : show every 5 mins
-              console.log(x, now)
               if( now - x > 6*24*3600) {
                 time = moment.unix(x).format('LLL');
               } else {
