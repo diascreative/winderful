@@ -46,7 +46,7 @@
     <turbine></turbine>
 
     <div id="tip">
-      Click the grass for more detail
+      Click the hills for more detail
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
