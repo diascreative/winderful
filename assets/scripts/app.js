@@ -126,11 +126,25 @@
             var now = moment().format('X'),
               time = '';
 
-            if( now - x > 6*24*3600) {
+            if( $scope.delta <= 3600*8*24 ) {
+              // date range < 10 hours : show every 5 mins
+              console.log(x, now)
+              if( now - x > 6*24*3600) {
+                time = moment.unix(x).format('LLL');
+              } else {
+                time = moment.unix(x).calendar();
+              }
+            } else if( $scope.delta <= 3600 * 24 * 30 ) {
+              // date range < 1 week : show every hour
               time = moment.unix(x).format('LLL');
+            } else if( $scope.delta <= 3600 * 24 * 30 * 12 ) {
+              // date range < 1 month : show daily average
+              time = moment.unix(x).format('LL');
             } else {
-              time = moment.unix(x).calendar();
+              // date range < 1 year : show weekly average
+              time = 'week ' + moment.unix(x).format('w') + ' of ' + moment.unix(x).format('YYYY');
             }
+
             return time;
         }
       },
@@ -160,6 +174,8 @@
     $scope.loadInData = function() {
       if( typeof(this.daterange) !== 'undefined' ) {
         var that = this;
+
+        $scope.delta = this.daterange.endDate.unix() - this.daterange.startDate.unix();
 
         $http.get('./json/', { params: { start: this.daterange.startDate.unix(), end: this.daterange.endDate.unix()}})
           .success(function(data) {
