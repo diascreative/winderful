@@ -43,6 +43,10 @@
       ng-click="turbine.setStats()">
     </rickshaw>
 
+    <div id="tip">
+      Click the grass for more detail
+    </div>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <script src="./static/js/libs.js"></script>
