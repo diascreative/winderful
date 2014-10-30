@@ -215,11 +215,17 @@ label
 .rickshaw_graph .y_grid line
   stroke: #fff
 
+.rickshaw_graph .y_ticks path
+  display: none
+
 .rickshaw_graph .y_ticks text,
 .rickshaw_graph .x_ticks_d3 text
   color: #fff
   font: $f-light 12px/16px $f-family
   fill: #fff
+  opacity: 1
+  &:after
+    content: "MW"
 
 .rickshaw_graph .x_tick .title
   color: #fff
