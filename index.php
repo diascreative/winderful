@@ -33,7 +33,7 @@
         <turbine-stats></turbine-stats>
       </div>
 
-      <turbine></turbine>
+      <div class="push"></div>
     </div>
 
     <rickshaw id="chart-container"
@@ -42,6 +42,8 @@
       rickshaw-series="turbine.graph.series"
       ng-click="turbine.setStats()">
     </rickshaw>
+
+    <turbine></turbine>
 
     <div id="tip">
       Click the grass for more detail

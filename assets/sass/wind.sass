@@ -12,7 +12,6 @@ $f-medium: 500
 
 html, body
   height: 100%
-  min-height: 100%
 
 body
   background: #005a6b
@@ -44,6 +43,10 @@ h4
   height: 100%
   margin: 0 auto -248px
 
+.push
+  clear: both
+  height: 248px
+
 .left-side,
 .right-side
   float: left
@@ -52,7 +55,7 @@ h4
 
 .right-side
   float: right
-  max-width: auto
+  max-width: none
   padding-top: 100px
 
 // graph styling
@@ -63,6 +66,7 @@ h4
   overflow: auto
   overflow-y: hidden
   position: relative
+  z-index: 2
 
 #chart
   max-height: 300px
@@ -139,46 +143,54 @@ label
 
 // wind turbine styling
 #wind-turbine-container
+  height: 100%
+  left: 0
+  max-height: 600px
+  position: absolute
+  right: 0
+  transform: translateY(-100%)
+  z-index: 1
+
+#wind-turbine
   bottom: 0
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.3))
+  font-size: 496px
   left: 50%
   position: absolute
   transform: translateX(-50%)
 
-#wind-turbine
-  filter: drop-shadow(0 0 6px rgba(0,0,0,0.3))
-
 #turbine-rotor
   background: transparent url(../img/turbine-rotor.svg) 0 0 no-repeat
-  height: 496px
+  height: 1em
   left: 50%
-  margin: -248px 0 0 -248px
+  margin: -0.5em 0 0 -0.5em
   position: absolute
   top: 50%
   transform-origin: center, center
   transition: all 600ms
-  width: 496px
+  width: 1em
   &.animated
     animation: rotate 2s linear infinite
 
 #turbine-mast
   background: transparent url(../img/turbine-mast.svg) 0 0 no-repeat
-  height: 496px
+  height: 1em
   left: 50%
-  margin: 0 0 0 -38px
+  margin: 0 0 0 -0.08em
   position: relative
-  width: 76px
+  width: 0.16em
 
 #turbine-percentage
   background: rgba(#fff, 0.3)
   border-radius: 50%
   border-radius: 50%
   left: 50%
-  height: 488px
-  margin: -244px 0 0 -244px
+  height: 1em
+  margin: -0.5em 0 0 -0.5em
   position: absolute
   transition: opacity 1s .3s
   top: 50%
-  width: 488px
+  width: 1em
 
 #turbine-percentage-complete
   background: rgba(#fff, 0.25)
@@ -190,13 +202,13 @@ label
   transition: width 1s, height 1s
 
 #turbine-rotor-container
-  bottom: 100%
   left: 50%
   height: 50px
   margin: -25px 0 0 -25px
   position: absolute
-  width: 50px
+  top: 0
   transform-origin: center, center
+  width: 50px
 
 @keyframes rotate
   from

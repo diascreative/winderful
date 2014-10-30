@@ -142,6 +142,18 @@
     this.graph.series = [{"name":"Wind","color":'#007232',"data":[{"x":0,"y":0}]}];
     this.daterange = { startDate: moment().subtract('days', 7), endDate: moment() };
 
+    this.turbineHeight = function() {
+      var height = $(window).height() - 448 + 200;
+
+      height = Math.min(Math.max(200, height), 496);
+
+      return height;
+    };
+
+    window.onresize = function(){
+        $scope.$apply();
+    };
+
     $scope.loadInData = function() {
       if( typeof(this.daterange) !== 'undefined' ) {
         var that = this;
