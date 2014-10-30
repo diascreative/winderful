@@ -42,7 +42,7 @@ h4
   min-height: 100%
   height: auto !important
   height: 100%
-  margin: 0 auto -200px
+  margin: 0 auto -248px
 
 .left-side,
 .right-side
@@ -59,7 +59,7 @@ h4
 #chart-container
   clear: both
   display: block
-  height: 200px
+  height: 248px
   overflow: auto
   overflow-y: hidden
   position: relative
@@ -205,8 +205,12 @@ label
     transform: rotateZ(360deg)
 
 // graph
+.rickshaw_graph
+  border-bottom: solid #6A912D 48px
+
 .rickshaw_graph .x_tick
   border-left: 1px dotted #fff
+  bottom: -44px
 
 .rickshaw_graph .y_grid line
   stroke: #fff
@@ -221,6 +225,7 @@ label
   color: #fff
   font: $f-light 16px/20px $f-family
   fill: #fff
+  margin: 10px
   opacity: 1
 
 .rickshaw_graph .detail .item.active,
