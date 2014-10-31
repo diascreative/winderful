@@ -15,7 +15,7 @@
     this.hoverDeets = {};
 
     this.usageExamples = [
-      { "action": "Powering", "consumption": 0.00483, "object": "homes for a day", "image": "house" },
+      { "action": "Powering", "consumption": 0.000483, "object": "homes", "image": "house" },
       { "action": "Or making", "consumption": 0.00006, "object": "cups of tea", "image": "tea" },
       { "action": "Or making", "consumption": 0.000033, "object": "slices of toast", "image": "toast" },
       { "action": "Or driving", "consumption": 0.00038, "object": "miles in a Tesla Model S" },
