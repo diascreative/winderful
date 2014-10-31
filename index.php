@@ -68,7 +68,7 @@
       <div class="left-side">
         <h1 id="main-title">Winderful</h1>
 
-        <h2>Visualising the UK's wind energy</h2>
+        <h2>A prototype visualising the UK's wind energy</h2>
       </div>
 
       <div class="right-side">
