@@ -15,6 +15,8 @@
 
     this.hoverDeets = {};
 
+    this.iosSafari = /(iPhone|iPod|iPad).*AppleWebKit/i.test(navigator.userAgent);
+
     this.usageExamples = [
       { "action": "Powering", "consumption": 0.000483, "object": "homes", "image": "house" },
       { "action": "Or making", "consumption": 0.00006, "object": "cups of tea", "image": "tea" },
@@ -38,6 +40,11 @@
 
       // show random "equivalent of" stat
       this.showExample = Math.round(Math.random() * (this.usageExamples.length-2)) + 1;
+
+      if( this.iosSafari ) {
+        // IOS not triggering ngclick for some reason on the graph, so temp fix
+        $scope.$apply();
+      }
     };
 
     this.setStats = function() {
@@ -50,6 +57,11 @@
       this.hoverDeets.x = x;
       this.hoverDeets.y = y;
       this.hoverDeets.z = b.value.z;
+
+      if( this.iosSafari ) {
+        // IOS not triggering ngclick for some reason on the graph, so temp fix
+        this.setStats();
+      }
 
       // return format for hover tooltip on graph
       return y + 'MW';
