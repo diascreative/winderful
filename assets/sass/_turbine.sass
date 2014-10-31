@@ -9,12 +9,19 @@
   z-index: -1
 
 #wind-turbine
-  bottom: 0
+  bottom: 120px
   filter: drop-shadow(0 0 6px rgba(0,0,0,0.3))
-  font-size: 496px
+  font-size: 200px
   left: 50%
   position: absolute
   transform: translateX(-50%)
+  transition: font-size 3s, bottom 3s
+  @media (min-width: 421px)
+    bottom: 0
+    font-size: 350px
+  @media (min-width: 724px)
+    bottom: 0
+    font-size: 496px
 
 #turbine-rotor-container
   left: 50%

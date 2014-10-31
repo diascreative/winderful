@@ -4,11 +4,16 @@
 
 .left-side,
 .right-side
-  float: left
-  max-width: 380px
   padding: 20px
 
-.right-side
-  float: right
-  max-width: none
-  padding-top: 100px
+@media (min-width: 820px)
+  .left-side,
+  .right-side
+    float: left
+    max-width: 380px
+
+  .right-side
+    float: right
+    max-width: none
+    padding-top: 100px
+    text-align: right
