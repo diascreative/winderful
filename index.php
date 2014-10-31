@@ -1,5 +1,5 @@
 <?php
-  $domain = $_SERVER[HTTP_HOST];
+  $domain = $_SERVER["HTTP_HOST"];
   $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 ?>
 <!doctype html>
