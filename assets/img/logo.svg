@@ -4,20 +4,5 @@
 	 viewBox="0 0 266 60" enable-background="new 0 0 266 60" xml:space="preserve">
 <g>
 	<text transform="matrix(1.0302 0 0 1 0 47.3965)"><tspan x="0" y="0" fill="#FFFFFF" font-family="'Roboto-Bold'" font-size="46.5081" letter-spacing="-1">W</tspan><tspan x="39.1" y="0" fill="#FFFFFF" font-family="'Roboto-Bold'" font-size="46.5081" letter-spacing="-1.9">IN</tspan><tspan x="80" y="0" fill="#FFFFFF" font-family="'Roboto-Bold'" font-size="46.5081" letter-spacing="-1">D</tspan><tspan x="108.9" y="0" fill="#FFFFFF" font-family="'Roboto-Bold'" font-size="46.5081">E</tspan><tspan x="133.8" y="0" fill="#FFFFFF" font-family="'Roboto-Bold'" font-size="46.5081" letter-spacing="-1">RFU</tspan><tspan x="215.7" y="0" fill="#FFFFFF" font-family="'Roboto-Bold'" font-size="46.5081">L</tspan></text>
-	<g>
-		<g>
-			<path fill="#FFFFFF" d="M256.6,9.1c0,0.4-0.1,0.8-0.2,1.2c-0.1,0.4-0.3,0.7-0.5,0.9c-0.2,0.2-0.5,0.4-0.8,0.6
-				c-0.3,0.1-0.7,0.2-1,0.2s-0.7-0.1-1-0.2c-0.3-0.1-0.6-0.3-0.8-0.6c-0.2-0.2-0.4-0.5-0.5-0.9c-0.1-0.4-0.2-0.8-0.2-1.2V8.8
-				c0-0.4,0.1-0.8,0.2-1.2c0.1-0.4,0.3-0.7,0.5-0.9c0.2-0.2,0.5-0.4,0.8-0.6c0.3-0.1,0.7-0.2,1-0.2c0.4,0,0.7,0.1,1,0.2
-				c0.3,0.1,0.6,0.3,0.8,0.6c0.2,0.2,0.4,0.6,0.5,0.9c0.1,0.4,0.2,0.8,0.2,1.2V9.1z M255.4,8.8c0-0.6-0.1-1.1-0.3-1.4
-				c-0.2-0.3-0.5-0.5-1-0.5s-0.7,0.2-1,0.5c-0.2,0.3-0.3,0.8-0.3,1.4v0.3c0,0.3,0,0.6,0.1,0.8c0.1,0.2,0.1,0.4,0.3,0.6
-				c0.1,0.2,0.2,0.3,0.4,0.4c0.2,0.1,0.3,0.1,0.6,0.1c0.4,0,0.7-0.2,1-0.5c0.2-0.3,0.3-0.8,0.3-1.4V8.8z"/>
-			<path fill="#FFFFFF" d="M257.5,11.9V6h1.9c0.4,0,0.8,0.1,1.1,0.2c0.3,0.1,0.6,0.3,0.9,0.6c0.2,0.2,0.4,0.5,0.6,0.9
-				c0.1,0.3,0.2,0.7,0.2,1.1v0.3c0,0.4-0.1,0.8-0.2,1.1c-0.1,0.3-0.3,0.6-0.6,0.9c-0.2,0.2-0.5,0.4-0.9,0.6
-				c-0.3,0.1-0.7,0.2-1.1,0.2H257.5z M258.8,7v3.9h0.6c0.5,0,0.9-0.2,1.1-0.5s0.4-0.8,0.4-1.3V8.8c0-0.6-0.1-1-0.4-1.4
-				c-0.3-0.3-0.6-0.5-1.1-0.5H258.8z"/>
-		</g>
-		<ellipse fill="none" stroke="#FFFFFF" stroke-width="1.2125" stroke-miterlimit="10" cx="256.8" cy="8.9" rx="8.2" ry="7.9"/>
-	</g>
 </g>
 </svg>
