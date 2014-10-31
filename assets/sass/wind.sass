@@ -33,6 +33,15 @@ h4
   font-size: 18px
   font-weight: $f-light
 
+a
+  color: #fff
+  opacity: .5
+  text-decoration: none
+  transition: opacity .3s
+  &:hover,
+  &:focus
+    opacity: 1
+
 // Form
 #form
   margin: 0 0 20px
@@ -52,3 +61,12 @@ h4
 
 label
   font: $f-light 18px/22px $f-family
+
+// social
+#social
+  position: absolute
+  right: 20px
+  top: 20px
+  a
+    display: inline-block
+    margin: 0 0 0 10px
