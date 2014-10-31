@@ -20,7 +20,7 @@
       { "action": "Or making", "consumption": 0.000033, "object": "slices of toasts", "image": "toast" },
       { "action": "Or to driving", "consumption": 0.00038, "object": "miles in a Tesla Model S" },
       { "action": "Or watching", "consumption": 0.000055, "object": "hours of telly" },
-      { "action": "Or powering a fridge-freezer for", "consumption": 0.000021, "object": "hours" }
+      { "action": "Or powering", "consumption": 0.000021*24, "object": "fridge-freezers for a day" }
     ];
 
     this.updateStats = function(date, power, percent) {
@@ -157,18 +157,6 @@
 
     this.graph.series = [{"name":"Wind","color":'#007232',"data":[{"x":0,"y":0}]}];
     this.daterange = { startDate: moment().subtract('days', 7), endDate: moment() };
-
-    this.turbineHeight = function() {
-      var height = $(window).height() - 448 + 200;
-
-      height = Math.min(Math.max(200, height), 496);
-
-      return height;
-    };
-
-    window.onresize = function(){
-        $scope.$apply();
-    };
 
     $scope.loadInData = function() {
       if( typeof(this.daterange) !== 'undefined' ) {
