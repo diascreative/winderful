@@ -30,15 +30,22 @@
     <meta name="twitter:image" content="http://<?= $domain ?>/static/img/screenshot.png" />
     <meta name="twitter:url" content="<?= $url ?>" />
 
-
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="viewport" content="width=device-width, user-scalable=no">
+
+    <style type="text/css">
+      <?php require_once('./static/css/above-fold.css'); ?>
+    </style>
 
     <link rel="stylesheet" type="text/css"
       href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,400italic,400,500,500italic">
     <link rel="stylesheet" type="text/css" href="./static/css/wind.css">
   </head>
-  <body ng-controller="turbineController as turbine">
+  <body ng-controller="turbineController as turbine" class="loading" ng-class="{ 'loading': !turbine.loaded }">
+    <div id="loading" ng-hide="turbine.loaded">
+      <div class="load-icon"></div>
+    </div>
+
     <div class="wrapper">
       <nav id="nav">
         <a href="#about" class="scroll-to">About</a>

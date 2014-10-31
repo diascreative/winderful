@@ -11,6 +11,7 @@
     this.speed = 0;
     this.wattage = 0;
     this.displayDate = new Date();
+    this.loaded = false;
 
     this.hoverDeets = {};
 
@@ -54,7 +55,6 @@
       return y + 'MW';
     },
     graphSetup = function(transport) {
-
     },
     setTurbineSpeed = function(power, percent) {
       var $rContainer = $('#turbine-rotor-container'),
@@ -170,6 +170,8 @@
             var lastValue = data[0].data.pop();
 
             that.updateStats(lastValue.x, lastValue.y, lastValue.z);
+
+            that.loaded = true;
           });
       }
 
