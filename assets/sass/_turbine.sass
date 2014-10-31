@@ -1,0 +1,81 @@
+// wind turbine styling
+#wind-turbine-container
+  height: 100%
+  left: 0
+  max-height: 600px
+  position: absolute
+  right: 0
+  transform: translateY(-100%)
+  z-index: -1
+
+#wind-turbine
+  bottom: 120px
+  filter: drop-shadow(0 0 6px rgba(0,0,0,0.3))
+  font-size: 200px
+  left: 50%
+  position: absolute
+  transform: translateX(-50%)
+  transition: font-size 3s, bottom 3s
+  @media (min-width: 421px)
+    bottom: 0
+    font-size: 350px
+  @media (min-width: 724px)
+    bottom: 0
+    font-size: 496px
+
+#turbine-rotor-container
+  left: 50%
+  height: 50px
+  margin: -25px 0 0 -25px
+  position: absolute
+  top: 0
+  transform-origin: center, center
+  width: 50px
+
+#turbine-rotor
+  background: transparent url(../img/turbine-rotor.svg) 0 0 no-repeat
+  height: 1em
+  left: 50%
+  margin: -0.5em 0 0 -0.5em
+  position: absolute
+  top: 50%
+  transform-origin: center, center
+  transition: all 600ms
+  width: 1em
+  &.animated
+    animation: rotate 2s linear infinite
+
+#turbine-mast
+  background: transparent url(../img/turbine-mast.svg) 0 0 no-repeat
+  height: 1em
+  left: 50%
+  margin: 0 0 0 -0.08em
+  position: relative
+  width: 0.16em
+
+#turbine-percentage
+  background: rgba(#fff, 0.3)
+  border-radius: 50%
+  border-radius: 50%
+  left: 50%
+  height: 1em
+  margin: -0.5em 0 0 -0.5em
+  position: absolute
+  transition: opacity 1s .3s
+  top: 50%
+  width: 1em
+
+#turbine-percentage-complete
+  background: rgba(#fff, 0.25)
+  border-radius: 50%
+  left: 50%
+  position: absolute
+  top: 50%
+  transform: translate(-50%, -50%)
+  transition: width 1s, height 1s
+
+@keyframes rotate
+  from
+    transform: rotateZ(0deg)
+  to
+    transform: rotateZ(360deg)

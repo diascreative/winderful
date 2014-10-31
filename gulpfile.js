@@ -1,6 +1,7 @@
 var gulp = require('gulp')
   , uglify = require('gulp-uglify')
-  , compass = require('gulp-compass')
+  , sass = require('gulp-ruby-sass')
+  , autoprefixer = require('gulp-autoprefixer')
   , minify = require('gulp-minify-css')
   , jshint = require('gulp-jshint')
   , concat = require('gulp-concat')
@@ -15,15 +16,11 @@ var gulp = require('gulp')
     css: 'static/css',
     sass: 'assets/sass',
     devSass: 'assets/sass/*.sass',
+    devCssLibs: 'assets/sass/libs/*',
     devJsLibs: 'assets/scripts/libs/**/*.js',
     devJs: 'assets/scripts/*.js',
     devImg: 'assets/img/**/*',
     img: 'static/img'
-  }
-  , compassSettings = {
-    style: 'compressed',
-    css: paths.css,
-    sass: paths.sass
   }
   ,
   reportError = function(err) {
@@ -37,7 +34,7 @@ var gulp = require('gulp')
 gulp.task('libs', function() {
   return gulp.src(paths.devJsLibs)
     .pipe(concat('libs.js'))
-    .pipe(uglify())
+    // .pipe(uglify())
     .pipe(gulp.dest('static/js'));
 });
 
@@ -46,7 +43,7 @@ gulp.task('scripts', function() {
     .pipe(gulpIgnore(paths.devJsLibs))
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
-    .pipe(concat('main.js'))
+    .pipe(concat('app.js'))
     .pipe(
       uglify()
       .on('error',
@@ -72,13 +69,19 @@ gulp.task('images', function() {
 gulp.task('styles', function() {
   var c = gulp.src(paths.devSass)
     .pipe(
-      compass(compassSettings)
+      sass({ style: 'compressed'})
       .on('error',
         notify.onError(function (err) {
           c.end();
           return reportError(err);
         })
       )
+    )
+    .pipe(
+      autoprefixer({
+        browsers: ['last 4 versions'],
+        cascade: false
+      })
     )
     .pipe(gulp.dest(paths.css))
     .pipe(notify({ message: 'Styles task complete' }));
@@ -98,6 +101,7 @@ gulp.task('watch', function() {
   gulp.watch(paths.devJs, ['scripts']);
   gulp.watch(paths.devImg, ['styles', 'images']);
   gulp.watch(paths.devSass, ['styles']);
+  gulp.watch(paths.devCssLibs, ['styles']);
 });
 
 // Default Task

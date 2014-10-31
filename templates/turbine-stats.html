@@ -1,0 +1,23 @@
+<section id="turbine-stats" class="stats">
+  <div class="stat-list">
+    <h1 ng-hide="turbine.isCurrent">On {{ turbine.displayDate | date : 'MMMM d, y' }} at {{ turbine.displayDate | date : 'HH:mm' }}</h1>
+    <h1 ng-show="turbine.isCurrent">Right now</h1>
+
+    <p>
+      <span class="deet"><span>Electricity generated</span></span>
+      <span class="num">{{ turbine.wattage }}</span> MW/h
+    </p>
+
+    <p>
+      <span id="percent" class="num">{{ turbine.percentage }}%</span>
+      <span class="deet"><span>of the UK's current energy demand</span></span>
+    </p>
+  </div>
+
+  <h4>Equivalent of /</h4>
+  <p class="example" ng-repeat="example in turbine.usageExamples" ng-show="$index == 0 || $index == turbine.showExample">
+    {{ example.action }}
+    <span class="num">{{ turbine.wattage/example.consumption | number:0 }}</span>
+    {{ example.object }}
+  </p>
+</section>

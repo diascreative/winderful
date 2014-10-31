@@ -1,100 +1,72 @@
-@import "compass"
-@import "libs/jquery.datetimepicker"
+@import "variables"
+
+@import "libs/normalize"
+@import "libs/date-picker"
+@import "libs/rickshaw"
+
+@import "layout"
+@import "stats"
+@import "graph"
+@import "turbine"
+@import "about"
 
 body
-  background-color: #efe
+  background: $c-main
+  background: linear-gradient(to bottom,  $c-main 1%,#0087a0 13%,#33c3dd 69%,#99e1ee 100%) 0 0
+  color: #fff
+  font: $f-medium #{$f-size}/#{$f-height} $f-family
+  overflow: auto
+  overflow-y: scroll
 
-#chart_container
-  background: #369
-  display: inline-block
-  position: relative
+h1,
+h2
+  font-size: 26px
+  font-family: $f-family
+  line-height: 30px
+  margin: 0
 
-#legend
-  background: rgba(#fff, .6)
-  bottom: 60px
-  left: 20px
-  padding: 5px 10px
-  position: absolute
-  ul
-    margin: 0
-    padding: 0
-  li
-    display: block
-  .swatch
-    display: inline-block
-    height: 10px
-    margin: 0 5px 0 0
-    vertical-align: middle
-    width: 10px
-
-#wind-turbine-container
-  display: inline-block
-  margin: 0 0 0 21px
-  position: relative
-  vertical-align: bottom
-  width: 40%
-
-#turbine-mast,
-#turbine-rotor,
-.rotor-blade,
-.rotor-tip
-  background-color: white
-  background-image: -webkit-linear-gradient(top, #ffffff 0%, #e5e5e5 100%)
-  background-image: linear-gradient(to bottom, #ffffff 0%, #e5e5e5 100%)
-  border: 1px solid grey
-
-#turbine-mast
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5)
-  height: 250px
-  left: 50%
-  margin: 0 0 0 -10px
-  position: relative
-  width: 20px
-
-#turbine-rotor
-  border-radius: 50%
-  bottom: 250px
-  height: 50px
-  left: 50%
-  margin: 0 0 0 -25px
-  position: absolute
-  width: 50px
-
-.rotor-blade
-  background-color: green
-  border-radius: 100% 15%
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5)
-  height: 30px
-  left: 25px
-  position: absolute
-  top: 10px
-  +transform-origin(left)
-  width: 200px
-
-.blade1
-  +transform(rotate(90deg))
-
-.blade2
-  +transform(rotate(325deg))
-
-.blade3
-  +transform(rotate(205deg))
-
-.rotor-tip
-  background-color: white
-  background-image: -webkit-radial-gradient(center, ellipse cover, #ffffff 0%, #fcfcfc 47%, #0c0c0c 53%, #fcfcfc 60%, #e5e5e5 100%)
-  background-image: radial-gradient(center, ellipse cover, #ffffff 0%, #fcfcfc 47%, #0c0c0c 53%, #fcfcfc 60%, #e5e5e5 100%)
-  border-radius: 50%
-  left: 9px
-  height: 30px
-  position: absolute
-  top: 9px
-  width: 30px
-  z-index: 1
+h2
+  font-size: 16px
+  font-weight: $f-light
 
 h4
-  background-color: lightgray
-  display: inline-block
-  margin-left: 30px
-  padding: 10px
-  border: 1px solid darkgray
+  font-size: 18px
+  font-weight: $f-light
+
+a
+  color: #fff
+  opacity: .5
+  text-decoration: none
+  transition: opacity .3s
+  &:hover,
+  &:focus
+    opacity: 1
+
+// Form
+#form
+  margin: 0 0 20px
+
+.daterange
+  background: transparent
+  border: solid 2px #fff
+  font: $f-medium 24px/28px $f-family
+  &:after
+    border-bottom: 9px solid #fff
+    border-left: 9px solid transparent
+    bottom: 1px
+    content: ""
+    height: 0
+    right: 1px
+    width: 0
+
+label
+  font: $f-light 18px/22px $f-family
+
+// social
+#social
+  position: absolute
+  right: 20px
+  top: 20px
+  a
+    display: inline-block
+    margin: 0 0 0 10px

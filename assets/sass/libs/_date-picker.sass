@@ -1,0 +1,113 @@
+.daterangepicker
+  background: #fff
+  box-shadow: 0 0 15px 0 rgba(0,0,0,0.75)
+  color: #333
+  display: none
+  font: $f-light 14px/18px $f-family
+  left: 20px
+  position: absolute
+  top: 100px
+  z-index: 100
+
+  .ranges
+    background: #fff
+    bottom: 0
+    left: 0
+    padding: 10px 20px
+    position: absolute
+    right: 0
+    text-align: center
+
+  .daterangepicker_start_input,
+  .daterangepicker_end_input
+    display: none
+
+  .calendar
+    float: left
+    padding: 0 16px 47px 30px
+    position: relative
+    &:before,
+    &:after
+      background: $c-main
+      content: ''
+      left: 0
+      height: 29px
+      position: absolute
+      top: 0
+      width: 30px
+    &:after
+      left: auto
+      width: 16px
+      right: 0
+    &.right
+      border-left: 1px dashed #808080
+      float: right
+      padding: 0 30px 47px 16px
+      &:before
+        width: 16px
+      &:after
+        width: 30px
+    thead
+      tr:first-of-type
+        background: $c-main
+        th
+          padding: 0
+      select
+        background: none
+        border: none
+        color: #fff
+        font-size: 18px
+        line-height: 22px
+        margin: 2px 0 3px
+
+    tr:last-of-type th
+      padding-bottom: 7px
+      padding-top: 5px
+
+    th,
+    td
+      font-weight: $f-light
+      min-height: 28px
+      min-width: 28px
+      padding: 4px 0 7px
+      text-align: center
+      white-space: nowrap
+      &.available
+        cursor: pointer
+      &.in-range
+        background: rgba(#0087A0, 0.5)
+        color: #fff
+      &.start-date,
+      &.end-date,
+      &.available:hover
+        background: #0087A0
+        color: #fff
+      &.disabled,
+      &.available.off
+        color: #b3b3b3
+
+  .calendar-time
+    text-align: center
+
+  .next
+    text-align: right
+
+  .icon-arrow-left,
+  .icon-arrow-right
+    background: url(../img/arrow-l.svg) 50% 50% no-repeat
+    display: inline-block
+    height: 15px
+    width: 15px
+
+  .icon-arrow-right
+    background-image: url(../img/arrow-r.svg)
+
+  .btn
+    background: $c-main
+    border: none
+    color: #fff
+    padding: 3px 15px 5px
+    text-transform: lowercase
+    transition: background 0.3s
+    &:hover
+      background: lighten($c-main, 20%)
