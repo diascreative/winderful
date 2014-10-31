@@ -1,4 +1,6 @@
 <?php
+  require_once("./inc/init.php");
+
   $domain = $_SERVER["HTTP_HOST"];
   $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 ?>
@@ -116,6 +118,15 @@
         window.open (url, 'win', 'menubar=0,resizable=1,width=' + w +
                                                     ', height=' + w + ', top=' + top + ', left=' + left);
       });
-    </script>
+      <?php if ( ANALYTICS ): ?>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', '<?= ANALYTICS ?>', 'auto');
+      ga('send', 'pageview');
+      <?php endif; ?>
+      </script>
   </body>
 </html>

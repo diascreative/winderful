@@ -4,3 +4,4 @@
   define("DB_NAME", "power");
   define("DB_USER", "root");
   define("DB_PASS", "");
+  define("ANALYTICS", "");
