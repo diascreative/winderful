@@ -54,14 +54,17 @@ a
 // social
 #nav
   padding: 20px 0 0
-  @media (min-width: 421px)
-    padding: 20px 35px
+  text-align: center
   a
     display: inline-block
     margin: 0 0 0 20px
     vertical-align: middle
+    &:first-of-type
+      margin-left: 0
   .twitter
     margin-left: 10px
+  @media (min-width: 421px)
+    padding: 20px 35px
   @media (min-width: 600px)
     position: absolute
     right: 0
