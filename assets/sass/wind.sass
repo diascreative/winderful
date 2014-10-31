@@ -44,7 +44,10 @@ a
 
 // Form
 #form
+  display: none
   margin: 0 0 20px
+  @media (min-width: 421px)
+    display: block
 
 .daterange
   background: transparent
@@ -64,12 +67,16 @@ label
 
 // social
 #nav
-  position: absolute
-  right: 20px
-  top: 20px
+  padding: 20px 0 0
+  @media (min-width: 421px)
+    padding: 20px
   a
     display: inline-block
-    margin: 0 0 0 30px
+    margin: 0 0 0 20px
     vertical-align: middle
   .twitter
     margin-left: 10px
+  @media (min-width: 600px)
+    position: absolute
+    right: 0
+    top: 0

@@ -40,29 +40,6 @@
   </head>
   <body ng-controller="turbineController as turbine">
     <div class="wrapper">
-      <div class="left-side">
-        <h1>
-          <img src="./static/img/logo.svg" alt="Winderful"
-             width="266" height="66">
-        </h1>
-        <h2>Visualising the UK's wind energy</h2>
-
-        <form id="form" action="./json" method="get">
-          <label>Choose a date range :</label>
-
-          <input type="daterange" class="daterange"
-            ng-model="turbine.daterange"
-            min-date="2011-05-27"
-            max-date="<?= date("Y-m-d") ?>"
-            format="L"
-            show-dropdowns="true">
-        </form>
-      </div>
-
-      <div class="right-side">
-        <turbine-stats></turbine-stats>
-      </div>
-
       <nav id="nav">
         <a href="#about" class="scroll-to">About</a>
 
@@ -80,6 +57,30 @@
 
         <a href="//diascreative.com" target="_blank">Made by DIAS_</a>
       </nav>
+
+      <div class="left-side">
+        <h1>
+          <img src="./static/img/logo.svg" alt="Winderful"
+             width="266" height="66">
+        </h1>
+
+        <h2>Visualising the UK's wind energy</h2>
+
+        <form id="form" action="./json" method="get">
+          <label>Choose a date range :</label>
+
+          <input type="daterange" class="daterange"
+            ng-model="turbine.daterange"
+            min-date="2011-05-27"
+            max-date="<?= date("Y-m-d") ?>"
+            format="L"
+            show-dropdowns="true">
+        </form>
+      </div>
+
+      <div class="right-side">
+        <turbine-stats></turbine-stats>
+      </div>
 
       <div class="push"></div>
     </div>

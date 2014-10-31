@@ -2,11 +2,13 @@
 #wind-turbine-container
   height: 100%
   left: 0
-  max-height: 600px
   position: absolute
+  overflow: hidden
   right: 0
   transform: translateY(-100%)
   z-index: -1
+  @media (min-width: 820px)
+    overflow: visible
 
 #wind-turbine
   bottom: 120px

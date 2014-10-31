@@ -4,6 +4,7 @@
   app.directive('turbine', function() {
     return {
       restrict: 'E',
+      replace: true,
       templateUrl: './templates/turbine.html'
     };
   });
