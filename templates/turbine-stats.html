@@ -14,7 +14,7 @@
     </p>
   </div>
 
-  <h4>Equivalent of /</h4>
+  <h4>Equivalent of :</h4>
   <p class="example" ng-repeat="example in turbine.usageExamples" ng-show="$index == 0 || $index == turbine.showExample">
     {{ example.action }}
     <span class="num">{{ turbine.wattage/example.consumption | number:0 }}</span>

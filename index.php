@@ -47,13 +47,8 @@
         </h1>
         <h2>Visualising the UK's wind energy</h2>
 
-        <p>
-          Winderful helps quantify the UK's wind energy and translate it into
-          useful everyday goodness.
-        </p>
-
         <form id="form" action="./json" method="get">
-          <label>Choose a date range/</label>
+          <label>Choose a date range :</label>
 
           <input type="daterange" class="daterange"
             ng-model="turbine.daterange"
@@ -68,19 +63,23 @@
         <turbine-stats></turbine-stats>
       </div>
 
-      <div id="social">
-        <a title="Share on Facebook" target="_blank"
+      <nav id="nav">
+        <a href="#about" class="scroll-to">About</a>
+
+        <a title="Share on Facebook" class="social"
           href="http://www.facebook.com/sharer.php?u=<?= $url ?>">
           <img src="./static/img/fb.svg" alt="Share on Facebook"
-            height="48" width="48">
+            height="32" width="32">
         </a>
 
-        <a title="Share on Twitter" target="_blank"
+        <a title="Share on Twitter" class="twitter social"
           href="http://twitter.com/share?text=Winderful+-+visualising+UK's+%23windenergy+in+real+time.+Made+by+@diascreative&amp;url=<?= $url ?>">
           <img src="./static/img/twitter.svg" alt="Share on Twitter"
-            height="48" width="48">
+            height="32" width="32">
         </a>
-      </div>
+
+        <a href="//diascreative.com" target="_blank">Made by DIAS_</a>
+      </nav>
 
       <div class="push"></div>
     </div>
@@ -106,7 +105,7 @@
     <script src="./static/js/app.js"></script>
 
     <script type="text/javascript">
-      $('#social a').on('click', function(e) {
+      $('a.social').on('click', function(e) {
         e.preventDefault();
 
         var w = 600,
@@ -117,6 +116,20 @@
 
         window.open (url, 'win', 'menubar=0,resizable=1,width=' + w +
                                                     ', height=' + w + ', top=' + top + ', left=' + left);
+      });
+
+      $('.scroll-to').on('click', function(e) {
+        var id = $(this).attr('href'),
+          $scrollToItem = $(id);
+
+        if( $scrollToItem.length ) {
+          e.preventDefault();
+
+          $('html, body').animate({
+            scrollTop: $scrollToItem.offset().top
+          }, 600);
+
+        }
       });
       <?php if ( ANALYTICS ): ?>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
