@@ -33,6 +33,15 @@ h4
   font-size: 18px
   font-weight: $f-light
 
+#main-title
+  font-size: 48px
+  font-weight: $f-medium
+  line-height: 48px
+  text-transform: uppercase
+  & + h2
+    line-height: 20px
+    margin-bottom: 24px
+
 a
   color: #fff
   opacity: .5
@@ -53,23 +62,19 @@ a
   background: transparent
   border: solid 2px #fff
   font: $f-medium 24px/28px $f-family
-  &:after
-    border-bottom: 9px solid #fff
-    border-left: 9px solid transparent
-    bottom: 1px
-    content: ""
-    height: 0
-    right: 1px
-    width: 0
+  margin-left: -5px
+  padding: 2px 10px
 
 label
+  display: block
   font: $f-light 18px/22px $f-family
+  padding-bottom: 16px
 
 // social
 #nav
   padding: 20px 0 0
   @media (min-width: 421px)
-    padding: 20px
+    padding: 20px 35px
   a
     display: inline-block
     margin: 0 0 0 20px

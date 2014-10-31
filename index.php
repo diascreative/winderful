@@ -66,10 +66,7 @@
       </nav>
 
       <div class="left-side">
-        <h1>
-          <img src="./static/img/logo.svg" alt="Winderful"
-             width="266" height="66">
-        </h1>
+        <h1 id="main-title">Winderful</h1>
 
         <h2>Visualising the UK's wind energy</h2>
 
