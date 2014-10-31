@@ -18,7 +18,7 @@
       { "action": "Powering", "consumption": 0.00483, "object": "homes for a day", "image": "house" },
       { "action": "Or making", "consumption": 0.00006, "object": "cups of tea", "image": "tea" },
       { "action": "Or making", "consumption": 0.000033, "object": "slices of toast", "image": "toast" },
-      { "action": "Or to driving", "consumption": 0.00038, "object": "miles in a Tesla Model S" },
+      { "action": "Or driving", "consumption": 0.00038, "object": "miles in a Tesla Model S" },
       { "action": "Or watching", "consumption": 0.000055, "object": "hours of telly" },
       { "action": "Or powering", "consumption": 0.0005, "object": "fridge-freezers for a day" }
     ];
