@@ -69,17 +69,6 @@
         <h1 id="main-title">Winderful</h1>
 
         <h2>Visualising the UK's wind energy</h2>
-
-        <form id="form" action="./json" method="get">
-          <label>Choose a date range :</label>
-
-          <input type="daterange" class="daterange"
-            ng-model="turbine.daterange"
-            min-date="2011-05-27"
-            max-date="<?= date("Y-m-d") ?>"
-            format="L"
-            show-dropdowns="true">
-        </form>
       </div>
 
       <div class="right-side">
@@ -101,6 +90,17 @@
     <div id="tip">
       Click the hills for more detail
     </div>
+
+    <form id="form" action="./json" method="get">
+      <label>Choose a date range :</label>
+
+      <input type="daterange" class="daterange"
+        ng-model="turbine.daterange"
+        min-date="2011-05-27"
+        max-date="<?= date("Y-m-d") ?>"
+        format="DD/MM/YYYY"
+        show-dropdowns="true">
+    </form>
 
     <section id="about" turbine-about></section>
 
