@@ -17,7 +17,7 @@
     <meta name="description" content="Winderful is an experiment using realtime data to visualise and tell stories about wind energy."/>
 
     <!-- Facebook metas -->
-    <meta property="og:title" content="Winderful'"/>
+    <meta property="og:title" content="Winderful"/>
     <meta property="og:type" content="website"/>
     <meta property="og:site_name" content="<?= $domain ?>"/>
     <meta property="og:image" content="http://<?= $domain ?>/static/img/screenshot.png"/>
