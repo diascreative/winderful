@@ -1,21 +1,18 @@
-// fonts
-$f-family: Roboto, Helvetica, Arial, sans-serif
-$f-size: 14px
-$f-height: 18px
-$f-light: 300
-$f-regular: 400
-$f-medium: 500
+@import "variables"
 
 @import "libs/normalize"
 @import "libs/date-picker"
 @import "libs/rickshaw"
 
-html, body
-  height: 100%
+@import "layout"
+@import "stats"
+@import "graph"
+@import "turbine"
+@import "about"
 
 body
-  background: #005a6b
-  background: linear-gradient(to bottom,  #005a6b 1%,#0087a0 13%,#33c3dd 69%,#99e1ee 100%) fixed
+  background: $c-main
+  background: linear-gradient(to bottom,  $c-main 1%,#0087a0 13%,#33c3dd 69%,#99e1ee 100%) 0 0
   color: #fff
   font: $f-medium #{$f-size}/#{$f-height} $f-family
   overflow: auto
@@ -36,91 +33,6 @@ h4
   font-size: 18px
   font-weight: $f-light
 
-// layout
-.wrapper
-  min-height: 100%
-  height: auto !important
-  height: 100%
-  margin: 0 auto -248px
-
-.push
-  clear: both
-  height: 248px
-
-.left-side,
-.right-side
-  float: left
-  max-width: 380px
-  padding: 20px
-
-.right-side
-  float: right
-  max-width: none
-  padding-top: 100px
-
-// graph styling
-#chart-container
-  clear: both
-  display: block
-  height: 248px
-  overflow: auto
-  overflow-y: hidden
-  position: relative
-  z-index: 2
-
-#chart
-  max-height: 300px
-
-#legend
-  background: rgba(#fff, .6)
-  bottom: 60px
-  left: 20px
-  padding: 5px 10px
-  position: absolute
-  ul
-    margin: 0
-    padding: 0
-  li
-    display: block
-  .swatch
-    display: inline-block
-    height: 10px
-    margin: 0 5px 0 0
-    vertical-align: middle
-    width: 10px
-
-// stats
-.stats
-  text-align: right
-
-  p
-    margin: 16px 0
-
-  h4
-    margin: 34px 0 0
-
-.stat-list
-  display: inline-block
-  max-width: 300px
-
-.num
-  font-size: 36px
-  line-height: 32px
-  vertical-align: bottom
-
-.deet
-  display: block
-  margin: 0 0 6px
-  span
-    display: inline-block
-    max-width: 150px
-
-.example
-  white-space: nowrap
-  img
-    margin: 0 10px
-    vertical-align: bottom
-
 // Form
 #form
   margin: 0 0 20px
@@ -140,142 +52,3 @@ h4
 
 label
   font: $f-light 18px/22px $f-family
-
-// wind turbine styling
-#wind-turbine-container
-  height: 100%
-  left: 0
-  max-height: 600px
-  position: absolute
-  right: 0
-  transform: translateY(-100%)
-  z-index: -1
-
-#wind-turbine
-  bottom: 0
-  filter: drop-shadow(0 0 6px rgba(0,0,0,0.3))
-  font-size: 496px
-  left: 50%
-  position: absolute
-  transform: translateX(-50%)
-
-#turbine-rotor
-  background: transparent url(../img/turbine-rotor.svg) 0 0 no-repeat
-  height: 1em
-  left: 50%
-  margin: -0.5em 0 0 -0.5em
-  position: absolute
-  top: 50%
-  transform-origin: center, center
-  transition: all 600ms
-  width: 1em
-  &.animated
-    animation: rotate 2s linear infinite
-
-#turbine-mast
-  background: transparent url(../img/turbine-mast.svg) 0 0 no-repeat
-  height: 1em
-  left: 50%
-  margin: 0 0 0 -0.08em
-  position: relative
-  width: 0.16em
-
-#turbine-percentage
-  background: rgba(#fff, 0.3)
-  border-radius: 50%
-  border-radius: 50%
-  left: 50%
-  height: 1em
-  margin: -0.5em 0 0 -0.5em
-  position: absolute
-  transition: opacity 1s .3s
-  top: 50%
-  width: 1em
-
-#turbine-percentage-complete
-  background: rgba(#fff, 0.25)
-  border-radius: 50%
-  left: 50%
-  position: absolute
-  top: 50%
-  transform: translate(-50%, -50%)
-  transition: width 1s, height 1s
-
-#turbine-rotor-container
-  left: 50%
-  height: 50px
-  margin: -25px 0 0 -25px
-  position: absolute
-  top: 0
-  transform-origin: center, center
-  width: 50px
-
-@keyframes rotate
-  from
-    transform: rotateZ(0deg)
-  to
-    transform: rotateZ(360deg)
-
-#tip
-  color: rgba(#fff, .5)
-  left: 20px
-  margin-top: -320px
-  max-width: 120px
-  position: absolute
-  &:after
-    background: url(../img/arrow.svg) 0 0 no-repeat
-    content: ""
-    height: 100px
-    margin: 10px
-    position: absolute
-    width: 100px
-
-// graph
-.rickshaw_graph
-  border-bottom: solid #6A912D 48px
-
-.rickshaw_graph .x_tick
-  border-left: 1px dotted #fff
-  bottom: -44px
-
-.rickshaw_graph .y_grid line
-  stroke: #fff
-
-.rickshaw_graph .y_ticks path
-  display: none
-
-.rickshaw_graph .y_ticks text,
-.rickshaw_graph .x_ticks_d3 text
-  color: #fff
-  font: $f-light 12px/16px $f-family
-  fill: #fff
-  opacity: 1
-
-.rickshaw_graph .x_tick .title
-  color: #fff
-  font: $f-light 16px/20px $f-family
-  fill: #fff
-  margin: 10px
-  opacity: 1
-
-.rickshaw_graph .detail .item.active,
-.rickshaw_graph .detail .x_label
-  background: #fff
-  border: none
-  border-radius: 0
-  color: #29abe2
-  font: $f-medium 16px/20px $f-family
-  margin: 0
-  padding: 5px 10px
-  top: 0 !important
-  &:after
-    display: none
-
-.rickshaw_graph .detail
-  background: #fff
-  .dot.active
-    display: none
-  .x_label
-    font-weight: $f-light
-    opacity: 1
-    top: 30px !important

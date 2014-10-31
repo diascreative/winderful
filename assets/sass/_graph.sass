@@ -1,0 +1,75 @@
+// graph styling
+#chart-container
+  clear: both
+  display: block
+  height: 248px
+  overflow: auto
+  overflow-y: hidden
+  position: relative
+  z-index: 2
+
+#chart
+  max-height: 300px
+
+.rickshaw_graph
+  border-bottom: solid #6A912D 48px
+
+  .y_grid line
+    stroke: #fff
+
+  .y_ticks path
+    display: none
+
+  .y_ticks text,
+  .x_ticks_d3 text
+    color: #fff
+    font: $f-light 12px/16px $f-family
+    fill: #fff
+    opacity: 1
+
+  .x_tick
+    border-left: 1px dotted #fff
+    bottom: -44px
+    .title
+      color: #fff
+      font: $f-light 16px/20px $f-family
+      fill: #fff
+      margin: 10px
+      opacity: 1
+
+  .detail
+    background: #fff
+    .dot.active
+      display: none
+
+    .item.active,
+    .x_label
+      background: #fff
+      border: none
+      border-radius: 0
+      color: #29abe2
+      font: $f-medium 16px/20px $f-family
+      margin: 0
+      padding: 5px 10px
+      top: 0 !important
+      &:after
+        display: none
+
+    .x_label
+      font-weight: $f-light
+      opacity: 1
+      top: 30px !important
+
+#tip
+  color: rgba(#fff, .5)
+  left: 20px
+  margin-top: -320px
+  max-width: 120px
+  position: absolute
+  &:after
+    background: url(../img/arrow.svg) 0 0 no-repeat
+    content: ""
+    height: 100px
+    margin: 10px
+    position: absolute
+    width: 100px

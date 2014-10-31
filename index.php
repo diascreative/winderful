@@ -49,6 +49,8 @@
       Click the hills for more detail
     </div>
 
+    <section id="about" turbine-about></section>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <script src="./static/js/libs.js"></script>
