@@ -39,7 +39,7 @@
 
     <link rel="stylesheet" type="text/css"
       href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,400italic,400,500,500italic">
-    <link rel="stylesheet" type="text/css" href="./static/css/wind.css">
+    <link rel="stylesheet" type="text/css" href="./static/css/wind.css?v=0.1">
   </head>
   <body ng-controller="turbineController as turbine" class="loading" ng-class="{ 'loading': !turbine.loaded }">
     <div id="loading" ng-hide="turbine.loaded">
