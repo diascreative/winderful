@@ -6,7 +6,8 @@
     "Rickshaw": false,
     "angular": false,
     "moment": false,
-    "requestAnimationFrame": false
+    "requestAnimationFrame": false,
+    "navigator": false
   },
   "indent": 2,
   "white": true,
