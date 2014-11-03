@@ -11,19 +11,20 @@
     overflow: visible
 
 #wind-turbine
-  bottom: 120px
+  bottom: 0
   filter: drop-shadow(0 0 6px rgba(0,0,0,0.3))
-  font-size: 200px
-  left: 50%
+  font-size: 250px
+  left: 75%
+  height: 375px
   position: absolute
   transform: translateX(-50%)
-  transition: font-size 3s, bottom 3s
+  transition: font-size 3s, bottom 3s, left 3s
   @media (min-width: 421px)
-    bottom: 0
-    font-size: 350px
-  @media (min-width: 724px)
-    bottom: 0
+    font-size: 400px
+    height: auto
+  @media (min-width: 820px)
     font-size: 496px
+    left: 50%
 
 #turbine-rotor-container
   left: 50%
@@ -48,10 +49,12 @@
     animation: rotate 2s linear infinite
 
 #turbine-mast
-  background: transparent url(../img/turbine-mast.svg) 0 0 no-repeat
+  background: transparent url(../img/turbine-mast.svg) 50% 0 no-repeat
+  background-size: cover
   height: 1em
   left: 50%
   margin: 0 0 0 -0.08em
+  min-height: 100%
   position: relative
   width: 0.16em
 

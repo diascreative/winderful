@@ -71,7 +71,7 @@
         <h2>A prototype visualising the UK's wind energy</h2>
       </div>
 
-      <div class="right-side">
+      <div class="right-side clearfix">
         <turbine-stats></turbine-stats>
       </div>
 

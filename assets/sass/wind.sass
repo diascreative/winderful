@@ -10,6 +10,14 @@
 @import "turbine"
 @import "about"
 
+.clearfix:before,
+.clearfix:after
+  content: " "
+  display: table
+
+.clearfix:after
+  clear: both
+
 body
   background: $c-main
   background: linear-gradient(to bottom,  $c-main 1%,#0087a0 13%,#33c3dd 69%,#99e1ee 100%) 0 0

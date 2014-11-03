@@ -9,7 +9,26 @@
 .right-side
   padding-bottom: 250px
 
-@media (min-width: 768px)
+@media (min-width: 512px)
+  .right-side
+    padding-top: 0
+
+  .example-list,
+  .stat-list,
+  .stat-list p
+    float: left
+    max-width: none
+    width: 50%
+
+  .example-list,
+  .stat-list
+    margin-bottom: 100px
+
+  .example-list
+    padding-top: 46px
+    text-align: right
+
+@media (min-width: 820px)
   .left-side,
   .right-side
     float: left
@@ -20,3 +39,13 @@
     max-width: none
     padding-top: 100px
     text-align: right
+
+  .example-list,
+  .stat-list,
+  .stat-list p
+    float: none
+    width: auto
+
+  .example-list,
+  .stat-list
+    margin-bottom: 0

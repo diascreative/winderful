@@ -14,10 +14,12 @@
     </p>
   </div>
 
-  <h4>Equivalent of :</h4>
-  <p class="example" ng-repeat="example in turbine.usageExamples" ng-show="$index == 0 || $index == turbine.showExample">
-    {{ example.action }}
-    <span class="num">{{ turbine.wattage/example.consumption | number:0 }}</span>
-    {{ example.object }}
-  </p>
+  <div class="example-list">
+    <h4>Equivalent of :</h4>
+    <p class="example" ng-repeat="example in turbine.usageExamples" ng-show="$index == 0 || $index == turbine.showExample">
+      {{ example.action }}
+      <span class="num">{{ turbine.wattage/example.consumption | number:0 }}</span>
+      {{ example.object }}
+    </p>
+  </div>
 </section>
