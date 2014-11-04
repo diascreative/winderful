@@ -1,11 +1,12 @@
-# DIAS_ Wind Power ![wind](https://cloud.githubusercontent.com/assets/293129/3645472/ba761b78-10ea-11e4-9d89-56f86276e55c.png)
+# DIAS_ Winderful ![wind](http://winderful.diascreative.net/static/img/screenshot.png)
 
 Out little project to show the current and past wind power generated in the UK in a graphical manner.
+[View project](http://winderful.diascreative.net).
 
 ## Installation instructions
 1. clone the repository
 
-    `git clone git@github.com:diascreative/power.git`
+    `git clone git@github.com:diascreative/winderful.git`
 
 2. enter the project folder
 

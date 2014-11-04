@@ -106,6 +106,22 @@
 
     <section id="about" turbine-about></section>
 
+    <footer id="footer">
+      <a title="Share on Facebook" class="social"
+        href="http://www.facebook.com/sharer.php?u=<?= $url ?>">
+        <img src="./static/img/fb.svg" alt="Share on Facebook"
+          height="32" width="32">
+      </a>
+
+      <a title="Share on Twitter" class="twitter social"
+        href="http://twitter.com/share?text=Winderful+-+visualising+UK's+%23windenergy+in+real+time.+Made+by+@diascreative&amp;url=<?= $url ?>">
+        <img src="./static/img/twitter.svg" alt="Share on Twitter"
+          height="32" width="32">
+      </a>
+
+      <a href="//diascreative.com" target="_blank">Made by DIAS_</a>
+    </footer>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <script src="./static/js/libs.js"></script>
