@@ -1,6 +1,8 @@
 <?php
   require_once("./inc/init.php");
 
+  $version = '0.2.1';
+
   $domain = $_SERVER["HTTP_HOST"];
   $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 ?>
@@ -39,7 +41,7 @@
 
     <link rel="stylesheet" type="text/css"
       href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,400italic,400,500,500italic">
-    <link rel="stylesheet" type="text/css" href="./static/css/wind.css?v=0.1">
+    <link rel="stylesheet" type="text/css" href="./static/css/wind.css?v=<?= $version ?>">
   </head>
   <body ng-controller="turbineController as turbine" class="loading" ng-class="{ 'loading': !turbine.loaded }">
     <div id="loading" ng-hide="turbine.loaded">
@@ -107,7 +109,7 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <script src="./static/js/libs.js"></script>
-    <script src="./static/js/app.js"></script>
+    <script src="./static/js/app.js?v=<?= $version ?>"></script>
 
     <script type="text/javascript">
       $('a.social').on('click', function(e) {
