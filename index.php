@@ -93,7 +93,7 @@
       Click the hills for more detail
     </div>
 
-    <form id="form" action="./json" method="get">
+    <div id="form">
       <label>Choose a date range :</label>
 
       <input type="daterange" class="daterange"
@@ -102,7 +102,7 @@
         max-date="<?= date("Y-m-d") ?>"
         format="DD/MM/YYYY"
         show-dropdowns="true">
-    </form>
+    </div>
 
     <section id="about" turbine-about></section>
 
