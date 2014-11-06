@@ -161,6 +161,7 @@
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
       ga('create', '<?= ANALYTICS ?>', 'auto');
+      ga('require', 'displayfeatures');
       ga('send', 'pageview');
       <?php endif; ?>
       </script>
