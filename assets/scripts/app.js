@@ -11,7 +11,7 @@
 (function () {
   'use strict';
 
-  var app = angular.module('windTurbineApp', ['turbine-directives', 'ngBootstrap', 'angular-rickshaw']);
+  var app = angular.module('winderfulApp', ['turbine-directives', 'winderful-filters', 'ngBootstrap', 'angular-rickshaw']);
 
   app.controller('turbineController', ['$scope', '$http', function($scope, $http) {
     $scope.rotationSpeed = 10;
@@ -19,7 +19,7 @@
     this.graph = {};
     this.percentage = 0;
     this.speed = 0;
-    this.wattage = 0;
+    $scope.wattage = 0;
     this.displayDate = new Date();
     this.loaded = false;
 
@@ -41,7 +41,7 @@
       setTurbineSpeed(power, percent);
 
       // update variables for stats
-      this.wattage = power;
+      $scope.wattage = power;
       this.displayDate = new Date(date * 1000);
       this.percentage = percent;
 
