@@ -14,6 +14,8 @@
 
     <title>Winderful</title>
 
+    <link href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAADJElEQVQ4T0VTS2xMURj+zn10OjOdKmramqLVUq+qIIgmDWIjJBLSBVs2JEJEggaNRIIFdlIRIkQiLERJpcrCI0Q1kSotpa0xrZlh+ppHp/O4c33nTlpnc3LvOf/3/9/jiPLrzaYAYJjARDqN0ckkGtYtwdnaGvAX9re24/toBOClYGwSo4kU7JoCTQjrXFTceGKmMiZSmQwWuJxw6Cp2V3pwcNUiHgOn33ahKzSOIkcu4oaBgbEY+sejUBWBHFWBWHjziZkwMlg+Kx+VBS708XCTpxAn1i2zAC5++Io2bxBFzlzoqoBT0+ANx9AZGoOuEGDu9cdmZUEeqgvzEU6mEYglUFcyG6c2ZAGauvpxr9eHeXl261vSddk09I5G0TMSgVhyp9VcXzwLxEKSNGKpNNz2HFypq4GD3e5/H8RVgkwBSBCV/DVSaA+OQGx5+Mqs4ugRFkp0hYcD4zEcXlWBXRUe3Pnmw60eL0pJQYoml9xduka6MYhdLe9Nt92GeNqYHjFOTVRe27HAjRHSejE0DOJalVI4G7nnqiodSULsae0wnUSTLsilcLS+8ATWzszDpbqV1r8b3V40D/jhcdoxzKIQrSxy2KATVextywKkCZAhicHoBPKJvnW+GwdXlFsAbb+CWEShy/KdGI4n8HwohMd0pp+NRP2zDrOYaIF4EoFoHPXlxThUU4GP9P6Nf8TiG6U+DauzuZhasuFt6iO2PW037eyYThk4Ul2GzfPmWHc6adGXoSCC1OBRIIwqlx1bSwuxnZM5NHUaSGjXWsyj1fPRuLaKKdSsA6nGvpddOLnYjZRQcOKTDw5qE5pMocRpQ23RTOwsc2Mu0ykudPSax9f8H+8v38KFzgF8/BvGg42V8LGosdsPN8MjLZZuyawMTiSweIYDwuSSXQ1uzd4/uNvnR4SXPLT2crUHvxNpnCFAga5YFkq6g3xUkqKPuwXwOjiGY+3fILvXMZWuHA0qAc8tLaEGBs73BvkGFCupsuhnJM4kZvMgDrzrMW//8GMGi+bYdNjYxaHrKGOcm2o8CBDg6OffiHGqsWSKjhgMkcI4ZxP5D6VDZX4V7lt1AAAAAElFTkSuQmCC" rel="icon" type="image/x-icon" />
+
     <meta name="title" content="Winderful"/>
     <meta name="keywords" content="windenergy, uk, sustainable, sustainability, wind, energy, animated turbine, wind turbine"/>
     <meta name="description" content="Winderful is an experiment using realtime data to visualise and tell stories about wind energy."/>
