@@ -1,3 +1,6 @@
+/* global $:false,
+    angular: false
+*/
 (function() {
   var app = angular.module('turbine-directives', []);
 

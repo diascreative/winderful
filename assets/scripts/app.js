@@ -1,3 +1,13 @@
+/* We need to tell jshint which are our global variables */
+/* global $:false,
+    jQuery: false,
+    document: false,
+    Rickshaw: false,
+    angular: false,
+    moment: false,
+    requestAnimationFrame: false,
+    navigator: false
+*/
 (function () {
   'use strict';
 
