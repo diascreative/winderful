@@ -126,7 +126,7 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-    <script src="./static/js/libs.js"></script>
+    <script src="./static/js/libs.js?v=<?= $version ?>"></script>
     <script src="./static/js/app.js?v=<?= $version ?>"></script>
 
     <script type="text/javascript">
