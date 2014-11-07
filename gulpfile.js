@@ -17,7 +17,7 @@ var gulp = require('gulp')
     sass: 'assets/sass',
     devSass: 'assets/sass/*.sass',
     devCssLibs: 'assets/sass/libs/*',
-    devJsLibs: 'assets/scripts/libs/**/*.js',
+    devJsLibs: 'assets/scripts/libs/**/*.min.js',
     devJs: 'assets/scripts/*.js',
     devImg: 'assets/img/**/*',
     img: 'static/img'
