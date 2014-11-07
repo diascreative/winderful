@@ -24,8 +24,16 @@
   $group_by = '';
   $time = "timestamp AS time";
 
-  if( $delta <= 3600*10 ) {
-    // date range < 10 hours : show every 5 mins
+  $select = ",timestamp as timestamp,
+             AVG(demand) as demand,
+             AVG(wind) as wind";
+
+  if( $delta <= 3600*24*7 ) {
+    // date range < 72 hours : show every 5 mins
+    $select = ",
+               timestamp as timestamp,
+               demand,
+               wind";
     $group_by = '';
   } else if( $delta <= 3600 * 24 * 30 ) {
     // date range < 1 week : show every hour
@@ -41,6 +49,8 @@
     $group_by = ' GROUP BY time';
   }
 
+  $select = $time . $select;
+
   $end = es($end);
   $start = es($start);
 
@@ -48,10 +58,7 @@
   $dateEMYSQL = es(date("Y-m-d H:i", $end));
 
   $query = "SELECT
-              $time,
-              timestamp as timestamp,
-              AVG(demand) as demand,
-              AVG(wind) as wind
+              $select
             FROM
               wind_vs_demand
             WHERE
