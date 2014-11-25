@@ -1,18 +1,64 @@
 <?php
-  error_reporting(0);
-
   require_once( dirname(__FILE__) . '/../inc/init.php' );
   require_once( dirname(__FILE__) . '/../inc/twitter/twitteroauth.php' );
 
-  // get latest power power
-  $query = fetchAssoc(query("SELECT
-              timestamp,
-              demand,
-              wind
-            FROM
-              wind_vs_demand
-            ORDER BY
-              timestamp DESC
-            LIMIT 1"));
+  // only tweet when we reach these milestones
+  $mileStones = array(10, 12, 15, 18, 20, 22, 24, 25);
 
-  echo $query['wind'];
+  $current = getCurrentData();
+
+  if( shouldTweet($current) ) {
+    tweetPercentage($current);
+  }
+
+  function getCurrentData() {
+    // get latest data
+    // inner select grabs highest % tweeted today
+
+    // only check today's readings
+    $start = time();
+    $end = time() + 3600 * 24;
+
+    $dateSMYSQL = es(date("Y-m-d 00:00", $start)); // today 00
+    $dateEMYSQL = es(date("Y-m-d 00:00", $end));   // tomorrow 00
+
+    $query = "SELECT
+                timestamp,
+                FLOOR(100*wind/demand) AS percent,
+                (SELECT percentage FROM tweets WHERE timestamp BETWEEN '$dateSMYSQL' AND '$dateEMYSQL' ORDER BY percentage DESC LIMIT 1) AS day_max
+              FROM
+                wind_vs_demand
+              WHERE
+                timestamp BETWEEN '$dateSMYSQL' AND '$dateEMYSQL'
+              ORDER BY
+                timestamp DESC
+              LIMIT 1";
+
+    return fetchAssoc(query($query));
+  }
+
+  function shouldTweet($data) {
+    // we should tweet if we have reached a milestone and
+    // we have not tweeted a higher milestone today
+    global $mileStones;
+
+    if( in_array($data['percent'], $mileStones) &&
+        $data['percent'] > $data['day_max'] ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  function tweetPercentage($current) {
+    // tweet the percentage milestone :)
+    $percent = $current['percent'];
+    $time = $current['timestamp'];
+
+    if( 1 ) {
+      query("INSERT INTO tweets (percentage, timestamp) VALUES ($percent, '$time')");
+      echo "tweeted!";
+    } else {
+      echo "failed to tweet";
+    }
+  }
