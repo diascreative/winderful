@@ -1,8 +1,10 @@
 <?php
+  error_reporting(0);
+
   require_once( dirname(__FILE__) . '/../inc/init.php' );
   require_once( dirname(__FILE__) . '/../inc/twitter/twitteroauth.php' );
 
-  // only tweet when we reach these milestones
+    // only tweet when we reach these milestones
   $mileStones = array(10, 12, 15, 18, 20, 22, 24, 25);
 
   $current = getCurrentData();
@@ -54,6 +56,11 @@
     // tweet the percentage milestone :)
     $percent = $current['percent'];
     $time = $current['timestamp'];
+
+    $message = "Right now #wind is meeting $percent% of the National Grid's electricity demand.";
+
+    $connection = new TwitterOAuth(API_KEY, API_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
+    $status = $connection->post('statuses/update', array('status' => $message));
 
     if( 1 ) {
       query("INSERT INTO tweets (percentage, timestamp) VALUES ($percent, '$time')");
