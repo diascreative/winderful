@@ -13,14 +13,15 @@ var gulp = require('gulp')
   , gulpIgnore = require('gulp-ignore')
 
   , paths = {
-    css: 'static/css',
+    css: 'www/static/css',
     sass: 'assets/sass',
     devSass: 'assets/sass/*.sass',
     devCssLibs: 'assets/sass/libs/*',
     devJsLibs: 'assets/scripts/libs/**/*.min.js',
     devJs: 'assets/scripts/*.js',
     devImg: 'assets/img/**/*',
-    img: 'static/img'
+    img: 'www/static/img',
+    js: 'www/static/js'
   }
   ,
   reportError = function(err) {
@@ -35,7 +36,7 @@ gulp.task('libs', function() {
   return gulp.src(paths.devJsLibs)
     .pipe(concat('libs.js'))
     // .pipe(uglify())
-    .pipe(gulp.dest('static/js'));
+    .pipe(gulp.dest(paths.js));
 });
 
 gulp.task('scripts', function() {
@@ -53,7 +54,7 @@ gulp.task('scripts', function() {
         })
       )
     )
-    .pipe(gulp.dest('static/js'))
+    .pipe(gulp.dest(paths.js))
     .pipe(notify({ message: 'Scripts task complete' }));
 
     return s;
@@ -91,7 +92,7 @@ gulp.task('styles', function() {
 
 // Clean up static folder
 gulp.task('clean', function(cb) {
-  return gulp.src('./static/*', { read: false }) // much faster
+  return gulp.src('./www/static/*', { read: false }) // much faster
     .pipe(rimraf())
     .pipe(notify({ message: 'Clean task complete' }));
 });

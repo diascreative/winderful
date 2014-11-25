@@ -1,5 +1,5 @@
 <?php
-  require_once("./inc/init.php");
+  require_once("../inc/init.php");
 
   $version = '0.2.2';
 
