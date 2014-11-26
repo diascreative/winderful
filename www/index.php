@@ -12,7 +12,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>Winderful</title>
+    <title>WinTerful</title>
 
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./apple-touch-icon-144x144.png" />
     <link rel="apple-touch-icon-precomposed" sizes="152x152" href="./apple-touch-icon-152x152.png" />
@@ -76,7 +76,7 @@
       </nav>
 
       <div class="left-side">
-        <h1 id="main-title">Winderful</h1>
+        <h1 id="main-title">WinTerful</h1>
 
         <h2>A prototype visualising the UK's wind energy</h2>
       </div>
