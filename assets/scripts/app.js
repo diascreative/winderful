@@ -198,6 +198,9 @@
             that.updateStats(lastValue.x, lastValue.y, lastValue.z);
 
             that.loaded = true;
+
+            // make sure that snowstorm uses the whole height
+            snowStorm.flakeBottom = $(window).height();
           });
       }
 
