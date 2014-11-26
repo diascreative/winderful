@@ -163,14 +163,15 @@
         }
       });
 
-      snowStorm.flakesMax = 72;           // Limit total amount of snow made (falling + sticking)
+      // snowStorm.flakesMaxActive = 100;           // Limit total amount of snow made (falling + sticking)
       snowStorm.excludeMobile = true;      // Snow is likely to be bad news for mobile phones' CPUs (and batteries.) By default, be nice.
       snowStorm.flakeBottom = null;        // Integer for Y axis snow limit, 0 or null for "full-screen" snow effect
-      snowStorm.followMouse = true;        // Snow movement can respond to the user's mouse
+      snowStorm.followMouse = false;        // Snow movement can respond to the user's mouse
       snowStorm.snowStick = false;          // Whether or not snow should "stick" at the bottom. When off, will never collect.
       snowStorm.useMeltEffect = false;      // When recycling fallen snow (or rarely, when falling), have it "melt" and fade out if browser supports it
       snowStorm.vMaxX = 2;                 // Maximum X velocity range for snow
       snowStorm.vMaxY = 4;                 // Maximum Y velocity range for snow
+      snowStorm.flakeBottom = $(window).height();
 
       <?php if ( ANALYTICS ): ?>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

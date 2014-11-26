@@ -45,6 +45,8 @@ var snowStorm = (function(window, document) {
   this.vMaxY = 4;                 // Maximum Y velocity range for snow
   this.zIndex = 0;                // CSS stacking order applied to each snowflake
 
+  this.windOffset = 1;
+
   // --- "No user-serviceable parts inside" past this point, yadda yadda ---
 
   var storm = this,
@@ -95,7 +97,6 @@ var snowStorm = (function(window, document) {
 
     // apply to window, avoid "illegal invocation" errors in Chrome
     getAnimationFrame = _animationFrame ? function() {
-      console.log
       return _animationFrame.apply(window, arguments);
     } : null;
 
@@ -421,7 +422,7 @@ var snowStorm = (function(window, document) {
     };
 
     this.move = function() {
-      var vX = s.vX*windOffset, yDiff;
+      var vX = s.vX*storm.windOffset, yDiff;
       s.x += vX;
       s.y += (s.vY*s.vAmp);
       if (s.x >= screenX || screenX-s.x < storm.flakeWidth) { // X-axis scroll check
@@ -551,10 +552,10 @@ var snowStorm = (function(window, document) {
     }
     var x = parseInt(e.clientX,10);
     if (x<screenX2) {
-      windOffset = -windMultiplier+(x/screenX2*windMultiplier);
+      storm.windOffset = -windMultiplier+(x/screenX2*windMultiplier);
     } else {
       x -= screenX2;
-      windOffset = (x/screenX2)*windMultiplier;
+      storm.windOffset = (x/screenX2)*windMultiplier;
     }
   };
 

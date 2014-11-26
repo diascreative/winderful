@@ -6,7 +6,8 @@
     angular: false,
     moment: false,
     requestAnimationFrame: false,
-    navigator: false
+    navigator: false,
+    snowStorm: false // winterful only
 */
 (function () {
   'use strict';
@@ -44,6 +45,9 @@
       $scope.wattage = power;
       this.displayDate = new Date(date * 1000);
       this.percentage = percent;
+
+      // winterful only
+      snowStorm.windOffset = power/1000;
 
       // if details is from less than 30 mins ago for wording in stats
       this.isCurrent = (new Date() - this.displayDate) / 60000 < 30;
