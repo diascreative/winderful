@@ -59,9 +59,9 @@ gulp.task('themes', function() {
   var folders = getFolders(assets.themes);
 
   var tasks = folders.map(function(folder) {
-      styles(assets.themes + '/' + folder + '/css/*.sass', dist.themes + folder + '/css/');
-      scripts(assets.themes + '/' + folder + '/scripts/*.js', dist.themes + folder + '/js/', 'script.js');
-      images(assets.themes + '/' + folder + '/img/**/*', dist.themes + folder + '/img');
+      styles(assets.themes + folder + '/css/*.sass', dist.themes + folder + '/css/');
+      scripts(assets.themes + folder + '/scripts/*.js', dist.themes + folder + '/js/', 'script.js');
+      images(assets.themes + folder + '/img/**/*', dist.themes + folder + '/img');
    });
 });
 
@@ -76,9 +76,9 @@ gulp.task('watch', function() {
   gulp.watch(assets.jsLibs, ['libs']);
   gulp.watch(assets.js, ['scripts']);
   gulp.watch(assets.img, ['styles', 'images']);
-  gulp.watch(assets.dass, ['styles']);
+  gulp.watch(assets.sass, ['styles']);
   gulp.watch(assets.cssLibs, ['styles']);
-  gulp.watch(assets.themes, ['themes']);
+  gulp.watch(assets.themes + '**', ['themes']);
 });
 
 // Default Task
