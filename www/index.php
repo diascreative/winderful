@@ -2,6 +2,7 @@
   require_once("../inc/init.php");
 
   $version = '0.2.4';
+  $theme = 'winterful';
 
   $domain = $_SERVER["HTTP_HOST"];
   $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -50,6 +51,9 @@
     <link rel="stylesheet" type="text/css"
       href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,400italic,400,500,500italic">
     <link rel="stylesheet" type="text/css" href="./static/css/wind.css?v=<?= $version ?>">
+    <?php if( isset($theme) && $theme ): ?>
+      <link rel="stylesheet" type="text/css" href="./static/themes/<?= $theme ?>/css/style.css?v=<?= $version ?>">
+    <?php endif; ?>
   </head>
   <body ng-controller="turbineController as turbine" class="loading" ng-class="{ 'loading': !turbine.loaded }">
     <div id="loading" ng-hide="turbine.loaded">
