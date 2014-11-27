@@ -67,6 +67,8 @@
       <div class="load-icon"></div>
     </div>
 
+    <canvas id="canvas"></canvas>
+
     <div class="wrapper">
       <nav id="nav">
         <a href="#about" class="scroll-to">About</a>
