@@ -49,7 +49,6 @@
 
       // winterful only
       snowStorm.windOffset = power/2000;
-      snowStorm.vMaxY = snowStorm.windOffset;
 
       // if details is from less than 30 mins ago for wording in stats
       this.isCurrent = (new Date() - this.displayDate) / 60000 < 30;

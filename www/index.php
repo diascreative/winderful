@@ -170,7 +170,7 @@
       snowStorm.snowStick = false;          // Whether or not snow should "stick" at the bottom. When off, will never collect.
       snowStorm.useMeltEffect = false;      // When recycling fallen snow (or rarely, when falling), have it "melt" and fade out if browser supports it
       snowStorm.vMaxX = 2;                 // Maximum X velocity range for snow
-      snowStorm.vMaxY = 1;                 // Maximum Y velocity range for snow
+      snowStorm.vMaxY = 1.4;                 // Maximum Y velocity range for snow
       snowStorm.flakeBottom = $(window).height();
 
       <?php if ( ANALYTICS ): ?>
