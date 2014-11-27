@@ -1,4 +1,5 @@
 var gulp = require('gulp')
+  , uglify = require('fs')
   , uglify = require('gulp-uglify')
   , sass = require('gulp-ruby-sass')
   , autoprefixer = require('gulp-autoprefixer')
@@ -37,59 +38,19 @@ var gulp = require('gulp')
 gulp.task('libs', function() {
   return gulp.src(paths.devJsLibs)
     .pipe(concat('libs.js'))
-    // .pipe(uglify())
     .pipe(gulp.dest(paths.js));
 });
 
 gulp.task('scripts', function() {
-  var s = gulp.src(paths.devJs)
-    .pipe(gulpIgnore(paths.devJsLibs))
-    .pipe(jshint('.jshintrc'))
-    .pipe(jshint.reporter('default'))
-    .pipe(concat('app.js'))
-    .pipe(
-      uglify()
-      .on('error',
-        notify.onError(function (err) {
-          s.end();
-          return reportError(err);
-        })
-      )
-    )
-    .pipe(gulp.dest(paths.js))
-    .pipe(notify({ message: 'Scripts task complete' }));
-
-    return s;
+  return scripts(paths.devJs, paths.js, 'app.js');
 });
 
 gulp.task('images', function() {
-  return gulp.src(paths.devImg)
-    .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
-    .pipe(gulp.dest(paths.img))
-    .pipe(notify({ message: 'Images task complete' }));
+  return images(paths.devImg, paths.img);
 });
 
 gulp.task('styles', function() {
-  var c = gulp.src(paths.devSass)
-    .pipe(
-      sass({ style: 'compressed'})
-      .on('error',
-        notify.onError(function (err) {
-          c.end();
-          return reportError(err);
-        })
-      )
-    )
-    .pipe(
-      autoprefixer({
-        browsers: ['last 4 versions'],
-        cascade: false
-      })
-    )
-    .pipe(gulp.dest(paths.css))
-    .pipe(notify({ message: 'Styles task complete' }));
-
-  return c;
+  return styles(paths.devSass, paths.css);
 });
 
 gulp.task('themes', function() {
@@ -97,30 +58,19 @@ gulp.task('themes', function() {
   gulp.src(paths.devThemes)
       .pipe(gulp.dest(paths.themes));
 
-  runSequence(['theme-styles']);
+  runSequence(['theme-styles', 'theme-scripts', 'theme-images']);
 });
 
 gulp.task('theme-styles', function() {
-  var c = gulp.src(paths.devThemes + '/css/*.sass')
-    .pipe(
-      sass({ style: 'compressed'})
-      .on('error',
-        notify.onError(function (err) {
-          c.end();
-          return reportError(err);
-        })
-      )
-    )
-    .pipe(
-      autoprefixer({
-        browsers: ['last 4 versions'],
-        cascade: false
-      })
-    )
-    .pipe(gulp.dest(paths.themes))
-    .pipe(notify({ message: 'Theme styles task complete' }));
+  return styles(paths.devThemes + '/css/*.sass', paths.themes);
+});
 
-  return c;
+gulp.task('theme-scripts', function() {
+  return scripts(paths.devThemes + '/**/*.js', paths.themes, 'magic.js');
+});
+
+gulp.task('theme-images', function() {
+  return images(paths.devThemes + '/img/*', paths.themes);
 });
 
 // Clean up static folder
@@ -140,7 +90,57 @@ gulp.task('watch', function() {
 });
 
 // Default Task
-//gulp.task('default', ['clean']);
 gulp.task('default', function() {
   runSequence('clean', ['images', 'styles', 'watch', 'libs', 'scripts', 'themes']);
 });
+
+function scripts(origin, destination, name) {
+  var s = gulp.src(origin)
+    .pipe(gulpIgnore(paths.devJsLibs))
+    .pipe(jshint('.jshintrc'))
+    .pipe(jshint.reporter('default'))
+    .pipe(concat(name))
+    .pipe(
+      uglify()
+      .on('error',
+        notify.onError(function (err) {
+          s.end();
+          return reportError(err);
+        })
+      )
+    )
+    .pipe(gulp.dest(destination))
+    .pipe(notify({ message: 'Scripts task for ' + origin + ' complete' }));
+
+  return s;
+}
+
+function styles(origin, destination) {
+  var c = gulp.src(origin)
+    .pipe(
+      sass({ style: 'compressed'})
+      .on('error',
+        notify.onError(function (err) {
+          c.end();
+          return reportError(err);
+        })
+      )
+    )
+    .pipe(
+      autoprefixer({
+        browsers: ['last 4 versions'],
+        cascade: false
+      })
+    )
+    .pipe(gulp.dest(destination))
+    .pipe(notify({ message: 'Styles task from ' + origin + ' complete' }));
+
+  return c;
+}
+
+function images(origin, destination) {
+  return gulp.src(origin)
+    .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
+    .pipe(gulp.dest(destination))
+    .pipe(notify({ message: 'Images task complete' }));
+}
