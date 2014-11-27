@@ -8,7 +8,7 @@
     requestAnimationFrame: false,
     navigator: false,
     window: false,
-    snowStorm: false // winterful only
+    theme: false
 */
 (function () {
   'use strict';
@@ -48,7 +48,10 @@
       this.percentage = percent;
 
       // winterful only
-      snowStorm.windOffset = power/2000;
+      if( typeof(theme) !== 'undefined' &&
+          typeof(theme.onUpdate) !== 'undefined') {
+          theme.onUpdate(power);
+      }
 
       // if details is from less than 30 mins ago for wording in stats
       this.isCurrent = (new Date() - this.displayDate) / 60000 < 30;
@@ -200,8 +203,10 @@
 
             that.loaded = true;
 
-            // make sure that snowstorm uses the whole height
-            snowStorm.flakeBottom = $(window).height();
+            if( typeof(theme) !== 'undefined' &&
+                typeof(theme.onStart) !== 'undefined') {
+                theme.onStart();
+            }
           });
       }
 

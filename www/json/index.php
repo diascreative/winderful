@@ -82,7 +82,7 @@
   }
 
   $graph = array(
-      array('name' => "Wind", "color" => "#ffffff", "data" => $wind)
+      array('name' => "Wind", "color" => "#007232", "data" => $wind)
     );
 
   // echo $_GET['callback'] . "(";
