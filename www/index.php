@@ -1,11 +1,17 @@
 <?php
   require_once("../inc/init.php");
 
+  $title = "Winderful";
+
   $version = '0.2.4';
   $theme = 'winterful';
 
   $domain = $_SERVER["HTTP_HOST"];
   $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+
+  if( isset($theme) && $theme ) {
+    require_once("../assets/themes/$theme/config.php");
+  }
 ?>
 <!doctype html>
 <html lang="en" dir="ltr" ng-app="winderfulApp">
@@ -13,7 +19,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title>WinTerful</title>
+    <title><?= $title ?></title>
 
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./apple-touch-icon-144x144.png" />
     <link rel="apple-touch-icon-precomposed" sizes="152x152" href="./apple-touch-icon-152x152.png" />
@@ -80,7 +86,7 @@
       </nav>
 
       <div class="left-side">
-        <h1 id="main-title">WinTerful</h1>
+        <h1 id="main-title"><?= $title ?></h1>
 
         <h2>A prototype visualising the UK's wind energy</h2>
       </div>
