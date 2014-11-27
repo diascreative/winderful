@@ -21,7 +21,9 @@ var gulp = require('gulp')
     devJs: 'assets/scripts/*.js',
     devImg: 'assets/img/**/*',
     img: 'www/static/img',
-    js: 'www/static/js'
+    js: 'www/static/js',
+    devThemes: 'assets/themes/*',
+    themes: 'www/static/themes'
   }
   ,
   reportError = function(err) {
@@ -90,6 +92,37 @@ gulp.task('styles', function() {
   return c;
 });
 
+gulp.task('themes', function() {
+  // create the folders for each theme
+  gulp.src(paths.devThemes)
+      .pipe(gulp.dest(paths.themes));
+
+  runSequence(['theme-styles']);
+});
+
+gulp.task('theme-styles', function() {
+  var c = gulp.src(paths.devThemes + '/css/*.sass')
+    .pipe(
+      sass({ style: 'compressed'})
+      .on('error',
+        notify.onError(function (err) {
+          c.end();
+          return reportError(err);
+        })
+      )
+    )
+    .pipe(
+      autoprefixer({
+        browsers: ['last 4 versions'],
+        cascade: false
+      })
+    )
+    .pipe(gulp.dest(paths.themes))
+    .pipe(notify({ message: 'Theme styles task complete' }));
+
+  return c;
+});
+
 // Clean up static folder
 gulp.task('clean', function(cb) {
   return gulp.src('./www/static/*', { read: false }) // much faster
@@ -103,10 +136,11 @@ gulp.task('watch', function() {
   gulp.watch(paths.devImg, ['styles', 'images']);
   gulp.watch(paths.devSass, ['styles']);
   gulp.watch(paths.devCssLibs, ['styles']);
+  gulp.watch(paths.devThemes, ['themes']);
 });
 
 // Default Task
 //gulp.task('default', ['clean']);
 gulp.task('default', function() {
-  runSequence('clean', ['images', 'styles', 'watch', 'libs', 'scripts']);
+  runSequence('clean', ['images', 'styles', 'watch', 'libs', 'scripts', 'themes']);
 });
