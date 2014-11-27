@@ -2,6 +2,7 @@
   require_once("../inc/init.php");
 
   $title = "Winderful";
+  $turbineMast = '';
 
   $version = '0.2.4';
   $theme = 'winterful';
@@ -105,7 +106,24 @@
       ng-click="turbine.setStats()">
     </rickshaw>
 
-    <turbine></turbine>
+    <div id="wind-turbine-container">
+      <div id="wind-turbine">
+        <div id="turbine-mast"><?= $turbineMast ?></div>
+
+        <div id="turbine-rotor-container">
+          <div id="turbine-percentage" style="opacity: {{ turbine.wattage/10000 }}"></div>
+
+          <div id="turbine-rotor" class="animated"
+            style="-webkit-animation-duration: {{ rotationSpeed }}s;
+            -moz-animation-duration: {{ rotationSpeed }}s;
+            -ms-animation-duration: {{ rotationSpeed }}s;
+            -o-animation-duration: {{ rotationSpeed }}s;
+            animation-duration: {{ rotationSpeed }}s;">
+            <div id="turbine-percentage-complete" style="width: {{ turbine.percentage*2 }}%; height: {{ turbine.percentage*2 }}%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div id="tip">
       Click the hills for more detail

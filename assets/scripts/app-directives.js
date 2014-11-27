@@ -4,14 +4,6 @@
 (function() {
   var app = angular.module('turbine-directives', []);
 
-  app.directive('turbine', function() {
-    return {
-      restrict: 'E',
-      replace: true,
-      templateUrl: './templates/turbine.html'
-    };
-  });
-
   app.directive('turbineStats', function() {
     return {
       restrict: 'E',
