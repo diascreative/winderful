@@ -13,18 +13,18 @@ var gulp = require('gulp')
   , runSequence = require('run-sequence')
   , rimraf = require('gulp-rimraf')
   , gulpIgnore = require('gulp-ignore')
-
-  , paths = {
+  , assets = {
+    sass: 'assets/sass/*.sass',
+    cssLibs: 'assets/sass/libs/*',
+    jsLibs: 'assets/scripts/libs/**/*.min.js',
+    js: 'assets/scripts/*.js',
+    img: 'assets/img/**/*',
+    themes: 'assets/themes/',
+  }
+  , dist = {
     css: 'www/static/css',
-    sass: 'assets/sass',
-    devSass: 'assets/sass/*.sass',
-    devCssLibs: 'assets/sass/libs/*',
-    devJsLibs: 'assets/scripts/libs/**/*.min.js',
-    devJs: 'assets/scripts/*.js',
-    devImg: 'assets/img/**/*',
     img: 'www/static/img',
     js: 'www/static/js',
-    devThemes: 'assets/themes/',
     themes: 'www/static/themes/'
   }
   ,
@@ -37,31 +37,31 @@ var gulp = require('gulp')
 
 
 gulp.task('libs', function() {
-  return gulp.src(paths.devJsLibs)
+  return gulp.src(assets.jsLibs)
     .pipe(concat('libs.js'))
-    .pipe(gulp.dest(paths.js));
+    .pipe(gulp.dest(dist.js));
 });
 
 gulp.task('scripts', function() {
-  return scripts(paths.devJs, paths.js, 'app.js');
+  return scripts(assets.js, dist.js, 'app.js');
 });
 
 gulp.task('images', function() {
-  return images(paths.devImg, paths.img);
+  return images(assets.img, dist.img);
 });
 
 gulp.task('styles', function() {
-  return styles(paths.devSass, paths.css);
+  return styles(assets.sass, dist.css);
 });
 
 gulp.task('themes', function() {
   // create the folders for each theme
-  var folders = getFolders(paths.devThemes);
+  var folders = getFolders(assets.themes);
 
   var tasks = folders.map(function(folder) {
-      styles(paths.devThemes + '/' + folder + '/css/*.sass', paths.themes + folder + '/css/');
-      scripts(paths.devThemes + '/' + folder + '/scripts/*.js', paths.themes + folder + '/js/', 'script.js');
-      images(paths.devThemes + '/' + folder + '/img/**/*', paths.themes + folder + '/img');
+      styles(assets.themes + '/' + folder + '/css/*.sass', dist.themes + folder + '/css/');
+      scripts(assets.themes + '/' + folder + '/scripts/*.js', dist.themes + folder + '/js/', 'script.js');
+      images(assets.themes + '/' + folder + '/img/**/*', dist.themes + folder + '/img');
    });
 });
 
@@ -73,12 +73,12 @@ gulp.task('clean', function(cb) {
 });
 
 gulp.task('watch', function() {
-  gulp.watch(paths.devJsLibs, ['libs']);
-  gulp.watch(paths.devJs, ['scripts']);
-  gulp.watch(paths.devImg, ['styles', 'images']);
-  gulp.watch(paths.devSass, ['styles']);
-  gulp.watch(paths.devCssLibs, ['styles']);
-  gulp.watch(paths.devThemes, ['themes']);
+  gulp.watch(assets.jsLibs, ['libs']);
+  gulp.watch(assets.js, ['scripts']);
+  gulp.watch(assets.img, ['styles', 'images']);
+  gulp.watch(assets.dass, ['styles']);
+  gulp.watch(assets.cssLibs, ['styles']);
+  gulp.watch(assets.themes, ['themes']);
 });
 
 // Default Task
@@ -95,7 +95,7 @@ function getFolders(dir) {
 
 function scripts(origin, destination, name) {
   var s = gulp.src(origin)
-    .pipe(gulpIgnore(paths.devJsLibs))
+    .pipe(gulpIgnore(assets.jsLibs))
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .pipe(concat(name))
