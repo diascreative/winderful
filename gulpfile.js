@@ -1,5 +1,6 @@
 var gulp = require('gulp')
-  , uglify = require('fs')
+  , fs = require('fs')
+  , path = require('path')
   , uglify = require('gulp-uglify')
   , sass = require('gulp-ruby-sass')
   , autoprefixer = require('gulp-autoprefixer')
@@ -23,8 +24,8 @@ var gulp = require('gulp')
     devImg: 'assets/img/**/*',
     img: 'www/static/img',
     js: 'www/static/js',
-    devThemes: 'assets/themes/*',
-    themes: 'www/static/themes'
+    devThemes: 'assets/themes/',
+    themes: 'www/static/themes/'
   }
   ,
   reportError = function(err) {
@@ -55,22 +56,13 @@ gulp.task('styles', function() {
 
 gulp.task('themes', function() {
   // create the folders for each theme
-  gulp.src(paths.devThemes)
-      .pipe(gulp.dest(paths.themes));
+  var folders = getFolders(paths.devThemes);
 
-  runSequence(['theme-styles', 'theme-scripts', 'theme-images']);
-});
-
-gulp.task('theme-styles', function() {
-  return styles(paths.devThemes + '/css/*.sass', paths.themes);
-});
-
-gulp.task('theme-scripts', function() {
-  return scripts(paths.devThemes + '/**/*.js', paths.themes, 'magic.js');
-});
-
-gulp.task('theme-images', function() {
-  return images(paths.devThemes + '/img/*', paths.themes);
+  var tasks = folders.map(function(folder) {
+      styles(paths.devThemes + '/' + folder + '/css/*.sass', paths.themes + folder + '/css/');
+      scripts(paths.devThemes + '/' + folder + '/scripts/*.js', paths.themes + folder + '/js/', 'script.js');
+      images(paths.devThemes + '/' + folder + '/img/**/*', paths.themes + folder + '/img');
+   });
 });
 
 // Clean up static folder
@@ -93,6 +85,13 @@ gulp.task('watch', function() {
 gulp.task('default', function() {
   runSequence('clean', ['images', 'styles', 'watch', 'libs', 'scripts', 'themes']);
 });
+
+function getFolders(dir) {
+  return fs.readdirSync(dir)
+    .filter(function(file) {
+      return fs.statSync(path.join(dir, file)).isDirectory();
+    });
+}
 
 function scripts(origin, destination, name) {
   var s = gulp.src(origin)
@@ -142,5 +141,5 @@ function images(origin, destination) {
   return gulp.src(origin)
     .pipe(cache(imagemin({ optimizationLevel: 3, progressive: true, interlaced: true })))
     .pipe(gulp.dest(destination))
-    .pipe(notify({ message: 'Images task complete' }));
+    .pipe(notify({ message: 'Images task for ' + origin + ' complete' }));
 }
