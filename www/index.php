@@ -138,7 +138,9 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
     <script src="./static/js/libs.js?v=<?= $version ?>"></script>
     <script src="./static/js/app.js?v=<?= $version ?>"></script>
-
+    <?php if( isset($theme) && $theme ): ?>
+      <script src="./static/themes/<?= $theme ?>/js/script.js?v=<?= $version ?>"></script>
+    <?php endif; ?>
     <script type="text/javascript">
       $('a.social').on('click', function(e) {
         e.preventDefault();
