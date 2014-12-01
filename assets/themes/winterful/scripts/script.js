@@ -23,7 +23,7 @@ window.onload = function(){
   canvas.height = H;
 
   //snowflake particles
-  var mp = 128; //max particles
+  var mp = 512; //max particles
   var particles = [];
   for(var i = 0; i < mp; i++)
   {
@@ -68,7 +68,8 @@ window.onload = function(){
       //Every particle has its own density which can be used to make the downward movement different for each flake
       //Lets make it more random by adding in the radius
       p.y += Math.cos(angle+p.d) + 1 + p.r/2;
-      p.x += Math.sin(angle) + 2 + superSpeed;
+      p.x -= (superSpeed);
+      // p.x += - Math.abs(Math.sin(angle)) * 2 - superSpeed;
 
       //Sending flakes back from the top when it exits
       //Lets make it a bit more organic and let flakes enter from the left and right also.
@@ -84,12 +85,13 @@ window.onload = function(){
           if(Math.sin(angle) > 0)
           {
             //Enter from the left
-            particles[i] = {x: -5, y: Math.random()*H, r: p.r, d: p.d};
+            particles[i] = {x: W + Math.random()*W, y: Math.random()*H, r: p.r, d: p.d};
           }
           else
           {
             //Enter from the right
-            particles[i] = {x: W+5, y: Math.random()*H, r: p.r, d: p.d};
+            // particles[i] = {x: W + Math.random()*W, y: Math.random()*H, r: p.r, d: p.d};
+            particles[i] = {x: W + Math.random()*W, y: H/4 + Math.random()*H/2, r: p.r, d: p.d};
           }
         }
       }
