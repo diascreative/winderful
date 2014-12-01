@@ -11,6 +11,12 @@ theme.onUpdate = function(power) {
   superSpeed = power / 1000;
 };
 
+theme.usageExamples = [
+      { "action": "Powering", "consumption": 0.000483, "object": "homes", "image": "North Pole homes" },
+      { "action": "Or driving", "consumption": 0.00038, "object": "miles in a Santa Sled" },
+      { "action": "Or watching \"How the Grinch Stole Christmas!\"", "consumption": 0.000024, "object": "times" }
+    ];
+
 window.onload = function(){
   //canvas init
   var canvas = document.getElementById("canvas"),

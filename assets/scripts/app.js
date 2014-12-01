@@ -38,6 +38,11 @@
       { "action": "Or powering", "consumption": 0.0005, "object": "fridge-freezers for a day" }
     ];
 
+    if( typeof(theme) !== 'undefined' &&
+        typeof(theme.usageExamples) !== 'undefined') {
+          this.usageExamples = theme.usageExamples;
+    }
+
     this.updateStats = function(date, power, percent) {
       // change animation speed
       setTurbineSpeed(power, percent);
