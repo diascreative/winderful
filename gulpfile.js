@@ -117,7 +117,7 @@ function scripts(origin, destination, name) {
 function styles(origin, destination) {
   var c = gulp.src(origin)
     .pipe(
-      sass({ style: 'compressed'})
+      sass({ style: 'compressed', 'sourcemap=none' : true, loadPath: 'assets/sass/' })
       .on('error',
         notify.onError(function (err) {
           c.end();
