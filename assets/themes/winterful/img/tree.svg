@@ -1,39 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 18.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 194 332" enable-background="new 0 0 194 332" xml:space="preserve">
-<symbol  id="red_bauble" viewBox="-12 -17.3 24 34.6">
-	<path fill="#ED2224" d="M11.3-5.9c0-6.3-5.1-11.4-11.3-11.4s-11.3,5.1-11.3,11.4S-6.2,5.4,0,5.4S11.3,0.3,11.3-5.9z"/>
-	<line fill="none" stroke="#818181" stroke-linecap="square" stroke-miterlimit="10" x1="-0.5" y1="5.8" x2="-0.5" y2="16.8"/>
-	<path fill="none" stroke="#F27BAA" stroke-width="3" stroke-linecap="round" stroke-miterlimit="10" d="M-1.9,2.3
-		c0,0-6.2-1.3-6.3-8.8"/>
-	<polygon display="none" fill="none" points="-12,16.8 12,16.8 12,-17.2 -12,-17.2 	"/>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_3" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+   viewBox="653.2 39.9 606.3 1040.1" enable-background="new 653.2 39.9 606.3 1040.1" xml:space="preserve">
+<symbol  id="red_bauble" viewBox="-12 -17.1 24 34.6">
+  <path fill="#FF0000" d="M11.3-5.7C11.3-12,6.2-17.1,0-17.1S-11.3-12-11.3-5.7S-6.2,5.6,0,5.6S11.3,0.5,11.3-5.7z"/>
+  <line fill="none" stroke="#808080" stroke-linecap="square" stroke-miterlimit="10" x1="-0.5" y1="6" x2="-0.5" y2="17"/>
+  <path fill="none" stroke="#FF7BAC" stroke-width="3" stroke-linecap="round" stroke-miterlimit="10" d="M-1.9,2.5
+    c0,0-6.2-1.3-6.3-8.8"/>
+  <polygon display="none" fill="none" points="-12,17 12,17 12,-17 -12,-17   "/>
 </symbol>
-<symbol  id="red_bauble_2" viewBox="-12 -17.4 24 34.8">
-	<path fill="#EBCE76" d="M11.8-6c0-6.3-5.1-11.4-11.3-11.4S-10.8-12.3-10.8-6S-5.7,5.3,0.5,5.3S11.8,0.2,11.8-6z"/>
-	<line fill="none" stroke="#818181" stroke-linecap="square" stroke-miterlimit="10" x1="-0.5" y1="5.9" x2="-0.5" y2="16.9"/>
-	<path fill="#F5E2B7" d="M-7.7-8.1L-7.7-8.1c-0.9,0-1.5,0.7-1.5,1.5c0.1,6.9,4.9,9.7,7.5,10.3c0.8,0.2,1.6-0.3,1.8-1.2
-		c0.1-0.8-0.4-1.6-1.2-1.8c-0.2,0-5-1.2-5.1-7.4C-6.2-7.4-6.9-8.1-7.7-8.1z"/>
-	<polygon display="none" fill="none" points="-12,16.9 12,16.9 12,-17.1 -12,-17.1 	"/>
+<symbol  id="red_bauble_2" viewBox="-12.5 -17.1 24 34.8">
+  <path fill="#EACE76" d="M11.3-5.7C11.3-12,6.2-17.1,0-17.1S-11.3-12-11.3-5.7S-6.2,5.6,0,5.6S11.3,0.5,11.3-5.7z"/>
+  <line fill="none" stroke="#808080" stroke-linecap="square" stroke-miterlimit="10" x1="-1" y1="6.2" x2="-1" y2="17.2"/>
+  <path fill="#F5E2B6" d="M-8.2-7.8C-8.2-7.8-8.2-7.8-8.2-7.8c-0.9,0-1.5,0.7-1.5,1.5C-9.6,0.6-4.8,3.4-2.2,4
+    c0.8,0.2,1.6-0.3,1.8-1.2C-0.3,2-0.8,1.2-1.6,1c-0.2,0-5-1.2-5.1-7.4C-6.7-7.1-7.4-7.8-8.2-7.8z"/>
+  <polygon display="none" fill="none" points="-12.5,17.2 11.5,17.2 11.5,-16.8 -12.5,-16.8   "/>
 </symbol>
-<use xlink:href="#red_bauble_2"  width="24" height="34.8" x="-12" y="-17.4" transform="matrix(0.7005 0 0 -0.701 125.391 100.4363)" overflow="visible"/>
-<use xlink:href="#red_bauble"  width="24" height="34.6" x="-12" y="-17.3" transform="matrix(0.7005 0 0 -0.701 92.6443 230.842)" overflow="visible"/>
-<path fill="#8E6226" d="M87.2,226.8c2.1,2.1-6.3,101.3-3.5,102c2.8,0.7,37.8,3.2,37.8,3.2l-7.1-107.6L87.2,226.8z"/>
-<polygon fill="#31451D" points="90.1,80.6 0.6,256.7 194,244.2 "/>
-<polygon fill="#4C6830" points="86.4,34.3 30.7,181.1 168.2,172.2 "/>
-<polygon fill="#68934F" points="81.4,0 44.2,97.8 136,92 "/>
-<path opacity="0.85" fill="none" stroke="#CDCCCC" stroke-width="30" stroke-linecap="round" stroke-miterlimit="10" enable-background="new    " d="
-	M111.7,51C98,73.7,80.7,80.6,50.8,80.6"/>
-<path opacity="0.85" fill="none" stroke="#CDCCCC" stroke-width="30" stroke-linecap="round" stroke-miterlimit="10" enable-background="new    " d="
-	M138.6,128c-13.6,26-78.4,11.4-101.6,30.9"/>
-<use xlink:href="#red_bauble"  width="24" height="34.6" x="-12" y="-17.3" transform="matrix(0.7005 0 0 -0.701 64.0965 106.1148)" overflow="visible" enable-background="new    "/>
-<use xlink:href="#red_bauble"  width="24" height="34.6" x="-12" y="-17.3" transform="matrix(0.7005 0 0 -0.701 102.4615 47.886)" overflow="visible" enable-background="new    "/>
-<use xlink:href="#red_bauble_2"  width="24" height="34.8" x="-12" y="-17.4" transform="matrix(0.7005 0 0 -0.701 137.835 173.4198)" overflow="visible" enable-background="new    "/>
-<use xlink:href="#red_bauble_2"  width="24" height="34.8" x="-12" y="-17.4" transform="matrix(0.7005 0 0 -0.701 95.7469 124.6212)" overflow="visible" enable-background="new    "/>
-<use xlink:href="#red_bauble_2"  width="24" height="34.8" x="-12" y="-17.4" transform="matrix(0.7005 0 0 -0.701 95.7469 235.0301)" overflow="visible" enable-background="new    "/>
-<use xlink:href="#red_bauble"  width="24" height="34.6" x="-12" y="-17.3" transform="matrix(0.7005 0 0 -0.701 63.7443 183.9272)" overflow="visible" enable-background="new    "/>
-<use xlink:href="#red_bauble_2"  width="24" height="34.8" x="-12" y="-17.4" transform="matrix(0.7005 0 0 -0.701 8.4062 268.6793)" overflow="visible" enable-background="new    "/>
-<use xlink:href="#red_bauble"  width="24" height="34.6" x="-12" y="-17.3" transform="matrix(0.7005 0 0 -0.701 176.1779 251.9253)" overflow="visible" enable-background="new    "/>
-<path opacity="0.85" fill="none" stroke="#CDCCCC" stroke-width="30" stroke-linecap="round" stroke-miterlimit="10" enable-background="new    " d="
-	M166.2,200.4c-13.1,40.7-121.9,3.8-152.4,30.5"/>
+<use xlink:href="#red_bauble_2"  width="24" height="34.8" x="-12.5" y="-17.1" transform="matrix(2.1989 0 0 -2.1989 1045.3318 355.6309)" overflow="visible"/>
+<use xlink:href="#red_bauble"  width="24" height="34.6" x="-12" y="-17.1" transform="matrix(2.1989 0 0 -2.1989 878.2126 854.7897)" overflow="visible"/>
+<path fill="#8E6008" d="M924.4,751.4c6.6,6.6-19.8,317.6-11,319.8c8.8,2.2,118.7,10,118.7,10l-22.3-337.6L924.4,751.4z"/>
+<polygon fill="#2D440F" points="933.6,292.8 652.6,845 1259.6,806.1 "/>
+<polygon fill="#4A671E" points="921.8,147.6 746.9,607.8 1178.7,580.1 "/>
+<polygon fill="#68934F" points="906.2,39.9 789.5,346.8 1077.6,328.4 "/>
+<path opacity="0.85" fill="none" stroke="#CCCCCC" stroke-width="14" stroke-linecap="round" stroke-miterlimit="10" d="
+  M1001.2,199.9c-43.2,71.4-97.3,92.9-191.1,92.9"/>
+<path opacity="0.85" fill="none" stroke="#CCCCCC" stroke-width="14" stroke-linecap="round" stroke-miterlimit="10" d="
+  M1085.7,441.4c-42.5,81.5-246,35.7-319,96.9"/>
+<path opacity="0.85" fill="none" stroke="#CCCCCC" stroke-width="14" stroke-linecap="round" stroke-miterlimit="10" d="
+  M1172.1,668.4c-41.1,127.5-382.6,12-478.4,95.7"/>
+<use xlink:href="#red_bauble"  width="24" height="34.6" x="-12" y="-17.1" transform="matrix(2.1989 0 0 -2.1989 851.8253 373.2224)" overflow="visible"/>
+<use xlink:href="#red_bauble_2"  width="24" height="34.8" x="-12.5" y="-17.1" transform="matrix(2.1989 0 0 -2.1989 1047.5308 621.7023)" overflow="visible"/>
+<use xlink:href="#red_bauble"  width="24" height="34.6" x="-12" y="-17.1" transform="matrix(2.1989 0 0 -2.1989 827.637 617.3044)" overflow="visible"/>
+<use xlink:href="#red_bauble_2"  width="24" height="34.8" x="-12.5" y="-17.1" transform="matrix(2.1989 0 0 -2.1989 678.1093 883.3759)" overflow="visible"/>
+<use xlink:href="#red_bauble"  width="24" height="34.6" x="-12" y="-17.1" transform="matrix(2.1989 0 0 -2.1989 1203.6553 830.6014)" overflow="visible"/>
 </svg>
