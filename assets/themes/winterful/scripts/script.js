@@ -14,7 +14,8 @@ theme.onUpdate = function(power) {
 theme.usageExamples = [
       { "action": "Powering", "consumption": 0.000483, "object": "homes", "image": "North Pole homes" },
       { "action": "Or driving", "consumption": 0.00038, "object": "miles in a Santa Sled" },
-      { "action": "Or watching \"How the Grinch Stole Christmas!\"", "consumption": 0.000024, "object": "times" }
+      { "action": "Or watching \"How the Grinch Stole Christmas!\"", "consumption": 0.000024, "object": "times" },
+      { "action": "Or baking", "consumption": 0.0000185, "object": "mince pies" }
     ];
 
 window.onload = function(){
