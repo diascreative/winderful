@@ -2,6 +2,7 @@
   require_once("../inc/init.php");
 
   $title = "Winderful";
+  $subtitle = "A prototype visualising the UK's wind energy";
   $turbineMast = '';
 
   $version = '0.2.4';
@@ -91,7 +92,7 @@
       <div class="left-side">
         <h1 id="main-title"><?= $title ?></h1>
 
-        <h2>A prototype visualising the UK's wind energy</h2>
+        <h2><?= $subtitle ?></h2>
       </div>
 
       <div class="right-side clearfix">
