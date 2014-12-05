@@ -23,11 +23,11 @@
 <polygon fill="#2D440F" points="933.6,292.8 652.6,845 1259.6,806.1 "/>
 <polygon fill="#4A671E" points="921.8,147.6 746.9,607.8 1178.7,580.1 "/>
 <polygon fill="#68934F" points="906.2,39.9 789.5,346.8 1077.6,328.4 "/>
-<path opacity="0.85" fill="none" stroke="#CCCCCC" stroke-width="14" stroke-linecap="round" stroke-miterlimit="10" d="
+<path opacity="0.85" fill="none" stroke="#CCCCCC" stroke-width="37" stroke-linecap="round" stroke-miterlimit="10" d="
   M1001.2,199.9c-43.2,71.4-97.3,92.9-191.1,92.9"/>
-<path opacity="0.85" fill="none" stroke="#CCCCCC" stroke-width="14" stroke-linecap="round" stroke-miterlimit="10" d="
-  M1085.7,441.4c-42.5,81.5-246,35.7-319,96.9"/>
-<path opacity="0.85" fill="none" stroke="#CCCCCC" stroke-width="14" stroke-linecap="round" stroke-miterlimit="10" d="
+<path opacity="0.85" fill="none" stroke="#CCCCCC" stroke-width="37" stroke-linecap="round" stroke-miterlimit="10" d="
+  M1092.7,441.4c-42.5,81.5-246,35.7-319,96.9"/>
+<path opacity="0.85" fill="none" stroke="#CCCCCC" stroke-width="37" stroke-linecap="round" stroke-miterlimit="10" d="
   M1172.1,668.4c-41.1,127.5-382.6,12-478.4,95.7"/>
 <use xlink:href="#red_bauble"  width="24" height="34.6" x="-12" y="-17.1" transform="matrix(2.1989 0 0 -2.1989 851.8253 373.2224)" overflow="visible"/>
 <use xlink:href="#red_bauble_2"  width="24" height="34.8" x="-12.5" y="-17.1" transform="matrix(2.1989 0 0 -2.1989 1047.5308 621.7023)" overflow="visible"/>
