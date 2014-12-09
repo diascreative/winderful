@@ -5,7 +5,7 @@
   $subtitle = "A prototype visualising the UK's wind energy";
   $turbineMast = '';
 
-  $version = '0.2.4';
+  $version = '0.3';
   //$theme = 'winterful';
 
   $domain = $_SERVER["HTTP_HOST"];
