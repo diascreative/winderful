@@ -5,3 +5,6 @@
   define("DB_USER", "root");
   define("DB_PASS", "");
   define("ANALYTICS", "");
+
+  $version = '0.1';
+  $theme = false;

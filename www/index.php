@@ -1,19 +1,5 @@
 <?php
   require_once("../inc/init.php");
-
-  $title = "Winderful";
-  $subtitle = "A prototype visualising the UK's wind energy";
-  $turbineMast = '';
-
-  $version = '0.3';
-  //$theme = 'winterful';
-
-  $domain = $_SERVER["HTTP_HOST"];
-  $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-
-  if( isset($theme) && $theme ) {
-    require_once("../assets/themes/$theme/config.php");
-  }
 ?>
 <!doctype html>
 <html lang="en" dir="ltr" ng-app="winderfulApp">
@@ -39,14 +25,14 @@
     <meta property="og:title" content="Winderful"/>
     <meta property="og:type" content="website"/>
     <meta property="og:site_name" content="<?= $domain ?>"/>
-    <meta property="og:image" content="http://<?= $domain ?>/static/img/screenshot.png"/>
+    <meta property="og:image" content="<?= $screenshot_url ?>"/>
 
     <!-- Twitter metas -->
     <meta name="twitter:card" content="photo" />
     <meta name="twitter:site" content="@diascreative" />
     <meta name="twitter:title" content="Winderful" />
     <meta name="twitter:description" content="Winderful is an experiment using realtime data to visualise and tell stories about wind energy." />
-    <meta name="twitter:image" content="http://<?= $domain ?>/static/img/screenshot.png" />
+    <meta name="twitter:image" content="<?= $screenshot_url ?>" />
     <meta name="twitter:url" content="<?= $url ?>" />
 
     <meta name="apple-mobile-web-app-capable" content="yes"/>

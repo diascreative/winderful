@@ -12,3 +12,4 @@
   }
 
   require_once($SITEROOT . '/inc/db.php');
+  require_once($SITEROOT . '/inc/global.php');
