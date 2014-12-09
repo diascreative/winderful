@@ -1,9 +1,6 @@
 <?php
-  error_reporting(0);
-
   require_once( dirname(__FILE__) . '/../inc/init.php' );
   require_once( dirname(__FILE__) . '/../inc/twitter/twitteroauth.php' );
-
 
   $maxPercentage = getMaxPercentageForTheNight();
 
@@ -12,12 +9,10 @@
   }
 
   function getMaxPercentageForTheNight() {
-    // get latest data
-    $end = time();
-    $start = time() - 3600 * 24 * 9;
+    $today = time();
 
-    $dateSMYSQL = es(date("Y-m-d 00:00", $start)); // 9 hours ago
-    $dateEMYSQL = es(date("Y-m-d 00:00", $end));   // now
+    $dateSMYSQL = es(date("Y-m-d 00:00", $today)); // midnight
+    $dateEMYSQL = es(date("Y-m-d 09:00", $today)); // 9am
 
     $query = "SELECT
                 timestamp,
@@ -49,8 +44,7 @@
     $status = $connection->post('statuses/update', array('status' => $message));
 
     if( 1 ) {
-      query("INSERT INTO tweets (percentage, timestamp) VALUES ($percent, '$time')");
-      echo "tweeted!";
+      echo $message;
     } else {
       echo "failed to tweet";
     }
