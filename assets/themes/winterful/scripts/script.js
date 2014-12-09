@@ -13,7 +13,7 @@ theme.onUpdate = function(power) {
 
 theme.usageExamples = [
       { "action": "Powering", "consumption": 0.000483, "object": "homes", "image": "North Pole homes" },
-      { "action": "Or Driving home for Christmas", "consumption": 0.00038, "object": "miles (in a Tesla Model S)" },
+      { "action": "Or driving home for Christmas", "consumption": 0.00038, "object": "miles (in a Tesla Model S)" },
       { "action": "Or watching \"How the Grinch Stole Christmas!\"", "consumption": 0.000024, "object": "times" },
       { "action": "Or baking", "consumption": 0.0000185, "object": "mince pies" }
     ];
