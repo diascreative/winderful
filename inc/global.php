@@ -5,7 +5,12 @@
   $title = "Winderful";
   $subtitle = "A prototype visualising the UK's wind energy";
   $turbineMast = '';
-  $screenshot_url = "http://$domain/static/img/screenshot.png";
+
+  // social media
+  $screenshotUrl = "http://$domain/static/img/screenshot.png";
+
+  $twitterShareMessage = "Winderful - visualising UK's #windenergy in real time. Made by @diascreative";
+
 
 
   if( isset($theme) && $theme ) {

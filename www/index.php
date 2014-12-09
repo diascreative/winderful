@@ -25,14 +25,14 @@
     <meta property="og:title" content="Winderful"/>
     <meta property="og:type" content="website"/>
     <meta property="og:site_name" content="<?= $domain ?>"/>
-    <meta property="og:image" content="<?= $screenshot_url ?>"/>
+    <meta property="og:image" content="<?= $screenshotUrl ?>"/>
 
     <!-- Twitter metas -->
     <meta name="twitter:card" content="photo" />
     <meta name="twitter:site" content="@diascreative" />
     <meta name="twitter:title" content="Winderful" />
     <meta name="twitter:description" content="Winderful is an experiment using realtime data to visualise and tell stories about wind energy." />
-    <meta name="twitter:image" content="<?= $screenshot_url ?>" />
+    <meta name="twitter:image" content="<?= $screenshotUrl ?>" />
     <meta name="twitter:url" content="<?= $url ?>" />
 
     <meta name="apple-mobile-web-app-capable" content="yes"/>
@@ -67,7 +67,7 @@
         </a>
 
         <a title="Share on Twitter" class="twitter social"
-          href="http://twitter.com/share?text=Winderful+-+visualising+UK's+%23windenergy+in+real+time.+Made+by+@diascreative&amp;url=<?= $url ?>">
+          href="http://twitter.com/share?text=<?= urlencode($twitterShareMessage) ?>&amp;url=<?= $url ?>">
           <img src="./static/img/twitter.svg" alt="Share on Twitter"
             height="32" width="32">
         </a>
@@ -139,7 +139,7 @@
       </a>
 
       <a title="Share on Twitter" class="twitter social"
-        href="http://twitter.com/share?text=Winderful+-+visualising+UK's+%23windenergy+in+real+time.+Made+by+@diascreative&amp;url=<?= $url ?>">
+        href="http://twitter.com/share?text=<?= urlencode($twitterShareMessage) ?>&amp;url=<?= $url ?>">
         <img src="./static/img/twitter.svg" alt="Share on Twitter"
           height="32" width="32">
       </a>
