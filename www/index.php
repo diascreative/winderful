@@ -6,7 +6,7 @@
   $turbineMast = '';
 
   $version = '0.2.4';
-  $theme = 'winterful';
+  //$theme = 'winterful';
 
   $domain = $_SERVER["HTTP_HOST"];
   $url = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
