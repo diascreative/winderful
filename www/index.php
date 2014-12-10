@@ -1,5 +1,7 @@
 <?php
   require_once("../inc/init.php");
+
+  $currentUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 ?>
 <!doctype html>
 <html lang="en" dir="ltr" ng-app="winderfulApp">
@@ -33,7 +35,7 @@
     <meta name="twitter:title" content="Winderful" />
     <meta name="twitter:description" content="Winderful is an experiment using realtime data to visualise and tell stories about wind energy." />
     <meta name="twitter:image" content="<?= $screenshotUrl ?>" />
-    <meta name="twitter:url" content="<?= $url ?>" />
+    <meta name="twitter:url" content="<?= $currentUrl ?>" />
 
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="viewport" content="width=device-width, user-scalable=no">
@@ -61,13 +63,13 @@
         <a href="#about" class="scroll-to">About</a>
 
         <a title="Share on Facebook" class="social"
-          href="http://www.facebook.com/sharer.php?u=<?= $url ?>">
+          href="http://www.facebook.com/sharer.php?u=<?= $socialUrl ?>">
           <img src="./static/img/fb.svg" alt="Share on Facebook"
             height="32" width="32">
         </a>
 
         <a title="Share on Twitter" class="twitter social"
-          href="http://twitter.com/share?text=<?= urlencode($twitterShareMessage) ?>&amp;url=<?= $url ?>">
+          href="http://twitter.com/share?text=<?= urlencode($twitterShareMessage) ?>&amp;url=<?= $socialUrl ?>">
           <img src="./static/img/twitter.svg" alt="Share on Twitter"
             height="32" width="32">
         </a>
@@ -133,13 +135,13 @@
 
     <footer id="footer">
       <a title="Share on Facebook" class="social"
-        href="http://www.facebook.com/sharer.php?u=<?= $url ?>">
+        href="http://www.facebook.com/sharer.php?u=<?= $socialUrl ?>">
         <img src="./static/img/fb.svg" alt="Share on Facebook"
           height="32" width="32">
       </a>
 
       <a title="Share on Twitter" class="twitter social"
-        href="http://twitter.com/share?text=<?= urlencode($twitterShareMessage) ?>&amp;url=<?= $url ?>">
+        href="http://twitter.com/share?text=<?= urlencode($twitterShareMessage) ?>&amp;url=<?= $socialUrl ?>">
         <img src="./static/img/twitter.svg" alt="Share on Twitter"
           height="32" width="32">
       </a>

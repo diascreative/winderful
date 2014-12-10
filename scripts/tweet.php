@@ -53,11 +53,13 @@
   }
 
   function tweetPercentage($current) {
+    global $socialUrl;
+
     // tweet the percentage milestone :)
     $percent = $current['percent'];
     $time = $current['timestamp'];
 
-    $message = "Right now #wind is meeting $percent% of the National Grid's electricity demand. http://winderful.diascreative.net";
+    $message = "Right now #wind is meeting $percent% of the National Grid's electricity demand. $socialUrl";
 
     $connection = new TwitterOAuth(API_KEY, API_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
     $status = $connection->post('statuses/update', array('status' => $message));
