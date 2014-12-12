@@ -18,8 +18,16 @@
     // inner select grabs highest % tweeted today
 
     // only check today's readings
-    $start = time();
-    $end = time() + 3600 * 24;
+    $hour = date('H');
+
+    if( $hour < 12 ) {
+      $start = time();
+      $end = time() + 3600 * 12;
+    } else {
+      $end = time() + 3600 * 12;
+      $end = time() + 3600 * 24;
+    }
+
 
     $dateSMYSQL = es(date("Y-m-d 00:00", $start)); // today 00
     $dateEMYSQL = es(date("Y-m-d 00:00", $end));   // tomorrow 00
