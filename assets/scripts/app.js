@@ -30,7 +30,7 @@
     this.iosSafari = /(iPhone|iPod|iPad).*AppleWebKit/i.test(navigator.userAgent);
 
     this.usageExamples = [
-      { "action": "Powering", "consumption": (0.000483*26400000)/100, "object": "% of homes" },
+      { "action": "Powering", "consumption": (0.000483*26400000)/100, "object": "% of UK homes" },
       { "action": "Or making", "consumption": 0.00006, "object": "cups of tea" },
       { "action": "Or making", "consumption": 0.000033, "object": "slices of toast" },
       { "action": "Or driving", "consumption": 0.00038, "object": "miles in a Tesla Model S" },
