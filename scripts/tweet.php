@@ -22,15 +22,17 @@
 
     if( $hour < 12 ) {
       $start = time();
-      $end = time() + 3600 * 12;
+      $end = time();
+
+      $dateSMYSQL = es(date("Y-m-d 00:00", $start)); // today 00
+      $dateEMYSQL = es(date("Y-m-d 12:00", $end));   // today 12
     } else {
-      $end = time() + 3600 * 12;
+      $start = time();
       $end = time() + 3600 * 24;
+
+      $dateSMYSQL = es(date("Y-m-d 12:00", $start)); // today 12
+      $dateEMYSQL = es(date("Y-m-d 00:00", $end));   // tomorrow 00
     }
-
-
-    $dateSMYSQL = es(date("Y-m-d 00:00", $start)); // today 00
-    $dateEMYSQL = es(date("Y-m-d 00:00", $end));   // tomorrow 00
 
     $query = "SELECT
                 timestamp,
