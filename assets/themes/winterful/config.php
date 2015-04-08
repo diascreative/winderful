@@ -9,6 +9,6 @@ $twitterShareMessage = "Winderful (Xmas edition) - visualising UK's #windenergy 
 
 // we want to embed the SVG content for the windturbine
 ob_start();
-include( $SITEROOT . '/www/static/themes/winterful/img/tree.svg');
+include $SITEROOT . '/www/static/themes/winterful/img/tree.svg';
 $turbineMast = ob_get_contents();
 ob_end_clean();

@@ -10,7 +10,7 @@
     window: false,
     theme: false
 */
-(function () {
+(function() {
   'use strict';
 
   var app = angular.module('winderfulApp', ['turbine-directives', 'winderful-filters', 'ngBootstrap', 'angular-rickshaw']);
@@ -30,7 +30,7 @@
     this.iosSafari = /(iPhone|iPod|iPad).*AppleWebKit/i.test(navigator.userAgent);
 
     this.usageExamples = [
-      { "action": "Powering", "consumption": (0.000483*26400000)/100, "object": "% of UK homes" },
+      { "action": "Powering", "consumption": (0.000483 * 26400000) / 100, "object": "% of UK homes" },
       { "action": "Or making", "consumption": 0.00006, "object": "cups of tea" },
       { "action": "Or making", "consumption": 0.000033, "object": "slices of toast" },
       { "action": "Or driving", "consumption": 0.00038, "object": "miles in a Tesla Model S" },
@@ -38,9 +38,9 @@
       { "action": "Or powering", "consumption": 0.0005, "object": "fridge-freezers for a day" }
     ];
 
-    if( typeof(theme) !== 'undefined' &&
-        typeof(theme.usageExamples) !== 'undefined') {
-          this.usageExamples = theme.usageExamples;
+    if (typeof (theme) !== 'undefined' &&
+        typeof (theme.usageExamples) !== 'undefined') {
+      this.usageExamples = theme.usageExamples;
     }
 
     this.updateStats = function(date, power, percent) {
@@ -53,18 +53,18 @@
       this.percentage = percent;
 
       // winterful only
-      if( typeof(theme) !== 'undefined' &&
-          typeof(theme.onUpdate) !== 'undefined') {
-          theme.onUpdate(power);
+      if (typeof (theme) !== 'undefined' &&
+          typeof (theme.onUpdate) !== 'undefined') {
+        theme.onUpdate(power);
       }
 
       // if details is from less than 30 mins ago for wording in stats
       this.isCurrent = (new Date() - this.displayDate) / 60000 < 30;
 
       // show random "equivalent of" stat
-      this.showExample = Math.round(Math.random() * (this.usageExamples.length-2)) + 1;
+      this.showExample = Math.round(Math.random() * (this.usageExamples.length - 2)) + 1;
 
-      if( this.iosSafari ) {
+      if (this.iosSafari) {
         // IOS not triggering ngclick for some reason on the graph, so temp fix
         $scope.$apply();
       }
@@ -81,7 +81,7 @@
       this.hoverDeets.y = y;
       this.hoverDeets.z = b.value.z;
 
-      if( this.iosSafari ) {
+      if (this.iosSafari) {
         // IOS not triggering ngclick for some reason on the graph, so temp fix
         this.setStats();
       }
@@ -111,7 +111,7 @@
 
       // add rotation to the container so that the $rotor is at the same angle
       // as it was when animation stops momenteraly
-      $rContainer.css('transform', 'rotateZ(' + (oldTransform+parentTransform+degPerS) + 'deg)');
+      $rContainer.css('transform', 'rotateZ(' + (oldTransform + parentTransform + degPerS) + 'deg)');
 
       // must add class on a time out to trigger the change in speed
       setTimeout(function() {
@@ -126,7 +126,7 @@
       // grab the matrix CSS and transform into degrees
       var angle = 0;
 
-      if( tr !== 'none' ) {
+      if (tr !== 'none') {
         var values = tr.split('(')[1];
         values = values.split(')')[0];
         values = values.split(',');
@@ -135,15 +135,15 @@
           b = values[1],
           c = values[2],
           d = values[3],
-          scale = Math.sqrt(a*a + b*b);
+          scale = Math.sqrt(a * a + b * b);
 
         var radians = Math.atan2(b, a);
 
-        if ( radians < 0 ) {
+        if (radians < 0) {
           radians += (2 * Math.PI);
         }
 
-        angle = Math.round( radians * (180/Math.PI));
+        angle = Math.round(radians * (180 / Math.PI));
       }
 
       return angle;
@@ -158,28 +158,28 @@
       hover: {
         formatter: hoverGraph.bind(this),
         xFormatter: function(x) {
-            var now = moment().format('X'),
-              time = '';
+          var now = moment().format('X'),
+            time = '';
 
-            if( $scope.delta <= 3600*8*24 ) {
-              // date range < 10 hours : show every 5 mins
-              if( now - x > 6*24*3600) {
-                time = moment.unix(x).format('LLL');
-              } else {
-                time = moment.unix(x).calendar();
-              }
-            } else if( $scope.delta <= 3600 * 24 * 30 ) {
-              // date range < 1 week : show every hour
+          if ($scope.delta <= 3600 * 8 * 24) {
+            // date range < 10 hours : show every 5 mins
+            if (now - x > 6 * 24 * 3600) {
               time = moment.unix(x).format('LLL');
-            } else if( $scope.delta <= 3600 * 24 * 30 * 12 ) {
-              // date range < 1 month : show daily average
-              time = moment.unix(x).format('LL');
             } else {
-              // date range < 1 year : show weekly average
-              time = 'week ' + moment.unix(x).format('w') + ' of ' + moment.unix(x).format('YYYY');
+              time = moment.unix(x).calendar();
             }
+          } else if ($scope.delta <= 3600 * 24 * 30) {
+            // date range < 1 week : show every hour
+            time = moment.unix(x).format('LLL');
+          } else if ($scope.delta <= 3600 * 24 * 30 * 12) {
+            // date range < 1 month : show daily average
+            time = moment.unix(x).format('LL');
+          } else {
+            // date range < 1 year : show weekly average
+            time = 'week ' + moment.unix(x).format('w') + ' of ' + moment.unix(x).format('YYYY');
+          }
 
-            return time;
+          return time;
         }
       },
       yAxis: {
@@ -190,11 +190,11 @@
       complete: graphSetup.bind(this)
     };
 
-    this.graph.series = [{"name":"Wind","color":'#007232',"data":[{"x":0,"y":0}]}];
+    this.graph.series = [{"name":"Wind", "color":'#007232', "data":[{"x":0, "y":0}]}];
     this.daterange = { startDate: moment().subtract('days', 7), endDate: moment() };
 
     $scope.loadInData = function() {
-      if( typeof(this.daterange) !== 'undefined' ) {
+      if (typeof (this.daterange) !== 'undefined') {
         var that = this;
 
         $scope.delta = this.daterange.endDate.unix() - this.daterange.startDate.unix();
@@ -208,9 +208,9 @@
 
             that.loaded = true;
 
-            if( typeof(theme) !== 'undefined' &&
-                typeof(theme.onStart) !== 'undefined') {
-                theme.onStart();
+            if (typeof (theme) !== 'undefined' &&
+                typeof (theme.onStart) !== 'undefined') {
+              theme.onStart();
             }
           });
       }

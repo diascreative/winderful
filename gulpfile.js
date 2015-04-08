@@ -1,40 +1,41 @@
-var gulp = require('gulp')
-  , fs = require('fs')
-  , path = require('path')
-  , uglify = require('gulp-uglify')
-  , sass = require('gulp-ruby-sass')
-  , autoprefixer = require('gulp-autoprefixer')
-  , minify = require('gulp-minify-css')
-  , jshint = require('gulp-jshint')
-  , concat = require('gulp-concat')
-  , imagemin = require('gulp-imagemin')
-  , cache = require('gulp-cache')
-  , notify = require('gulp-notify')
-  , runSequence = require('run-sequence')
-  , rimraf = require('gulp-rimraf')
-  , gulpIgnore = require('gulp-ignore')
-  , assets = {
+var gulp = require('gulp');
+var fs = require('fs');
+var path = require('path');
+var uglify = require('gulp-uglify');
+var sass = require('gulp-ruby-sass');
+var autoprefixer = require('gulp-autoprefixer');
+var minify = require('gulp-minify-css');
+var jshint = require('gulp-jshint');
+var concat = require('gulp-concat');
+var imagemin = require('gulp-imagemin');
+var cache = require('gulp-cache');
+var notify = require('gulp-notify');
+var runSequence = require('run-sequence');
+var rimraf = require('gulp-rimraf');
+var gulpIgnore = require('gulp-ignore');
+var assets = {
     sass: 'assets/sass/*.sass',
     cssLibs: 'assets/sass/libs/*',
     jsLibs: 'assets/scripts/libs/**/*.min.js',
     js: 'assets/scripts/*.js',
     img: 'assets/img/**/*',
-    themes: 'assets/themes/',
-  }
-  , dist = {
+    themes: 'assets/themes/'
+  };
+
+var dist = {
     css: 'www/static/css',
     img: 'www/static/img',
     js: 'www/static/js',
     themes: 'www/static/themes/'
-  }
-  ,
-  reportError = function(err) {
-    if( typeof err.fileName !== 'undefined' )
-      return  "\n" + err.fileName + ': line ' + err.lineNumber + ', ' + err.message;
-    else
-      return err;
   };
 
+var reportError = function(err) {
+    if (typeof err.fileName !== 'undefined') {
+      return '\n' + err.fileName + ': line ' + err.lineNumber + ', ' + err.message;
+    } else {
+      return err;
+    }
+  };
 
 gulp.task('libs', function() {
   return gulp.src(assets.jsLibs)
@@ -59,15 +60,17 @@ gulp.task('themes', function() {
   var folders = getFolders(assets.themes);
 
   var tasks = folders.map(function(folder) {
-      styles(assets.themes + folder + '/css/*.sass', dist.themes + folder + '/css/');
-      scripts(assets.themes + folder + '/scripts/*.js', dist.themes + folder + '/js/', 'script.js');
-      images(assets.themes + folder + '/img/**/*', dist.themes + folder + '/img');
-   });
+    styles(assets.themes + folder + '/css/*.sass', dist.themes + folder + '/css/');
+    scripts(assets.themes + folder + '/scripts/*.js', dist.themes + folder + '/js/', 'script.js');
+    images(assets.themes + folder + '/img/**/*', dist.themes + folder + '/img');
+  });
 });
 
 // Clean up static folder
 gulp.task('clean', function(cb) {
-  return gulp.src('./www/static/*', { read: false }) // much faster
+  return gulp.src('./www/static/*', { read: false })
+
+ // much faster
     .pipe(rimraf())
     .pipe(notify({ message: 'Clean task complete' }));
 });
@@ -102,10 +105,11 @@ function scripts(origin, destination, name) {
     .pipe(
       uglify()
       .on('error',
-        notify.onError(function (err) {
+        notify.onError(function(err) {
           s.end();
           return reportError(err);
         })
+
       )
     )
     .pipe(gulp.dest(destination))
@@ -117,12 +121,13 @@ function scripts(origin, destination, name) {
 function styles(origin, destination) {
   var c = gulp.src(origin)
     .pipe(
-      sass({ style: 'compressed', 'sourcemap=none' : true, loadPath: 'assets/sass/' })
+      sass({ style: 'compressed', 'sourcemap=none': true, loadPath: 'assets/sass/' })
       .on('error',
-        notify.onError(function (err) {
+        notify.onError(function(err) {
           c.end();
           return reportError(err);
         })
+
       )
     )
     .pipe(

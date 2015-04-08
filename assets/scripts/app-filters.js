@@ -10,7 +10,7 @@
       // make sure we don't divide by 0,
       // consumption should never be 0, what a magical world that would be!
       // if consumption is 0 we're just going to not power any
-      var amount = consumption > 0 ? this.wattage/consumption : 0;
+      var amount = consumption > 0 ? this.wattage / consumption : 0;
 
       return $filter('number')(amount, 0);
     };

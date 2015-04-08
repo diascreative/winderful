@@ -1,7 +1,7 @@
 <?php
-  require_once("../inc/init.php");
+require_once "../inc/init.php";
 
-  $currentUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$currentUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 ?>
 <!doctype html>
 <html lang="en" dir="ltr" ng-app="winderfulApp">
@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 
-    <title><?= $title ?></title>
+    <title><?=$title?></title>
 
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="./apple-touch-icon-144x144.png" />
     <link rel="apple-touch-icon-precomposed" sizes="152x152" href="./apple-touch-icon-152x152.png" />
@@ -26,30 +26,30 @@
     <!-- Facebook metas -->
     <meta property="og:title" content="Winderful"/>
     <meta property="og:type" content="website"/>
-    <meta property="og:site_name" content="<?= $domain ?>"/>
-    <meta property="og:image" content="<?= $screenshotUrl ?>"/>
+    <meta property="og:site_name" content="<?=$domain?>"/>
+    <meta property="og:image" content="<?=$screenshotUrl?>"/>
 
     <!-- Twitter metas -->
     <meta name="twitter:card" content="photo" />
     <meta name="twitter:site" content="@diascreative" />
     <meta name="twitter:title" content="Winderful" />
     <meta name="twitter:description" content="Winderful is an experiment using realtime data to visualise and tell stories about wind energy." />
-    <meta name="twitter:image" content="<?= $screenshotUrl ?>" />
-    <meta name="twitter:url" content="<?= $currentUrl ?>" />
+    <meta name="twitter:image" content="<?=$screenshotUrl?>" />
+    <meta name="twitter:url" content="<?=$currentUrl?>" />
 
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="viewport" content="width=device-width, user-scalable=no">
 
     <style type="text/css">
-      <?php require_once('./static/css/above-fold.css'); ?>
+      <?php require_once './static/css/above-fold.css';?>
     </style>
 
     <link rel="stylesheet" type="text/css"
       href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,400italic,400,500,500italic">
-    <link rel="stylesheet" type="text/css" href="./static/css/wind.css?v=<?= $version ?>">
-    <?php if( isset($theme) && $theme ): ?>
-      <link rel="stylesheet" type="text/css" href="./static/themes/<?= $theme ?>/css/style.css?v=<?= $version ?>">
-    <?php endif; ?>
+    <link rel="stylesheet" type="text/css" href="./static/css/wind.css?v=<?=$version?>">
+    <?php if (isset($theme) && $theme): ?>
+      <link rel="stylesheet" type="text/css" href="./static/themes/<?=$theme?>/css/style.css?v=<?=$version?>">
+    <?php endif;?>
   </head>
   <body ng-controller="turbineController as turbine" class="loading" ng-class="{ 'loading': !turbine.loaded }">
     <div id="loading" ng-hide="turbine.loaded">
@@ -63,13 +63,13 @@
         <a href="#about" class="scroll-to">About</a>
 
         <a title="Share on Facebook" class="social"
-          href="http://www.facebook.com/sharer.php?u=<?= $socialUrl ?>">
+          href="http://www.facebook.com/sharer.php?u=<?=$socialUrl?>">
           <img src="./static/img/fb.svg" alt="Share on Facebook"
             height="32" width="32">
         </a>
 
         <a title="Share on Twitter" class="twitter social"
-          href="http://twitter.com/share?text=<?= urlencode($twitterShareMessage) ?>&amp;url=<?= $socialUrl ?>">
+          href="http://twitter.com/share?text=<?=urlencode($twitterShareMessage)?>&amp;url=<?=$socialUrl?>">
           <img src="./static/img/twitter.svg" alt="Share on Twitter"
             height="32" width="32">
         </a>
@@ -78,9 +78,9 @@
       </nav>
 
       <div class="left-side">
-        <h1 id="main-title"><?= $title ?></h1>
+        <h1 id="main-title"><?=$title?></h1>
 
-        <h2><?= $subtitle ?></h2>
+        <h2><?=$subtitle?></h2>
       </div>
 
       <div class="right-side clearfix">
@@ -99,7 +99,7 @@
 
     <div id="wind-turbine-container">
       <div id="wind-turbine">
-        <div id="turbine-mast"><?= $turbineMast ?></div>
+        <div id="turbine-mast"><?=$turbineMast?></div>
 
         <div id="turbine-rotor-container">
           <div id="turbine-percentage" style="opacity: {{ turbine.wattage/10000 }}"></div>
@@ -126,7 +126,7 @@
       <input type="daterange" class="daterange"
         ng-model="turbine.daterange"
         min-date="2011-05-27"
-        max-date="<?= date("Y-m-d") ?>"
+        max-date="<?=date("Y-m-d")?>"
         format="DD/MM/YYYY"
         show-dropdowns="true">
     </div>
@@ -135,13 +135,13 @@
 
     <footer id="footer">
       <a title="Share on Facebook" class="social"
-        href="http://www.facebook.com/sharer.php?u=<?= $socialUrl ?>">
+        href="http://www.facebook.com/sharer.php?u=<?=$socialUrl?>">
         <img src="./static/img/fb.svg" alt="Share on Facebook"
           height="32" width="32">
       </a>
 
       <a title="Share on Twitter" class="twitter social"
-        href="http://twitter.com/share?text=<?= urlencode($twitterShareMessage) ?>&amp;url=<?= $socialUrl ?>">
+        href="http://twitter.com/share?text=<?=urlencode($twitterShareMessage)?>&amp;url=<?=$socialUrl?>">
         <img src="./static/img/twitter.svg" alt="Share on Twitter"
           height="32" width="32">
       </a>
@@ -151,11 +151,11 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
-    <script src="./static/js/libs.js?v=<?= $version ?>"></script>
-    <script src="./static/js/app.js?v=<?= $version ?>"></script>
-    <?php if( isset($theme) && $theme ): ?>
-      <script src="./static/themes/<?= $theme ?>/js/script.js?v=<?= $version ?>"></script>
-    <?php endif; ?>
+    <script src="./static/js/libs.js?v=<?=$version?>"></script>
+    <script src="./static/js/app.js?v=<?=$version?>"></script>
+    <?php if (isset($theme) && $theme): ?>
+      <script src="./static/themes/<?=$theme?>/js/script.js?v=<?=$version?>"></script>
+    <?php endif;?>
     <script type="text/javascript">
       $('a.social').on('click', function(e) {
         e.preventDefault();
@@ -184,16 +184,16 @@
         }
       });
 
-      <?php if ( ANALYTICS ): ?>
+      <?php if (ANALYTICS): ?>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-      ga('create', '<?= ANALYTICS ?>', 'auto');
+      ga('create', '<?=ANALYTICS?>', 'auto');
       ga('require', 'displayfeatures');
       ga('send', 'pageview');
-      <?php endif; ?>
+      <?php endif;?>
       </script>
   </body>
 </html>
