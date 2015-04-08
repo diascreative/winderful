@@ -1,7 +1,6 @@
-/* global $:false,
-    angular: false
-*/
 (function() {
+  'use strict';
+
   var app = angular.module('winderful-filters', []);
 
   // Filter for translating consumption to equivalent in the stats

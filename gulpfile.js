@@ -1,10 +1,11 @@
+'use strict';
+
 var gulp = require('gulp');
 var fs = require('fs');
 var path = require('path');
 var uglify = require('gulp-uglify');
 var sass = require('gulp-ruby-sass');
 var autoprefixer = require('gulp-autoprefixer');
-var minify = require('gulp-minify-css');
 var jshint = require('gulp-jshint');
 var concat = require('gulp-concat');
 var imagemin = require('gulp-imagemin');
@@ -36,58 +37,6 @@ var reportError = function(err) {
       return err;
     }
   };
-
-gulp.task('libs', function() {
-  return gulp.src(assets.jsLibs)
-    .pipe(concat('libs.js'))
-    .pipe(gulp.dest(dist.js));
-});
-
-gulp.task('scripts', function() {
-  return scripts(assets.js, dist.js, 'app.js');
-});
-
-gulp.task('images', function() {
-  return images(assets.img, dist.img);
-});
-
-gulp.task('styles', function() {
-  return styles(assets.sass, dist.css);
-});
-
-gulp.task('themes', function() {
-  // create the folders for each theme
-  var folders = getFolders(assets.themes);
-
-  var tasks = folders.map(function(folder) {
-    styles(assets.themes + folder + '/css/*.sass', dist.themes + folder + '/css/');
-    scripts(assets.themes + folder + '/scripts/*.js', dist.themes + folder + '/js/', 'script.js');
-    images(assets.themes + folder + '/img/**/*', dist.themes + folder + '/img');
-  });
-});
-
-// Clean up static folder
-gulp.task('clean', function(cb) {
-  return gulp.src('./www/static/*', { read: false })
-
- // much faster
-    .pipe(rimraf())
-    .pipe(notify({ message: 'Clean task complete' }));
-});
-
-gulp.task('watch', function() {
-  gulp.watch(assets.jsLibs, ['libs']);
-  gulp.watch(assets.js, ['scripts']);
-  gulp.watch(assets.img, ['styles', 'images']);
-  gulp.watch(assets.sass, ['styles']);
-  gulp.watch(assets.cssLibs, ['styles']);
-  gulp.watch(assets.themes + '**', ['themes']);
-});
-
-// Default Task
-gulp.task('default', function() {
-  runSequence('clean', ['images', 'styles', 'watch', 'libs', 'scripts', 'themes']);
-});
 
 function getFolders(dir) {
   return fs.readdirSync(dir)
@@ -148,3 +97,56 @@ function images(origin, destination) {
     .pipe(gulp.dest(destination))
     .pipe(notify({ message: 'Images task for ' + origin + ' complete' }));
 }
+
+
+gulp.task('libs', function() {
+  return gulp.src(assets.jsLibs)
+    .pipe(concat('libs.js'))
+    .pipe(gulp.dest(dist.js));
+});
+
+gulp.task('scripts', function() {
+  return scripts(assets.js, dist.js, 'app.js');
+});
+
+gulp.task('images', function() {
+  return images(assets.img, dist.img);
+});
+
+gulp.task('styles', function() {
+  return styles(assets.sass, dist.css);
+});
+
+gulp.task('themes', function() {
+  // create the folders for each theme
+  var folders = getFolders(assets.themes);
+
+  folders.map(function(folder) {
+    styles(assets.themes + folder + '/css/*.sass', dist.themes + folder + '/css/');
+    scripts(assets.themes + folder + '/scripts/**/*.js', dist.themes + folder + '/js/', 'script.js');
+    images(assets.themes + folder + '/img/**/*', dist.themes + folder + '/img');
+  });
+});
+
+// Clean up static folder
+gulp.task('clean', function() {
+  return gulp.src('./www/static/*', { read: false })
+
+ // much faster
+    .pipe(rimraf())
+    .pipe(notify({ message: 'Clean task complete' }));
+});
+
+gulp.task('watch', function() {
+  gulp.watch(assets.jsLibs, ['libs']);
+  gulp.watch(assets.js, ['scripts']);
+  gulp.watch(assets.img, ['styles', 'images']);
+  gulp.watch(assets.sass, ['styles']);
+  gulp.watch(assets.cssLibs, ['styles']);
+  gulp.watch(assets.themes + '**', ['themes']);
+});
+
+// Default Task
+gulp.task('default', function() {
+  runSequence('clean', ['images', 'styles', 'watch', 'libs', 'scripts', 'themes']);
+});

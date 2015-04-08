@@ -1,7 +1,5 @@
-/* global $:false,
-    angular: false
-*/
 (function() {
+  'use strict';
   var app = angular.module('turbine-directives', []);
 
   app.directive('turbineStats', function() {

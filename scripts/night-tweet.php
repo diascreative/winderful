@@ -38,12 +38,12 @@ function tweetPercentage($current) {
 
 	// tweet the max percentage for last night
 	$percent = $current['percent'];
-	$time = $current['timestamp'];
+	$time    = $current['timestamp'];
 
 	$message = "While you were sleeping, #windenergy reached $percent% of the National Grid's electricity demand. $socialUrl";
 
 	$connection = new TwitterOAuth(API_KEY, API_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
-	$status = $connection->post('statuses/update', array('status' => $message));
+	$status     = $connection->post('statuses/update', array('status' => $message));
 
 	if (1) {
 		echo $message;
