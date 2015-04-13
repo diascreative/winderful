@@ -98,7 +98,6 @@ function images(origin, destination) {
     .pipe(notify({ message: 'Images task for ' + origin + ' complete' }));
 }
 
-
 gulp.task('libs', function() {
   return gulp.src(assets.jsLibs)
     .pipe(concat('libs.js'))

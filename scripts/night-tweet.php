@@ -5,16 +5,16 @@ require_once dirname(__FILE__) . '/../inc/twitter/twitteroauth.php';
 $maxPercentage = getMaxPercentageForTheNight();
 
 if (shouldTweet($maxPercentage)) {
-	tweetPercentage($maxPercentage);
+  tweetPercentage($maxPercentage);
 }
 
 function getMaxPercentageForTheNight() {
-	$today = time();
+  $today = time();
 
-	$dateSMYSQL = es(date("Y-m-d 00:00", $today)); // midnight
-	$dateEMYSQL = es(date("Y-m-d 09:00", $today)); // 9am
+  $dateSMYSQL = es(date("Y-m-d 00:00", $today)); // midnight
+  $dateEMYSQL = es(date("Y-m-d 09:00", $today)); // 9am
 
-	$query = "SELECT
+  $query = "SELECT
                 timestamp,
                 FLOOR(100*wind/demand) AS percent
               FROM
@@ -25,29 +25,29 @@ function getMaxPercentageForTheNight() {
                 percent DESC
               LIMIT 1";
 
-	return fetchAssoc(query($query));
+  return fetchAssoc(query($query));
 }
 
 function shouldTweet($data) {
-	// if the max production went over 10%
-	return $data['percent'] > 10;
+  // if the max production went over 10%
+  return $data['percent'] > 10;
 }
 
 function tweetPercentage($current) {
-	global $socialUrl;
+  global $socialUrl;
 
-	// tweet the max percentage for last night
-	$percent = $current['percent'];
-	$time    = $current['timestamp'];
+  // tweet the max percentage for last night
+  $percent = $current['percent'];
+  $time    = $current['timestamp'];
 
-	$message = "While you were sleeping, #windenergy reached $percent% of the National Grid's electricity demand. $socialUrl";
+  $message = "While you were sleeping, #windenergy reached $percent% of the National Grid's electricity demand. $socialUrl";
 
-	$connection = new TwitterOAuth(API_KEY, API_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
-	$status     = $connection->post('statuses/update', array('status' => $message));
+  $connection = new TwitterOAuth(API_KEY, API_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET);
+  $status     = $connection->post('statuses/update', array('status' => $message));
 
-	if (1) {
-		echo $message;
-	} else {
-		echo "failed to tweet";
-	}
+  if (1) {
+    echo $message;
+  } else {
+    echo "failed to tweet";
+  }
 }
