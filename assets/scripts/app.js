@@ -88,7 +88,7 @@
       }
 
       // return format for hover tooltip on graph
-      return y + 'MW';
+      return y + 'MWh';
     };
 
     var graphSetup = function() {
