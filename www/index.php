@@ -195,5 +195,7 @@ $currentUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
       ga('send', 'pageview');
       <?php endif;?>
       </script>
+
+      <script src="http://pv.webbyawards.com/cloud/sitebug.js" data-id="3398" data-display-rank="false" data-pos="bottom-right" id="webby-pv-bug"></script>
   </body>
 </html>
