@@ -110,7 +110,11 @@ $currentUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             -ms-animation-duration: {{ rotationSpeed }}s;
             -o-animation-duration: {{ rotationSpeed }}s;
             animation-duration: {{ rotationSpeed }}s;">
-            <div id="turbine-percentage-complete" style="width: {{ turbine.percentage*2 }}%; height: {{ turbine.percentage*2 }}%"></div>
+            <div id="turbine-percentage-complete" style="-webkit-transform: translate(-50%, -50%) scale( {{ turbine.percentage * 0.02 }});
+              -moz-transform: translate(-50%, -50%) scale({{ turbine.percentage * 0.02 }});
+              -ms-transform: translate(-50%, -50%) scale({{ turbine.percentage * 0.02 }});
+              -o-transform: translate(-50%, -50%) scale({{ turbine.percentage * 0.02 }});
+              transform: translate(-50%, -50%) scale({{ turbine.percentage * 0.02 }});"></div>
           </div>
         </div>
       </div>

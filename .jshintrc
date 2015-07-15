@@ -1,55 +1,25 @@
 {
-  /*
-   * ENVIRONMENTS
-   * =================
-   */
-
-  // Define globals exposed by modern browsers.
-  "browser": true,
-
-  // Define globals exposed by jQuery.
-  "jquery": true,
-
-  // Define globals exposed by Node.js.
   "node": true,
-
-  "predef" : [
-    "angular"
-  ],
-
-  /*
-   * ENFORCING OPTIONS
-   * =================
-   */
-
-  // Force all variable names to use either camelCase style or UPPER_CASE
-  // with underscores.
+  "esnext": true,
+  "bitwise": true,
   "camelcase": true,
-
-  // Prohibit use of == and != in favor of === and !==.
+  "curly": true,
   "eqeqeq": true,
-
-  // Enforce tab width of 2 spaces.
+  "immed": true,
   "indent": 2,
-
-  // Prohibit use of a variable before it is defined.
   "latedef": true,
-
-  // Enforce line length to 100 characters
-  "maxlen": 100,
-
-  // Require capitalized names for constructor functions.
   "newcap": true,
-
-  // Enforce use of single quotation marks for strings.
+  "noarg": true,
   "quotmark": "single",
-
-  // Enforce placing 'use strict' at the top function scope
-  "strict": true,
-
-  // Prohibit use of explicitly undeclared variables.
+  "regexp": true,
   "undef": true,
-
-  // Warn when variables are defined but never used.
-  "unused": true
+  "unused": true,
+  "strict": true,
+  "trailing": true,
+  "smarttabs": true,
+  "white": true,
+  "validthis": true,
+  "globals": {
+    "angular": false
+  }
 }

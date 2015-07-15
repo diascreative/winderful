@@ -13,7 +13,6 @@
 
 #wind-turbine
   bottom: 0
-  filter: drop-shadow(0 0 6px rgba(0,0,0,0.3))
   font-size: 250px
   left: 75%
   height: 375px
@@ -44,8 +43,11 @@
   position: absolute
   top: 50%
   transform-origin: center, center
+  transform: rotateZ(0deg)
   transition: all 600ms
   width: 1em
+  will-change: transform
+
   &.animated
     animation: rotate 2s linear infinite
 
@@ -70,15 +72,18 @@
   transition: opacity 1s .3s
   top: 50%
   width: 1em
+  will-change: opacity
 
 #turbine-percentage-complete
   background: rgba(#fff, 0.25)
   border-radius: 50%
+  height: 100%
   left: 50%
   position: absolute
   top: 50%
   transform: translate(-50%, -50%)
-  transition: width 1s, height 1s
+  transition: transform 1s
+  width: 100%
 
 @keyframes rotate
   from
