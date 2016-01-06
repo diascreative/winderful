@@ -4,9 +4,9 @@ Out little project to show the current and past wind power generated in the UK i
 [View project](http://winderful.diascreative.net).
 
 ## Installation instructions
-1. clone the repository
+1. clone the repository into a folder called power
 
-    `git clone git@github.com:diascreative/winderful.git`
+    `git clone git@github.com:diascreative/winderful.git power`
 
 2. enter the project folder
 
@@ -24,13 +24,13 @@ Out little project to show the current and past wind power generated in the UK i
 
     * copy config.sample.php into config.php
 
-      `cp inc/config.sample.php inc/sample.php`
-    * edit sample.php so that it has the correct DB settings
+      `cp inc/config.sample.php inc/config.php`
+    * edit config.php so that it has the correct DB settings
 
 ## Initial setup
 1. populate the DB with the latest data
 
-    `php json/update-db.php`
+    `php scripts/update-db.php`
 
     (you can also run this from the browser)
 
