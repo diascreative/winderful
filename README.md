@@ -4,13 +4,13 @@ Out little project to show the current and past wind power generated in the UK i
 [View project](http://winderful.diascreative.net).
 
 ## Installation instructions
-1. clone the repository into a folder called power
+1. clone the repository into a folder called winderful
 
-    `git clone git@github.com:diascreative/winderful.git power`
+    `git clone https://github.com/diascreative/winderful.git`
 
 2. enter the project folder
 
-    `cd power`
+    `cd winderful`
 
 3. create a new database
 
@@ -45,6 +45,9 @@ Out little project to show the current and past wind power generated in the UK i
         `gulp`
 
         Keep this terminal open so that it automatically lints, concatenates and compresses our JS and SASS.
+
+## TODO - help us out with a PR if you can
+1. Change the update script to get data from BM reports directly instead of gridwatch
 
 
 ## Dev notes
