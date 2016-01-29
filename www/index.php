@@ -1,7 +1,8 @@
 <?php
 require_once "../inc/init.php";
 
-$currentUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+$protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://';
+$currentUrl = "$protocol$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 ?>
 <!doctype html>
 <html lang="en" dir="ltr" ng-app="winderfulApp">
@@ -45,7 +46,7 @@ $currentUrl = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     </style>
 
     <link rel="stylesheet" type="text/css"
-      href="http://fonts.googleapis.com/css?family=Roboto:300,300italic,400italic,400,500,500italic">
+      href="//fonts.googleapis.com/css?family=Roboto:300,300italic,400italic,400,500,500italic">
     <link rel="stylesheet" type="text/css" href="./static/css/wind.css?v=<?=$version?>">
     <?php if (isset($theme) && $theme): ?>
       <link rel="stylesheet" type="text/css" href="./static/themes/<?=$theme?>/css/style.css?v=<?=$version?>">
