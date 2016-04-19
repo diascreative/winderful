@@ -15,7 +15,9 @@ if ($endTime - $startTime < 60 * 5) {
 }
 
 $remoteFile = 'http://www.gridwatch.templar.co.uk/do_download.php';
-
+//curl 'http://www.gridwatch.templar.co.uk/do_download.php' -H 'Pragma: no-cache' -H 'Origin: http://www.gridwatch.templar.co.uk' -H 'Accept-Encoding: gzip, deflate' -H 'Accept-Language: en-US,en;q=0.8,es;q=0.6' -H 'Upgrade-Insecure-Requests: 1' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36' -H 'Content-Type: application/x-www-form-urlencoded' -H 'Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'Cache-Control: no-cache' -H 'Referer: http://www.gridwatch.templar.co.uk/download.php' -H 'Connection: keep-alive' -H 'DNT: 1'
+// --data 'none=off&demand=on&frequency=on&coal=on&nuclear=on&ccgt=on&wind=on&pumped=on&hydro=on&other=on&oil=on&ocgt=on&french_ict=on&dutch_ict=on&irish_ict=on&ew_ict=on&all=off
+//&starthour=10&startminute=15&startday=3&startmonth=11&startyear=2015&endhour=10&endminute=15&endday=4&endmonth=11&endyear=2015' --compressed
 $fields = array(
   'none'        => 'off',
   'demand'      => 'on',
@@ -37,21 +39,25 @@ $fields = array(
   'starthour'   => date('G', $startTime),
   'startminute' => date('i', $startTime),
   'startday'    => date('j', $startTime),
-  'startmonth'  => date('n', $startTime) - 1, // month is 0->11
+  'startmonth'  => strval(date('n', $startTime) - 1), // month is 0->11
   'startyear'   => date('Y', $startTime),
   'endhour'     => date('G', $endTime),
   'endminute'   => date('i', $endTime),
   'endday'      => date('j', $endTime),
-  'endmonth'    => date('n', $endTime) - 1, // month is 0->11
-  'endyear'     => date('Y', $endTime),
+  'endmonth'    => strval(date('n', $endTime) - 1), // month is 0->11
+  'endyear'     => date('Y', $endTime)
 );
 
 $data = curl_init($remoteFile);
 
+curl_setopt($data, CURLOPT_HTTPHEADER, array(
+  'Origin: http://www.gridwatch.templar.co.uk',
+  'Referer: http://www.gridwatch.templar.co.uk/download.php'));
+
+curl_setopt($data, CURLOPT_POST, true);
 curl_setopt($data, CURLOPT_POSTFIELDS, $fields);
 curl_setopt($data, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($data, CURLOPT_FOLLOWLOCATION, true);
-curl_setopt($data, CURLOPT_ENCODING, "");
 
 $csv = curl_exec($data);
 

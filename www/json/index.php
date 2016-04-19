@@ -71,6 +71,20 @@
 
   $results = query($query);
 
+  if (!numRows($results)) {
+    $query = "SELECT
+                $select
+              FROM
+                wind_vs_demand
+              WHERE
+                id > 602579
+                $group_by
+              ORDER BY
+                timestamp";
+
+    $results = query($query);
+  }
+
   while( $item = fetchAssoc($results) ) {
     $windItem = array();
 
