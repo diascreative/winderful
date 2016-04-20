@@ -17,6 +17,8 @@
     ]);
 
   app.controller('turbineController', ['$scope', '$http', function($scope, $http) {
+    var firstLoad = true;
+
     $scope.rotationSpeed = 10;
 
     this.graph = {};
@@ -196,8 +198,28 @@
     this.graph.series = [{name: 'Wind', color: '#007232', data: [{x: 0, y: 0}]}];
     this.daterange = { startDate: moment().subtract('days', 7), endDate: moment() };
 
+    function dateChanged(start, end) {
+      var dateRange = moment.unix(start).format('Do MMMM YYYY') + ' - ' + moment.unix(end).format('Do MMMM YYYY');
+      var dateChangedEvent = {
+        hitType: 'event',
+        eventCategory: 'Videos',
+        eventAction: 'change',
+        eventLabel: dateRange
+      };
+
+      if (typeof ga !== 'undefined') {
+        ga('send', dateChangedEvent);
+      }
+    }
+
     $scope.loadInData = function() {
       if (typeof (this.daterange) !== 'undefined') {
+        if (!firstLoad) {
+          dateChanged(this.daterange.startDate.unix(), this.daterange.endDate.unix());
+        }
+
+        firstLoad = false;
+
         var _this = this;
         var startDate = this.daterange.startDate.unix();
         var endDate = this.daterange.endDate.unix();
