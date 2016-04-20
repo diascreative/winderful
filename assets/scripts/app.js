@@ -202,7 +202,7 @@
       var dateRange = moment.unix(start).format('Do MMMM YYYY') + ' - ' + moment.unix(end).format('Do MMMM YYYY');
       var dateChangedEvent = {
         hitType: 'event',
-        eventCategory: 'Videos',
+        eventCategory: 'dates',
         eventAction: 'change',
         eventLabel: dateRange
       };
